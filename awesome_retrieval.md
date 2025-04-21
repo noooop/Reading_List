@@ -322,6 +322,19 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
     - text-matching: Used for embeddings in tasks that quantify similarity between two texts, such as STS or symmetric retrieval tasks
 - Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
   - Rotary + Matryoshka Representation Learning
+- Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
+  - reduce Bias Terms, GeGLU, Rotary
+  - Alternating Attention, 每 3 层部署全局注意力, 其余层则采用128 token 滑动窗口的局部注意力
+  - Model Design, 深而窄的架构, 渐进式参数空间扩展
+  - Training Settings: MLM use a masking rate of 30 percent, Warmup-Stable-Decay (WSD)
+  - Weight Initialization and Tiling
+  - 词表考虑和code数据加入
+- Wed, 22 Jan 2025 Alibaba-NLP/gte-modernbert-base
+- Fri, 27 Jan 2025 [ModernBERT 为我们带来了哪些启示？](https://mp.weixin.qq.com/s/RsxT7DbocGzDu_T0YnSd2Q)
+  - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
+  - 苦涩的教训？
+    通过提升数据利用效率，现有规模的嵌入模型仍有巨大优化空间，根本无需盲目扩张语料库或堆砌参数。
+
 
 # 总结，如何训练一个效果很好的Retrieval(Embeddings) model
 - 模型
@@ -361,6 +374,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - trained based on gemma2-9b
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - 从头训练一个基础模型，并微调成一个 Retrieval(Embeddings) model 和 Reranking Model, 有钱真好
+- Wed, 22 Jan 2025 Alibaba-NLP/gte-reranker-modernbert-base
 
 # learned sparse representations \ late-interaction methods
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
