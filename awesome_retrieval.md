@@ -313,6 +313,10 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
     - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
     - LLM as Retrieval +6 +7  居然没有写在论文里
+- Wed, 28 Aug 2024 [Conan-embedding: General Text Embedding with More and Better Negative Samples](https://arxiv.org/abs/2408.15710)
+  - dynamic hard negative mining
+  - prompt-response pairs from LLMs can be used for embedding training
+  - Matryoshka Embedding
 - Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
   - Multilingual Embeddings With Task LoRA
     - retrieval.query: Used for query embeddings in asymmetric retrieval tasks
@@ -334,7 +338,20 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
   - 苦涩的教训？
     通过提升数据利用效率，现有规模的嵌入模型仍有巨大优化空间，根本无需盲目扩张语料库或堆砌参数。
+- Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
+  - chunk alignment training， Late Chunking 的含金量在不断升高
+  - Knowledge distillation
+  - Matryoshka Embedding
 
+# Knowledge distillation
+随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
+- Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
+  - utilizes soft labels derived from expert-augmented scores
+- Thu, 26 Dec 2024 [Jasper and Stella: distillation of SOTA embedding models](https://arxiv.org/abs/2412.19048)
+  - Knowledge distillation
+  -  teacher models to automatically generate soft labels for all text pairs
+  - Matryoshka Embedding
+- Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
 
 # 总结，如何训练一个效果很好的Retrieval(Embeddings) model
 - 模型
@@ -345,6 +362,7 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - 数据
   - 使用 GPT 合成数据
   - Weakly-Supervised Contrastive Pre-training + Supervised Fine-tuning
+  - 知识蒸馏
 - 算法
   - 适合难度的 Hard Example Mining
   - 从其他 Metric Learning 和 Contrastive Learning 学习任务中寻找启发
