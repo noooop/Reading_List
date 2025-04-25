@@ -187,9 +187,6 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
     - 这个结论可以泛化在整个在 Metric Learning 问题
 - Thu, 26 May 2022 [Matryoshka Representation Learning](https://arxiv.org/abs/2205.13147)
   - 支持多个向量维度
-- Thu, 13 Oct 2022 [MTEB: Massive Text Embedding Benchmark](https://arxiv.org/abs/2210.07316)
-  - Hugging Face 主导的 Massive Text Embedding Benchmark
-  - https://huggingface.co/spaces/mteb/leaderboard
 - Sun, 27 Nov 2022 [Dense Text Retrieval based on Pretrained Language Models: A Survey](https://arxiv.org/abs/2211.14876)
   - 2022 年对于 Dense Text Retrieval 的 Survey 已经有 351 引用
   - 其中包括 6 篇 之前的 Survey。行吧
@@ -284,7 +281,6 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - Multi-task Hybrid Loss
 - Mon, 27 May 2024 [NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models](https://arxiv.org/abs/2405.17428)
   - LLM as Retrieval +3
-- Mon, 27 May 2024 [Recent advances in text embedding: A Comprehensive Review of Top-Performing Methods on the MTEB Benchmark](https://arxiv.org/abs/2406.01607)
 - Mon, 22 Jul 2024 [NV-Retriever: Improving text embedding models with effective hard-negative mining](https://arxiv.org/abs/2407.15831)
   - hard-negative mining
 - Fri, 26 Jul 2024 [bge-multilingual-gemma2,bge-en-icl](https://github.com/FlagOpen/FlagEmbedding/tree/master)
@@ -352,6 +348,24 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   -  teacher models to automatically generate soft labels for all text pairs
   - Matryoshka Embedding
 - Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
+
+# Retrieval(Embeddings) benchmark
+- Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
+  - 18个数据集，长度小于300
+- Mon, 12 Feb 2024 [Benchmarking and Building Long-Context Retrieval Models with LoCo and M2-BERT](https://arxiv.org/abs/2402.07440)
+  - 12 task 
+- Thu, 13 Oct 2022 [MTEB: Massive Text Embedding Benchmark](https://arxiv.org/abs/2210.07316)
+  - Hugging Face 主导的 Massive Text Embedding Benchmark
+  - https://huggingface.co/spaces/mteb/leaderboard
+- Mon, 27 May 2024 [Recent advances in text embedding: A Comprehensive Review of Top-Performing Methods on the MTEB Benchmark](https://arxiv.org/abs/2406.01607)
+- Thu, 18 Apr 2024 [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096)
+   - 检索模型进入长上下文时代，RoPE 含金量还在不断上升
+   - LONGEMBED benchmark, which includes two synthetic and four real-world tasks
+   - Further, our analysis reveals the superiority of RoPE-based embedding models over APE-based ones in context window extension. 
+   - Hence, we advocate for the use of RoPE for future embedding models.
+- Wed, 19 Feb 2025 [MMTEB: Massive Multilingual Text Embedding Benchmark](https://arxiv.org/abs/2502.13595)
+  - we optimize tasks such as retrieval by sampling hard negatives, creating smaller but effective splits. 
+  - These optimizations allow us to introduce benchmarks that drastically reduce computational demands
 
 # 总结，如何训练一个效果很好的Retrieval(Embeddings) model
 - 模型
