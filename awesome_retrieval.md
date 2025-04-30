@@ -196,8 +196,17 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - E5-PTlarge 也就略好于 BM25，Weakly-Supervised Contrastive Pre-training 不如 Supervised models
   - Supervised models E5large 比之前 GTRxxl、Sentence-T5xxl强
   - Weakly-Supervised Contrastive Pre-training + Supervised Fine-tuning 称为 sota 模型的标配
+- Mon, 7 Aug 2023 [Towards General Text Embeddings with Multi-stage Contrastive Learning](https://arxiv.org/abs/2308.03281)
+  - Alibaba 的 GTE
 - Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
   - LLM as Retrieval +1
+- Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
+  - rotary + SwiGLU + Flash Attention
+  - Dynamic NTK interpolation at inference to scale to 8192 sequence length
+  - Masked Language Modeling Pretraining (BooksCorpus and Wikipedia)，Unsupervised Contrastive Pretraining，  
+  - Supervised Contrastive Fine-tuning (MSMarco, NQ, NLI....) 
+  - ？we randomly sample negatives in place of hard negatives as we found that mining negatives did not improve performance
+  - test on MTEB，Jina’s Long Context Benchmark，LoCo
 - Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
   - 二阶段检索器（Two-stage Retriever）“离线”的Embedding搭配“在线”的Reranker
   - 难负样例挖掘？
@@ -329,6 +338,8 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - Training Settings: MLM use a masking rate of 30 percent, Warmup-Stable-Decay (WSD)
   - Weight Initialization and Tiling
   - 词表考虑和code数据加入
+- Tue, 11 Feb 2025 [Training Sparse Mixture Of Experts Text Embedding Models](https://arxiv.org/abs/2502.07972)
+  - Embedding Models 进入 Mixture Of Experts 时代 
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-modernbert-base
 - Fri, 27 Jan 2025 [ModernBERT 为我们带来了哪些启示？](https://mp.weixin.qq.com/s/RsxT7DbocGzDu_T0YnSd2Q)
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
