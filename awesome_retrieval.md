@@ -340,6 +340,20 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - 词表考虑和code数据加入
 - Tue, 11 Feb 2025 [Training Sparse Mixture Of Experts Text Embedding Models](https://arxiv.org/abs/2502.07972)
   - Embedding Models 进入 Mixture Of Experts 时代 
+  - 论文覆盖内容也是非常全面详实，安利
+  - 3.1. Masked Language Modeling
+  - 3.2. Mixture of Experts (MoE)
+  - 3.3. Contrastive Learning 
+    - 3.3.1. TRAINING TEXT EMBEDDING MODELS
+      - Text embedding models are generally trained in two stages: weakly-supervised contrastive pretraining and contrastive finetuning
+      - The contrastive pretraining stage uses the InfoNCE objective
+      - Contrastive finetuning incorporates high-quality human labeled datasets and hard negatives to improve retrieval performance
+      - Matryoshka Representation Learning 
+    - 3.3.2. CONSISTENCY FILTERING
+      - Consistency filtering improves dataset quality by removing potential false positives from weakly supervised data
+    - 3.3.3. HARD NEGATIVE MINING
+      - Text embedding models are typically finetuned with hard negatives mined by an existing retriever
+      - positive-aware hard negative mining
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-modernbert-base
 - Fri, 27 Jan 2025 [ModernBERT 为我们带来了哪些启示？](https://mp.weixin.qq.com/s/RsxT7DbocGzDu_T0YnSd2Q)
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
@@ -381,6 +395,9 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 # 总结，如何训练一个效果很好的Retrieval(Embeddings) model
 - 模型
   - Dense Retrieval 总体展现出明显的 Scaling Laws，但时不时也有小模型的在MTEB榜单前列
+    - 单语言对标 BERT BASE：L=12，H=768，A=12 110M
+    - 多语言对标 BERT LARGE：L=24，H=1024，A=16 340M
+    - 更大的模型比如 1B，7B 对于 Embeddings 来说真的有意义吗存疑
   - 选择适合的基础模型，多语言能力和长上下文能力比较重要，但 bert 都是2020年左右训练的，普遍不如现在llm训练的充分
   - 越来越多的 Large decoder-only language models (LLMs) as Retrieval的模型上MTEB榜，基础模型选择范围就大大拓宽了
   - 更有钱的公司会从头训练一个基础模型，微调成一个检索模型 比如 ST5、mGTE。。
@@ -389,7 +406,7 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - Weakly-Supervised Contrastive Pre-training + Supervised Fine-tuning
   - 知识蒸馏
 - 算法
-  - 适合难度的 Hard Example Mining
+  - CONSISTENCY FILTERING + 适合难度的 Hard Example Mining
   - 从其他 Metric Learning 和 Contrastive Learning 学习任务中寻找启发
   - 多任务学习，模型蒸馏
 
