@@ -398,7 +398,9 @@ size and the input text, respectively.
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
-  - 18个数据集，长度小于300
+  - 18个数据集
+  - average query length between 3 and 192 words
+  - average document length between 11 and 635 words
 - Mon, 12 Feb 2024 [Benchmarking and Building Long-Context Retrieval Models with LoCo and M2-BERT](https://arxiv.org/abs/2402.07440)
   - 12 task 
 - Thu, 13 Oct 2022 [MTEB: Massive Text Embedding Benchmark](https://arxiv.org/abs/2210.07316)
@@ -435,6 +437,8 @@ size and the input text, respectively.
 很多文章吧 Rerank model 称为 cross-encoder，相对与 Dense Retrieval 的 dual-encoder。
 相比 Dense Retrieval 模型，算法上可以结合Metric Learning 和 Contrastive Learning，系统上可以跟 approximate nearest neighbor 结合， 下游任务又可以跟  large-scale open-domain QA 结合。
 Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任务，约等于 bert 预训练任务 Next Sentence Prediction。
+- Sun, 13 Jan 2019 [Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085)
+  - Re-ranking 的历史比 Dense Retrieval 还早
 - Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
   - 我们将BCEmbedding设计为二阶段检索器，分工合作：“离线”的Embedding负责尽可能召回，“在线”的Reranker负责精排和低质量过滤。
     - 精排阶段为了解决信息交互的问题，采用cross-encoder架构（如图二-2 (b)所示）。Reranker模型可以实现用户问题和知识库语料的信息交互，使模型可以“见机行事”地识别到更加准确的语义关系，算法性能上限可以很高。该方式的缺点是，需要对用户问题和知识库语料进行在线（online）地语义关系提取，效率比较低，无法对全量的知识库语料进行实时处理。
@@ -478,7 +482,19 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
 
 # Training data
-## Synthetic data
+## Synthetic data (Data Augmentation (DA))
+### Query Augmentation (pseudo query generation(GenQ))
+- Wed, 17 Apr 2019 [Document Expansion by Query Prediction](https://arxiv.org/abs/1904.08375)
+  - the task is to predict a set of queries for which that document will be relevant.
+  - We optionally re-rank these retrieved documents using BERT (Devlin et al., 2018) as described by Nogueira and Cho (2019).
+- Dec, 2 2019 [From doc2query to docTTTTTquery](https://cs.uwaterloo.ca/~jimmylin/publications/Nogueira_Lin_2019_docTTTTTquery-v2.pdf)
+  - 好短，只有三页
+  - 用 T5 做 Query 生成， 恍如隔世，人类能生成自由只有短短几年
+- Mar 1, 2021[BeIR/query-gen-msmarco-t5-large-v1](https://sbert.net/examples/sentence_transformer/unsupervised_learning/query_generation/README.html)
+  - 还在使用docTTTTTquery
+- 2022.11.30. OpenAI 发布GPT-3.5
+- Wed, 15 Feb 2023 [How to Train Your DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval](https://arxiv.org/abs/2302.07452)
+  - 使用 docTTTTTquery？为什么不用GPT-3.5
 - Wed, 3 May 2023 [Improving Contrastive Learning of Sentence Embeddings from AI Feedback](https://arxiv.org/abs/2305.01918)
   - we first mask some words of the original sentence with different mask rates using the <mask> token, in order to delete some information in the original sentence.
   - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
