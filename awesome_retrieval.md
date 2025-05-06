@@ -12,6 +12,11 @@ Document 的 Embeddings 可以离线预计算，Embeddings存储量比较小，�
 
 retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比如，top100,，第二阶段将召回候选集和Query两两计算，得到更精确的检索排序。
 
+# Survey
+- Sun, 27 Nov 2022 [Dense Text Retrieval based on Pretrained Language Models: A Survey](https://arxiv.org/abs/2211.14876)
+  - 2022 年对于 Dense Text Retrieval 的 Survey 已经有 351 引用
+  - 其中包括 6 篇 之前的 Survey。行吧
+- Mon, 27 May 2024 [Recent advances in text embedding: A Comprehensive Review of Top-Performing Methods on the MTEB Benchmark](https://arxiv.org/abs/2406.01607)
 
 # Traditional Retrieval(Sparse lexical search algorithms)
 虽然 dense retrieval 从2020年开始变成检索模型的主流，传统检索算法比如 BM25 对关键词、专业名词等召回效果比较好，仍然是 dense retrieval 有效的补充。
@@ -187,9 +192,6 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
     - 这个结论可以泛化在整个在 Metric Learning 问题
 - Thu, 26 May 2022 [Matryoshka Representation Learning](https://arxiv.org/abs/2205.13147)
   - 支持多个向量维度
-- Sun, 27 Nov 2022 [Dense Text Retrieval based on Pretrained Language Models: A Survey](https://arxiv.org/abs/2211.14876)
-  - 2022 年对于 Dense Text Retrieval 的 Survey 已经有 351 引用
-  - 其中包括 6 篇 之前的 Survey。行吧
 - Wed, 7 Dec 2022 [Text Embeddings by Weakly-Supervised Contrastive Pre-training](https://arxiv.org/abs/2212.03533)
   - 微软的E5
   - We pre-train on our proposed text pair dataset for three model sizes: E5small, E5base and E5large initialized from MiniLM, bert-base-uncased, and bert-large-uncased-whole-wordmasking respectively
@@ -198,8 +200,26 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - Weakly-Supervised Contrastive Pre-training + Supervised Fine-tuning 称为 sota 模型的标配
 - Mon, 7 Aug 2023 [Towards General Text Embeddings with Multi-stage Contrastive Learning](https://arxiv.org/abs/2308.03281)
   - Alibaba 的 GTE
+- Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
+  - COSINE OBJECTIVE 可能饱和，所以提出 ANGLE OBJECTIVE 
+  - 度量学习 angular space （Angular Contrastive Learning） 真的只有一篇论文吗
+  - applies LLMs as data annotators to label the pseudo-supervised data for AnglE training.
+    -  For the STS task, we use the prompt
+“You are a highly smart same-meaning/opposite-meaning sentence-generating system. Your job is
+to generate {size} synonymous/antonym sentences of a given input sentence. Input sentence: {text}.
+Output:” to generate positive/negative pairs. {size} and {text} are placeholders for the generated
+size and the input text, respectively.
+    - 我的天，generate positive/negative pairs
 - Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
   - LLM as Retrieval +1
+  - we introduce a novel and simple method for obtaining high-quality text embeddings using only synthetic data and less than 1k training steps.
+    - we design a two-step prompt template that first prompts LLMs brainstorm a list of tasks, and then generates a concrete example conditioned on the task definition.
+    - query positive_document hard_negative_document 全合成啊？？这也太野了
+    - w/ synthetic only 63.1，w/ synthetic + msmarco 64.5，w/o synthetic data 64.6，full data 66.6
+    - 你确定你的合成数据有用？
+  - 5.1 Is Contrastive Pre-training Necessary?
+    - contrastive pre-training benefits XLM-Rlarge, enhancing its retrieval performance
+    - However, for Mistral-7B based models, contrastive pre-training has negligible impact on the model quality
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
   - rotary + SwiGLU + Flash Attention
   - Dynamic NTK interpolation at inference to scale to 8192 sequence length
@@ -270,6 +290,8 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - Generate a custom Q/A dataset
   - 介绍了一种用ChatGPT合成问答数据集测试检索模型的方法
   - 用ChatGPT合成问答数据集训练模型，用ChatGPT合成问答数据集测试模型的世界达成了
+- Mon, 26 Feb 2024 [GISTEmbed: Guided In-sample Selection of Training Negatives for Text Embedding Fine-tuning](https://arxiv.org/abs/2402.16829)
+  - 使用 Guided 模型移除 in-batch negative 里面的假负，相当于 CONSISTENCY FILTERING
 - Wed, 27 Mar 2024 [Scaling Laws For Dense Retrieval](https://arxiv.org/abs/2403.18684)
   - 24 BERT checkpoints from the original Google release, with model sizes ranging from 0.5 million (BERT-Tiny) to 82 million parameters (BERT-Base)
   - For experiments on Chinese retrieval benchmarks, we selected the ERNIE series
@@ -382,7 +404,6 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - Thu, 13 Oct 2022 [MTEB: Massive Text Embedding Benchmark](https://arxiv.org/abs/2210.07316)
   - Hugging Face 主导的 Massive Text Embedding Benchmark
   - https://huggingface.co/spaces/mteb/leaderboard
-- Mon, 27 May 2024 [Recent advances in text embedding: A Comprehensive Review of Top-Performing Methods on the MTEB Benchmark](https://arxiv.org/abs/2406.01607)
 - Thu, 18 Apr 2024 [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096)
    - 检索模型进入长上下文时代，RoPE 含金量还在不断上升
    - LONGEMBED benchmark, which includes two synthetic and four real-world tasks
@@ -456,8 +477,19 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - LLM can memorize (passage -> title)
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
 
-# Elements 
-## training data
+# Training data
+## Synthetic data
+- Wed, 3 May 2023 [Improving Contrastive Learning of Sentence Embeddings from AI Feedback](https://arxiv.org/abs/2305.01918)
+  - we first mask some words of the original sentence with different mask rates using the <mask> token, in order to delete some information in the original sentence.
+  - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
+  - We write a task description prompt to steer GPT-3 to generate a similarity score between 0 and 1 for each sample pair generated in step 1
+  - 居然效果比 SimCSE 好，是 SimCSE 效果太差了吗
+- Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
+  - 为 sts任务 生成 positive/negative pairs
+- Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
+  - query positive_document hard_negative_document 全合成啊？？这也太野了
+- Sat, 24 Feb 2024 [OpenAI vs Open-Source Multilingual Embedding Models Choosing the model that works best for your data](https://towardsdatascience.com/openai-vs-open-source-multilingual-embedding-models-e5ccb7c90f05)
+  - 用ChatGPT合成问答数据集训练模型，用ChatGPT合成问答数据集测试模型的世界达成了
 - Mon, 5 Feb 2024 [BGE M3-Embedding](https://arxiv.org/abs/2402.03216)
   - continue pretraining (RetroMAE) 
     - We can observe that RetroMAE can significantly improve the retrieval performance, and pre-training on unsupervised data can further enhance the retrieval quality of the embedding model.
