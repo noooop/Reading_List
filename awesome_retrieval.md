@@ -443,7 +443,6 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 
 # Chunking / Chucking Granularity
 [跳转](./awesome_rag.md#chunking--chucking-granularity)
-  
 
 # Toolkit 
 - Tue, 27 Aug 2019 [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
@@ -456,3 +455,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Fri, 23 Feb 2024 [Self-Retrieval: Building an Information Retrieval System with One Large Language Model](https://arxiv.org/abs/2403.00801)
   - LLM can memorize (passage -> title)
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
+
+# Elements 
+## training data
+- Mon, 5 Feb 2024 [BGE M3-Embedding](https://arxiv.org/abs/2402.03216)
+  - continue pretraining (RetroMAE) 
+    - We can observe that RetroMAE can significantly improve the retrieval performance, and pre-training on unsupervised data can further enhance the retrieval quality of the embedding model.
+  - Supervised Fine-tuning https://huggingface.co/datasets/Shitao/bge-m3-data
+    - 8英文7中文2其他，混合数据
+  - synthetic data 使用 GPT3.5 做数据合成 https://huggingface.co/datasets/Shitao/MLDR
+    - MLDR is a Multilingual Long-Document Retrieval dataset built on Wikipeida, Wudao and mC4, covering 13 typologically diverse languages. Specifically, we sample lengthy articles from Wikipedia, Wudao and mC4 datasets and randomly choose paragraphs from them. Then we use GPT-3.5 to generate questions based on these paragraphs. 
