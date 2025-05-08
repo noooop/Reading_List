@@ -166,7 +166,7 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - with only standard dropout used as noise. 
   - This simple method works surprisingly well, performing on par with previous supervised counterparts. 
   - We find that dropout acts as minimal data augmentation, and removing it leads to a representation collapse.
-    - 有意思。 但 unsupervised 效果甚至不如 BM25
+    - 有意思。 但 unsupervised 效果甚至不如 BM25 （见E5论文）
 - Thu, 19 Aug 2021 [Sentence-T5: Scalable Sentence Encoders from Pre-trained Text-to-Text Models](https://arxiv.org/abs/2108.08877)
   - Google 的 sentence embeddings from text-to-text transformers (ST5)
     - ST5-Enc Base 110M, Large 335M, 3B 1.24B, 11B 4.8B
@@ -195,9 +195,32 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - Wed, 7 Dec 2022 [Text Embeddings by Weakly-Supervised Contrastive Pre-training](https://arxiv.org/abs/2212.03533)
   - 微软的E5
   - We pre-train on our proposed text pair dataset for three model sizes: E5small, E5base and E5large initialized from MiniLM, bert-base-uncased, and bert-large-uncased-whole-wordmasking respectively
-  - E5-PTlarge 也就略好于 BM25，Weakly-Supervised Contrastive Pre-training 不如 Supervised models
-  - Supervised models E5large 比之前 GTRxxl、Sentence-T5xxl强
+  - Weakly-Supervised Contrastive Pre-training 
+    - 构建 CCPairs 数据集
+    - we use mined hard negatives and knowledge distillation from a cross-encoder (CE) teacher model
+  - Supervised Fine-tuning
+    - MS-MARCO， NQ， NLI
+    - We reuse the mined hard negatives and re-ranker scores from SimLM [58] for the first two datasets.
+  - Evaluation
+    - BEIR， MTEB
+    - Weakly-Supervised Contrastive Pre-training 
+      - E5-PT base outperforms the classic BM25 algorithm by 1.2 points. 
+      - To the best of our knowledge, this is the first reported result that an unsupervised model can beat BM25 on the BEIR benchmark.
+      - BM25 41.7， SimCSE 20.3，E5-PT large 44.2
+      - E5-PT large 也就略好于 BM25
+    - Supervised Fine-tuning
+      - Most datasets benefit from supervised finetuning
+      - Supervised models E5large 比之前 GTRxxl、Sentence-T5xxl强
+      - Since the difference between BERT-FT base and E5 base is that BERT-FT base only has fine-tuning stage, 
+      - their performance gap demonstrates the usefulness of contrastive pre-training on our proposed CCPairs dataset.
+      - Is Contrastive Pre-training Necessary? （Improving Text Embeddings with Large Language Models）
   - Weakly-Supervised Contrastive Pre-training + Supervised Fine-tuning 称为 sota 模型的标配
+  - BM25 vs Dense Retrieval
+    - The answer is likely “not yet”. BM25 still holds
+obvious advantages in terms of simplicity, efficiency, and interpretability. For long-tail domains such
+as Trec-Covid [55] and retrieval tasks that involve long documents (Touche-2020) [4] or rely heavily
+on exact lexical match (Fever) [54], further research efforts are still necessary to improve current
+dense retrievers.
 - Mon, 7 Aug 2023 [Towards General Text Embeddings with Multi-stage Contrastive Learning](https://arxiv.org/abs/2308.03281)
   - Alibaba 的 GTE
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
@@ -220,7 +243,9 @@ size and the input text, respectively.
   - 5.1 Is Contrastive Pre-training Necessary?
     - contrastive pre-training benefits XLM-Rlarge, enhancing its retrieval performance
     - However, for Mistral-7B based models, contrastive pre-training has negligible impact on the model quality
+  - 对比 E5 和 E5 mistral-7b， 7B 吊打 330M？
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
+  - NomicBertModel 架构比较现代
   - rotary + SwiGLU + Flash Attention
   - Dynamic NTK interpolation at inference to scale to 8192 sequence length
   - Masked Language Modeling Pretraining (BooksCorpus and Wikipedia)，Unsupervised Contrastive Pretraining，  
@@ -228,6 +253,7 @@ size and the input text, respectively.
   - ？we randomly sample negatives in place of hard negatives as we found that mining negatives did not improve performance
   - test on MTEB，Jina’s Long Context Benchmark，LoCo
 - Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
+  - 同时发布 embedding 和 reranker 确实是为RAG而生，但512序列长度显然是每预测单接下来轰轰烈烈的长上下文时代
   - 二阶段检索器（Two-stage Retriever）“离线”的Embedding搭配“在线”的Reranker
   - 难负样例挖掘？
     - 我们在训练Embedding模型时发现，过难的负样本对模型训练有损害，训练过程中会使模型“困惑”，[影响模型最终性能](https://kexue.fm/archives/8847#%E9%9A%BE%E6%90%9E%E7%9A%84%E9%98%88%E5%80%BC)。
@@ -235,7 +261,8 @@ size and the input text, respectively.
     - 其实所谓的“正例”和“难负样例”是根据你业务的定义来的。
     - 所以回归业务目标和好的检索器的“评判标准”，Embedding模型应该能尽量召回相关片段，不要将Reranker要干的精排任务强压在Embedding身上，“越俎代庖”终究会害了它。
 - Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
-  - BAAI的BGE M3
+  - BAAI 的 BGE M3
+  - 使用 XLM-RoBERTa 架构还是比较传统
   - we introduce a new embedding model called M3-Embedding Supervised models
     - Multi-Linguality:  It provides a uniform support for the semantic retrieval of more than 100 working languages. Enables both multilingual retrieval within each language and crosslingual retrieval between different languages.
     - Multi-Functionality: It can simultaneously accomplish the three common retrieval functionalities: dense retrieval, multi-vector retrieval, and sparse retrieval.
@@ -296,18 +323,32 @@ size and the input text, respectively.
   - 24 BERT checkpoints from the original Google release, with model sizes ranging from 0.5 million (BERT-Tiny) to 82 million parameters (BERT-Base)
   - For experiments on Chinese retrieval benchmarks, we selected the ERNIE series
   - <img src="https://github.com/noooop/noooop.github.io/blob/main/applications/rag/sldr.png?raw=true" width="400">
+  - 比较的模型略小，2025年大概能摸到模型大小的 sweet spot，再回看上面的图，多语言模型确实需要更多参数
+    - 单语言对标 BERT BASE：L=12，H=768，A=12 110M
+    - 多语言对标 BERT LARGE：L=24，H=1024，A=16 340M
 - Tue, 9 Apr 2024 [LLM2Vec: Large Language Models Are Secretly Powerful Text Encoders](https://arxiv.org/abs/2404.05961)
   - additional training phase with a specially designed masked token prediction to warm-up the bidirectional attention.
   - LLM as Retrieval +2
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
-  - we conduct two training rounds using two different kinds of datasets.
-    - The initial training round is large-scale pretraining using only in-batch negative examples.
-    - The second round of training (often referred to as the fine-tuning step) calls for similar pairs of queries and documents augmented with an additional set of “hard” negative documents
-  - How hard should these negatives be for maximally effective learning in the fine-tuning phase? 
+  - architecture
+    - v1, BertModel 22m，	33m, 110m, 137m, 335m.  512 长度
+    - m-long, NomicBertModel, max_trained_positions: 2048
+    - m-v1.5, BertModel, 512 长度
+  - Synthetic Data For Semantic Dense Mining
+  - Tunable Hard Negative Mining
+    - How hard should these negatives be for maximally effective learning in the fine-tuning phase? 
     - Our answer to this question was ultimately a tunable hard negative mining strategy in which we leveraged a preexisting text embedding model to identify and score the hardest negatives for each training example. 
     - Then, we applied a score threshold to discard the hard negatives from the above set. 
     - We found that using an upper threshold rather than a specific rank helped account for the fact that some queries admit much harder top-k negatives than others.
     - we perform a parameter sweep of the negative hardness threshold to demonstrate the value of a tunable approach (the optimal threshold value scores significantly better than other choices). 
+  - Training Recipe
+    - Large Scale Contrastive Pretraining With In-Batch Negatives (infoNCE)
+      - Longer Truncation Length 
+        - We used a document sequence length of 256 in large-scale contrastive training, in contrast to the 128 truncation length used in GTE and BGE. 
+        - We truncated query sequence length to 32, consistent with BGE’s source code15
+    - Quality-Focused Contrastive Training With Curated Negatives
+      - We truncate sequence lengths to 512 for queries and documents for all models, including the long-context variant m-long.
+      -  For each query in a batch, we include one positive document and ten hard negative documents
 - Sat, 11 May 2024 [Piccolo2: General Text Embedding with Multi-task Hybrid Loss Training](https://arxiv.org/abs/2405.06932)
   - Multi-task Hybrid Loss
 - Mon, 27 May 2024 [NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models](https://arxiv.org/abs/2405.17428)
@@ -481,6 +522,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - LLM can memorize (passage -> title)
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
 
+# Architecture
+- Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
+  - architecture
+    - v1, BertModel 22m，	33m, 110m, 137m, 335m.  512 长度
+    - m-long, NomicBertModel, max_trained_positions: 2048
+    - m-v1.5, BertModel, 512 长度
+
 # Training data
 ## Synthetic data (Data Augmentation (DA))
 ### Query Augmentation (pseudo query generation(GenQ))
@@ -513,3 +561,9 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - 8英文7中文2其他，混合数据
   - synthetic data 使用 GPT3.5 做数据合成 https://huggingface.co/datasets/Shitao/MLDR
     - MLDR is a Multilingual Long-Document Retrieval dataset built on Wikipeida, Wudao and mC4, covering 13 typologically diverse languages. Specifically, we sample lengthy articles from Wikipedia, Wudao and mC4 datasets and randomly choose paragraphs from them. Then we use GPT-3.5 to generate questions based on these paragraphs. 
+- Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
+  - we leverage Large Language Models to generate novel queries
+
+# Hard Negative Mining
+- Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
+  - Tunable Hard Negative Mining
