@@ -262,7 +262,7 @@ size and the input text, respectively.
     - 所以回归业务目标和好的检索器的“评判标准”，Embedding模型应该能尽量召回相关片段，不要将Reranker要干的精排任务强压在Embedding身上，“越俎代庖”终究会害了它。
 - Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
   - BAAI 的 BGE M3
-  - 使用 XLM-RoBERTa 架构还是比较传统
+  - 使用 XLM-RoBERTa 架构还是比较传统， 23 层 1024维
   - we introduce a new embedding model called M3-Embedding Supervised models
     - Multi-Linguality:  It provides a uniform support for the semantic retrieval of more than 100 working languages. Enables both multilingual retrieval within each language and crosslingual retrieval between different languages.
     - Multi-Functionality: It can simultaneously accomplish the three common retrieval functionalities: dense retrieval, multi-vector retrieval, and sparse retrieval.
@@ -360,23 +360,28 @@ size and the input text, respectively.
   - LLM as Retrieval +4 +5
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - 从头训练一个基础模型，并微调成一个 Retrieval(Embeddings) model 和 Reranking Model, 有钱真好
-  - pre-train
-    - We pre-train the model via masked language modeling (MLM)，The MLM probability is set to 30% 
-    - To train the native 8192-context model more efficiently, we adopt a phased training curriculum (Xiong et al., 2024)
-      - MLM-2048: we chunk the input into 2048 tokens and set RoPE base to 10, 000.
-      - MLM-8192: we chunk the input into 8192 tokens and set RoPE base to 160, 000.
-  - Retrieval(Embeddings) model
-    - we construct the TRM for first-stage text retrieval in two steps: 
-      - contrastive pre-training and fine-tuning (Wang et al., 2022; Li et al., 2023). 
-      - Both steps share the same InfoNCE(Oord et al., 2018) learning objective
-    - Contrastive Pre-Training
-    - Matryoshka Embedding
-    - Sparse Representation
-    - Contrastive Fine-Tuning 
-  - Text Reranking Model
-    - It takes the query and document as input: [CLS] q [SEP] d, and directly predicts their relevance score by the [CLS] output state:
-    - srerank = W h[CLS]
-    - The model is fine-tuned by InfoNCE in one step6 based on our text encoder
+  - https://huggingface.co/Alibaba-NLP/gte-multilingual-mlm-base
+  - architecture 
+    - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小
+    - pre-trained by masked language modeling (MLM) via a two-stage curriculum for the native 8,192 tokens context.
+  - Training Recipe
+    - pre-train
+      - We pre-train the model via masked language modeling (MLM)，The MLM probability is set to 30% 
+      - To train the native 8192-context model more efficiently, we adopt a phased training curriculum (Xiong et al., 2024)
+        - MLM-2048: we chunk the input into 2048 tokens and set RoPE base to 10, 000.
+        - MLM-8192: we chunk the input into 8192 tokens and set RoPE base to 160, 000.
+    - Retrieval(Embeddings) model
+      - we construct the TRM for first-stage text retrieval in two steps: 
+        - contrastive pre-training and fine-tuning (Wang et al., 2022; Li et al., 2023). 
+        - Both steps share the same InfoNCE(Oord et al., 2018) learning objective
+      - Contrastive Pre-Training
+      - Matryoshka Embedding
+      - Sparse Representation
+      - Contrastive Fine-Tuning 
+    - Text Reranking Model
+      - It takes the query and document as input: [CLS] q [SEP] d, and directly predicts their relevance score by the [CLS] output state:
+      - srerank = W h[CLS]
+      - The model is fine-tuned by InfoNCE in one step6 based on our text encoder
   - 论文没有提 Hard Example Mining，不知道是想表达 no bells and whistles，[Stella_v5](https://github.com/DunZhang/Stella/blob/main/news_and_todo.md)系列在这个基础上微调效果就好一些。
   - [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
     - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
@@ -386,6 +391,8 @@ size and the input text, respectively.
   - prompt-response pairs from LLMs can be used for embedding training
   - Matryoshka Embedding
 - Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
+  - Architecture
+    - Based on the Jina-XLM-RoBERTa architecture, this model supports Rotary Position Embeddings to handle long input sequences up to 8192 tokens.
   - Multilingual Embeddings With Task LoRA
     - retrieval.query: Used for query embeddings in asymmetric retrieval tasks
     - retrieval.passage: Used for passage embeddings in asymmetric retrieval tasks
@@ -393,7 +400,26 @@ size and the input text, respectively.
     - classification: Used for embeddings in classification tasks
     - text-matching: Used for embeddings in tasks that quantify similarity between two texts, such as STS or symmetric retrieval tasks
 - Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
-  - Rotary + Matryoshka Representation Learning
+  - Architecture
+    - m_v2: gte-multilingual-mlm-base
+    - l_v2: bge-m3-retromae
+  - three-stage training framework 
+    - pretraining via masked language modeling 这些预训练模型还是没有充分训练？
+    - contrastive pretraining
+    - Finetuning
+      - Hard Negative Mining 
+        - we adopt the strategy from NV Retriever
+        - we confirm Moreira et al. (2024)’s finding that stronger teacher models yield higher-quality fine-tuning datasets 
+      - Matryoshka Representation Learning
+      - We also extend the maximum sequence length for queries and documents to 512 tokens, 
+      - adjusting the batch size to 256 sets of 1 query, 1 positive doc, and 10 negative docs, 
+      - changing the learning rate to 1e-5 and 5e-6 for medium and large models, respectively, 
+      - and adjusting our WSD learning rate schedule to have no warmup and 
+      - perform linear decay for 6,000 out of a total of 9,342 steps.
+  - Cross-lingual Transfer
+  - English Performance Gap
+  - Data quality matters more than quantity.
+  - Model “knowledge” and task-calibration are both important yet possibly orthogonal.
 - Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
   - reduce Bias Terms, GeGLU, Rotary
   - Alternating Attention, 每 3 层部署全局注意力, 其余层则采用128 token 滑动窗口的局部注意力
@@ -426,16 +452,6 @@ size and the input text, respectively.
   - chunk alignment training， Late Chunking 的含金量在不断升高
   - Knowledge distillation
   - Matryoshka Embedding
-
-# Knowledge distillation
-随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
-- Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
-  - utilizes soft labels derived from expert-augmented scores
-- Thu, 26 Dec 2024 [Jasper and Stella: distillation of SOTA embedding models](https://arxiv.org/abs/2412.19048)
-  - Knowledge distillation
-  -  teacher models to automatically generate soft labels for all text pairs
-  - Matryoshka Embedding
-- Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
@@ -523,12 +539,24 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
 
 # Architecture
+- Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
+  - NomicBertModel 架构比较现代 bert_with_rope
+  - rotary + SwiGLU + Flash Attention
+- Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
+  - 使用 XLM-RoBERTa 架构还是比较传统， 绝对位置编码，8192 长度，23 层 1024维
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
-  - architecture
-    - v1, BertModel 22m，	33m, 110m, 137m, 335m.  512 长度
-    - m-long, NomicBertModel, max_trained_positions: 2048
-    - m-v1.5, BertModel, 512 长度
-
+  - v1, BertModel 22m, 33m, 110m, 137m, 335m.  512 长度
+  - m-long, NomicBertModel, max_trained_positions: 2048
+  - m-v1.5, BertModel, 512 长度
+- Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
+  - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小
+  - pre-trained by masked language modeling (MLM) via a two-stage curriculum for the native 8,192 tokens context.
+- Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
+  - m_v2: gte-multilingual-mlm-base
+  - l_v2: bge-m3-retromae
+- Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
+  - Based on the Jina-XLM-RoBERTa architecture, this model supports Rotary Position Embeddings to handle long input sequences up to 8192 tokens.
+  
 # Training data
 ## Synthetic data (Data Augmentation (DA))
 ### Query Augmentation (pseudo query generation(GenQ))
@@ -563,6 +591,16 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - MLDR is a Multilingual Long-Document Retrieval dataset built on Wikipeida, Wudao and mC4, covering 13 typologically diverse languages. Specifically, we sample lengthy articles from Wikipedia, Wudao and mC4 datasets and randomly choose paragraphs from them. Then we use GPT-3.5 to generate questions based on these paragraphs. 
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - we leverage Large Language Models to generate novel queries
+
+# Knowledge distillation
+随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
+- Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
+  - utilizes soft labels derived from expert-augmented scores
+- Thu, 26 Dec 2024 [Jasper and Stella: distillation of SOTA embedding models](https://arxiv.org/abs/2412.19048)
+  - Knowledge distillation
+  -  teacher models to automatically generate soft labels for all text pairs
+  - Matryoshka Embedding
+- Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
 
 # Hard Negative Mining
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
