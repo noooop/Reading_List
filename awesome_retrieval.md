@@ -223,6 +223,30 @@ on exact lexical match (Fever) [54], further research efforts are still necessar
 dense retrievers.
 - Mon, 7 Aug 2023 [Towards General Text Embeddings with Multi-stage Contrastive Learning](https://arxiv.org/abs/2308.03281)
   - Alibaba 的 GTE
+  - Architecture
+    - Bert 512上下文长度， mean pooling， InfoNCE loss
+  - Training Recipe (two-stage training) 
+    - Weakly-Supervised Contrastive Pre-training (from bert pre-train)
+      - Weakly supervised text relevance data is readily available in publicly accessible web sources, such as the inherent connection between queries and answers on QA forums.
+    - Supervised Fine-tuning
+      - we use relatively lower-sized datasets with human annotation of the relevance between two pieces of text and optional hard negatives mined by an extra retriever to form text triples.
+  - Improved Contrastive Loss 
+    - in which the first two terms are used for query to document contrast, where as the last two terms are used for the inverse.
+    - s(qi,qj) 和 s(dj ,di) 也用起来
+    - The temperature τ is fixed to 0.01 in this work.
+  - Evaluation
+    - BEIR：we find that our base size model significantly outperforms the models with comparable size, like SimCSE, Contriever and E5. Our base model is comparable to E5large without using human supervision.
+  - Analysis
+    - Number of Training Datasets
+      - The results presented in Figure 3a demonstrate that the inclusion of more diverse data sources consistently enhances model performance during both the pre-training and finetuning stages.
+    - Pre-training Batch Size
+      - model performance saturates at around a batch size of ten thousands.
+    - Number of Model Parameters
+      -  It can be observed that as the model size grows exponentially, the model performance also improves linearly.
+    - Influence of Different Training Stages
+      - PT 和 FT 都有用
+    - Ablation of the Contrastive Objective
+      - FT 上稍微有一点提高
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - COSINE OBJECTIVE 可能饱和，所以提出 ANGLE OBJECTIVE 
   - 度量学习 angular space （Angular Contrastive Learning） 真的只有一篇论文吗
@@ -359,13 +383,14 @@ size and the input text, respectively.
   - 2024-07-31 MTEB en榜单 1.bge-en-icl 2.stella_en_1.5B_v5 3.SFR-Embedding-2_R 4.gte-Qwen2-7B-instruct 5.stella_en_400M_v5 6.bge-multilingual-gemma2 7.NV-Embed-v1 8.voyage-large-2-instruct 9.Linq-Embed-Mistral 10.SFR-Embedding-Mistral  
   - LLM as Retrieval +4 +5
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
+  - Alibaba 的 mGTE
   - 从头训练一个基础模型，并微调成一个 Retrieval(Embeddings) model 和 Reranking Model, 有钱真好
   - https://huggingface.co/Alibaba-NLP/gte-multilingual-mlm-base
-  - architecture 
-    - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小
+  - Architecture 
+    - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小，  [CLS] pooling
     - pre-trained by masked language modeling (MLM) via a two-stage curriculum for the native 8,192 tokens context.
-  - Training Recipe
-    - pre-train
+  - Training Recipe (three-stage training)
+    - MLM pre-train (from scratch)
       - We pre-train the model via masked language modeling (MLM)，The MLM probability is set to 30% 
       - To train the native 8192-context model more efficiently, we adopt a phased training curriculum (Xiong et al., 2024)
         - MLM-2048: we chunk the input into 2048 tokens and set RoPE base to 10, 000.
@@ -382,6 +407,9 @@ size and the input text, respectively.
       - It takes the query and document as input: [CLS] q [SEP] d, and directly predicts their relevance score by the [CLS] output state:
       - srerank = W h[CLS]
       - The model is fine-tuned by InfoNCE in one step6 based on our text encoder
+  - reversed NTK
+    - We utilize the reversed NTK scaling in contrastive pre-training to reduce required text length
+    - With revNTK, models exhibit slightly lower performance on 1k context but achieve more stable 8k performance across different training steps.
   - 论文没有提 Hard Example Mining，不知道是想表达 no bells and whistles，[Stella_v5](https://github.com/DunZhang/Stella/blob/main/news_and_todo.md)系列在这个基础上微调效果就好一些。
   - [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
     - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
