@@ -273,13 +273,26 @@ size and the input text, respectively.
     - However, for Mistral-7B based models, contrastive pre-training has negligible impact on the model quality
   - 对比 E5 和 E5 mistral-7b， 7B 吊打 330M？
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
-  - NomicBertModel 架构比较现代
-  - rotary + SwiGLU + Flash Attention
-  - Dynamic NTK interpolation at inference to scale to 8192 sequence length
-  - Masked Language Modeling Pretraining (BooksCorpus and Wikipedia)，Unsupervised Contrastive Pretraining，  
-  - Supervised Contrastive Fine-tuning (MSMarco, NQ, NLI....) 
-  - ？we randomly sample negatives in place of hard negatives as we found that mining negatives did not improve performance
-  - test on MTEB，Jina’s Long Context Benchmark，LoCo
+  - NomicBertModel 架构比较现代 bert_with_rope
+  - https://huggingface.co/nomic-ai/nomic-bert-2048
+  - Architecture 
+    - rotary + SwiGLU + Flash Attention，12层768维，137B，训练长度2048
+    - Dynamic NTK interpolation at inference to scale to 8192 sequence length
+  - Training Recipe (three-stage training)
+    - MLM pre-train (from scratch)
+      - Masked Language Modeling Pretraining (BooksCorpus and Wikipedia)，长度 2048, 30% masking rate
+      - Additionally, we opt for SwiGLU versus GeGLU like proposed in Portes et al. (2023) as runtime is roughly 25% faster for SwiGLU using the Flash Attention repository.
+    - Weakly-Supervised Contrastive Pretraining
+      - Consistency Filtering
+        - Since many of these datasets may contain noisy examples, we employ consistency filtering to remove the potential false positives in the dataset
+    - Supervised Contrastive Fine-tuning
+      - data (MSMarco, NQ, NLI....) 
+      - For other non-retrieval datasets, we randomly sample negatives among the corpus in place of mining hard negatives as we found that mining did not improve performance.
+      - We also found that training for multiple epochs hurts performance.
+      - Instead of choosing the first N negatives, we randomly sampled the mined negatives. 
+      - We found this to improve performance as some of the mined negatives introduced false negatives.
+  - Evaluate
+    - test on MTEB，Jina’s Long Context Benchmark，LoCo
 - Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
   - 同时发布 embedding 和 reranker 确实是为RAG而生，但512序列长度显然是每预测单接下来轰轰烈烈的长上下文时代
   - 二阶段检索器（Two-stage Retriever）“离线”的Embedding搭配“在线”的Reranker
@@ -480,10 +493,7 @@ size and the input text, respectively.
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
   - 苦涩的教训？
     通过提升数据利用效率，现有规模的嵌入模型仍有巨大优化空间，根本无需盲目扩张语料库或堆砌参数。
-- Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
-  - chunk alignment training， Late Chunking 的含金量在不断升高
-  - Knowledge distillation
-  - Matryoshka Embedding
+        
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
@@ -579,7 +589,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
   - NomicBertModel 架构比较现代 bert_with_rope
-  - rotary + SwiGLU + Flash Attention
+  - rotary + SwiGLU + Flash Attention，12层768维，137B，训练长度2048
 - Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
   - 使用 XLM-RoBERTa， 绝对位置编码，8192 长度，23 层 1024维
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
@@ -594,7 +604,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - l_v2: bge-m3-retromae
 - Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
   - Based on the Jina-XLM-RoBERTa architecture, this model supports Rotary Position Embeddings to handle long input sequences up to 8192 tokens.
-  
+- Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
+  - m_v2: gte-multilingual-mlm-base
+  - l_v2: bge-m3-retromae
+- Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
+- Tue, 11 Feb 2025 [Training Sparse Mixture Of Experts Text Embedding Models](https://arxiv.org/abs/2502.07972)
+  - Embedding Models 进入 Mixture Of Experts 时代 
+
 # Training data
 ## Synthetic data (Data Augmentation (DA))
 ### Query Augmentation (pseudo query generation(GenQ))
@@ -630,15 +646,37 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - we leverage Large Language Models to generate novel queries
 
+
 # Knowledge distillation
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
 - Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
   - utilizes soft labels derived from expert-augmented scores
 - Thu, 26 Dec 2024 [Jasper and Stella: distillation of SOTA embedding models](https://arxiv.org/abs/2412.19048)
-  - Knowledge distillation
-  -  teacher models to automatically generate soft labels for all text pairs
-  - Matryoshka Embedding
+  - Stage 1&2: Distillation from Multiple Teachers
+    - Lcosine
+    - Lsim
+    - Lresim teacher models to automatically generate soft labels for all text pairs
+    - The biggest advantage of distillation vectors is that we do not need any supervised data
+    - In stage 1, stage 2 and stage 3, we use fineweb-edu as our main text training dataset
+  - Stage 3: Dimension Reduction
+    - Matryoshka Embedding
+ - Stage 4: Unlock Multimodal Potential
 - Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
+  - Architecture
+    - modernbert-large
+  - Training Recipe
+    - Chunk-Alignment Training
+      - Our model can generate three types of embeddings:Late Chunking 的含金量在不断升高
+        - CLS embedding
+        - Chunk embeddings
+        - Mean embedding
+    - Knowledge distillation
+      - We use Linq-Embed-Mistral(Kim et al., 2024) as our teacher model.
+      - We get unsupervised texts from Infinity-Instructand fineweb-edu. 
+      - 直接用 unsupervised texts 做 Knowledge distillation 啊
+      - We take two strategies to split text to chunks:
+        - Split Text by Word 30% probability
+        - RecursiveCharacterTextSplitter in langchain 70% probability
 
 # Hard Negative Mining
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
