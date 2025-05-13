@@ -508,8 +508,19 @@ size and the input text, respectively.
 - Thu, 18 Apr 2024 [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096)
    - 检索模型进入长上下文时代，RoPE 含金量还在不断上升
    - LONGEMBED benchmark, which includes two synthetic and four real-world tasks
-   - Further, our analysis reveals the superiority of RoPE-based embedding models over APE-based ones in context window extension. 
-   - Hence, we advocate for the use of RoPE for future embedding models.
+   - we pretrain E5-RoPE following the training procedure and data of E5.
+   - E5Base and E5-RoPEBase are selected as the comparison subjects thanks to their shared training process, training data, and comparable performance on BEIR and LONGEMBED benchmarks.
+   - Comparison of Extension Methods
+     - APE-based Models. 
+       - We observe that plug-and-play methods including GP, RP, PI and PCW strategies yield comparable results with no significant disparities.
+       - On the other hand, further tuning consistently yields additional performance gains for both models, across all target context lengths.
+       - This suggests that freezing the original model weights and fine-tuning exclusively the added position embeddings can effectively extend the model’s context window while strictly maintaining model’s original ability
+     - RoPE-based Models.
+       - It is observed that RoPE-specific methods including NTK and SE yield significant improvements for both models across all datasets, surpassing PCW, PI and GP by a large margin.
+       - SE / NTK is short for SelfExtend / NTK-Aware Interpolation
+     - Further, our analysis reveals the superiority of RoPE-based embedding models over APE-based ones in context window extension. 
+     - Hence, we advocate for the use of RoPE for future embedding models.
+- Tue, 17 Dec 2024 [AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark](https://arxiv.org/abs/2412.13102)
 - Wed, 19 Feb 2025 [MMTEB: Massive Multilingual Text Embedding Benchmark](https://arxiv.org/abs/2502.13595)
   - we optimize tasks such as retrieval by sampling hard negatives, creating smaller but effective splits. 
   - These optimizations allow us to introduce benchmarks that drastically reduce computational demands
