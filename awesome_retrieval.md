@@ -246,8 +246,9 @@ dense retrievers.
     - Influence of Different Training Stages
       - PT 和 FT 都有用
     - Ablation of the Contrastive Objective
-      - FT 上稍微有一点提高
+      - FT 上稍微有一点提高，但之后的mGTE并没有使用
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
+  - AnglE-BERT & AnglE-LLaMA2-7B
   - COSINE OBJECTIVE 可能饱和，所以提出 ANGLE OBJECTIVE 
   - 度量学习 angular space （Angular Contrastive Learning） 真的只有一篇论文吗
   - applies LLMs as data annotators to label the pseudo-supervised data for AnglE training.
@@ -257,6 +258,9 @@ to generate {size} synonymous/antonym sentences of a given input sentence. Input
 Output:” to generate positive/negative pairs. {size} and {text} are placeholders for the generated
 size and the input text, respectively.
     - 我的天，generate positive/negative pairs
+- Fri, 29 Dec 2023 [MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining](https://arxiv.org/abs/2312.17482)
+  - 这篇更多讲的是预训练bert 
+  - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
 - Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
   - LLM as Retrieval +1
   - we introduce a novel and simple method for obtaining high-quality text embeddings using only synthetic data and less than 1k training steps.
@@ -410,7 +414,7 @@ size and the input text, respectively.
   - reversed NTK
     - We utilize the reversed NTK scaling in contrastive pre-training to reduce required text length
     - With revNTK, models exhibit slightly lower performance on 1k context but achieve more stable 8k performance across different training steps.
-  - 论文没有提 Hard Example Mining，不知道是想表达 no bells and whistles，[Stella_v5](https://github.com/DunZhang/Stella/blob/main/news_and_todo.md)系列在这个基础上微调效果就好一些。
+  - 论文没有提 Hard Example Mining，不知道是想表达 no bells and whistles，[Stella_v5](https://huggingface.co/NovaSearch/stella_en_1.5B_v5)系列在这个基础上微调效果就好一些。
   - [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
     - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
     - LLM as Retrieval +6 +7  居然没有写在论文里
@@ -567,11 +571,17 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - 至少Hit@1、 Hit@5、 MRR@5 指标比 dense retrieval 模型 GTR BGE OpenAI 效果好?? 所以 dense retrieval 必须配合 reranker ??
 
 # Architecture
+- Tue, 20 Apr 2021 [RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864)
+  - Rotary Position Embedding
+- Wed, 7 Dec 2022 [Text Embeddings by Weakly-Supervised Contrastive Pre-training](https://arxiv.org/abs/2212.03533)
+  - 经典 Bert 512 长度
+- Fri, 29 Dec 2023 [MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining](https://arxiv.org/abs/2312.17482)
+  - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
   - NomicBertModel 架构比较现代 bert_with_rope
   - rotary + SwiGLU + Flash Attention
 - Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
-  - 使用 XLM-RoBERTa 架构还是比较传统， 绝对位置编码，8192 长度，23 层 1024维
+  - 使用 XLM-RoBERTa， 绝对位置编码，8192 长度，23 层 1024维
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - v1, BertModel 22m, 33m, 110m, 137m, 335m.  512 长度
   - m-long, NomicBertModel, max_trained_positions: 2048
