@@ -258,6 +258,9 @@ to generate {size} synonymous/antonym sentences of a given input sentence. Input
 Output:” to generate positive/negative pairs. {size} and {text} are placeholders for the generated
 size and the input text, respectively.
     - 我的天，generate positive/negative pairs
+- Thu, 12 Oct 2023 [Fine-Tuning LLaMA for Multi-Stage Text Retrieval](https://arxiv.org/abs/2310.08319)
+  - LLM as Retrieval +1 
+  - RepLLaMA & RankLLaMA 使用 LLaMA-2-7B 和 LLaMA-2-13B
 - Fri, 29 Dec 2023 [MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining](https://arxiv.org/abs/2312.17482)
   - 这篇更多讲的是预训练bert 
   - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
