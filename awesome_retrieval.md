@@ -493,7 +493,6 @@ size and the input text, respectively.
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
   - 苦涩的教训？
     通过提升数据利用效率，现有规模的嵌入模型仍有巨大优化空间，根本无需盲目扩张语料库或堆砌参数。
-        
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
@@ -505,6 +504,9 @@ size and the input text, respectively.
 - Thu, 13 Oct 2022 [MTEB: Massive Text Embedding Benchmark](https://arxiv.org/abs/2210.07316)
   - Hugging Face 主导的 Massive Text Embedding Benchmark
   - https://huggingface.co/spaces/mteb/leaderboard
+- Fri, 7 Apr 2023 [T2Ranking: A large-scale Chinese Benchmark for Passage Ranking](https://arxiv.org/abs/2304.03679)
+  - 制作了一个 T2Ranking 数据集
+  - Chinese BERTbase 训练了 retrieval 和 Re-rank
 - Thu, 18 Apr 2024 [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096)
    - 检索模型进入长上下文时代，RoPE 含金量还在不断上升
    - LONGEMBED benchmark, which includes two synthetic and four real-world tasks
@@ -549,6 +551,8 @@ size and the input text, respectively.
 Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任务，约等于 bert 预训练任务 Next Sentence Prediction。
 - Sun, 13 Jan 2019 [Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085)
   - Re-ranking 的历史比 Dense Retrieval 还早
+- Thu, 12 Oct 2023 [Fine-Tuning LLaMA for Multi-Stage Text Retrieval](https://arxiv.org/abs/2310.08319)
+  - llm as Reranker
 - Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
   - 我们将BCEmbedding设计为二阶段检索器，分工合作：“离线”的Embedding负责尽可能召回，“在线”的Reranker负责精排和低质量过滤。
     - 精排阶段为了解决信息交互的问题，采用cross-encoder架构（如图二-2 (b)所示）。Reranker模型可以实现用户问题和知识库语料的信息交互，使模型可以“见机行事”地识别到更加准确的语义关系，算法性能上限可以很高。该方式的缺点是，需要对用户问题和知识库语料进行在线（online）地语义关系提取，效率比较低，无法对全量的知识库语料进行实时处理。
