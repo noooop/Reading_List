@@ -717,3 +717,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - ANGLE OBJECTIVE 
+
+# PEFT
+- Wed, 24 Aug 2022 [DPTDR: Deep Prompt Tuning for Dense Passage Retrieval](https://arxiv.org/abs/2208.11503)
+  - 使用 Deep Prompt Tuning 能得到有竞争力的模型吗
