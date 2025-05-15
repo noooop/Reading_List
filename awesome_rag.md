@@ -1,4 +1,47 @@
 
+# Survey 
+- Fri, 26 Jul 2024 [Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks](https://arxiv.org/abs/2407.21059)
+- Mon, 23 Sep 2024 [Retrieval Augmented Generation (RAG) and Beyond: A Comprehensive Survey on How to Make your LLMs use External Data More Wisely](https://arxiv.org/abs/2409.14924)
+  - levels
+    - Level-1 Explicit Facts -> RAG
+    - Level-2 Implicit Facts -> Iterative RAG
+    - Level-3 Interpretable Rationales -> Prompt Tuning / CoT Prompting
+    - Level-4 Hidden Rationales -> Offline Learning / In Context Learning (ICL) / Fine-tuning
+  - advantages
+    - Enhanced Professionalism and Timeliness
+    - Alignment with Domain Expert
+    - Reduction in Model Hallucination
+    - Improved Controllability and Explainability
+- Thu, 3 Oct 2024 [A Comprehensive Survey of Retrieval-Augmented Generation (RAG): Evolution, Current Landscape and Future Directions](https://arxiv.org/abs/2410.12837)
+  - 非常基础
+
+# RAG
+- Mon, 30 Jan 2023 [REPLUG: Retrieval-Augmented Black-Box Language Models](https://arxiv.org/abs/2301.12652)
+  - We introduce REPLUG, a retrieval-augmented language modeling framework that treats the language model (LM) as a black box and augments it with a tuneable retrieval model.
+
+# Practice
+- Wed, 8 May 2024 [A Method for Parsing and Vectorization of Semi-structured Data used in Retrieval Augmented Generation](https://arxiv.org/abs/2405.03989)
+  - unstructured -> .docx -> chunk by title -> RAG
+- Mon, 17 Jun 2024 [Evaluating the Efficacy of Open-Source LLMs in Enterprise-Specific RAG Systems: A Comparative Study of Performance and Scalability](https://arxiv.org/abs/2406.11424v1)
+  - Web Crawling + BAAI/bge-large-en-v1.5 + FAISS + Ensemble Retriever + DeepEval +  Llama3-8B 
+- Mon, 24 Jun 2024 [Context-augmented Retrieval: A Novel Framework for Fast Information Retrieval based Response Generation using Large Language Model](https://arxiv.org/abs/2406.16383)
+  - Query-Index Classification Model: The query is classified into the appropriate domain/category using the classification model
+    - DistilBERT Training Accuracy 1.00 Testing Accuracy 0.42 Recall 0.42 Precision 0.59 ???
+  - Entity Extraction, BM25 retriever, Hybrid Retriever
+  - Index Generation: OpenAI’s text-embedding-ada-002 embeddings with a chunk size limit of 512 tokens
+- Fri, 20 Sep 2024 [Introducing Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval)
+  - A note on simply using a longer prompt
+    - Sometimes the simplest solution is the best. If your knowledge base is smaller than 200,000 tokens (about 500 pages of material), you can just include the entire knowledge base in the prompt that you give the model, with no need for RAG or similar methods.
+  - Using Prompt Caching
+  - BM25 + semantic embeddings
+  - We’ve written a prompt that instructs the model to provide concise, chunk-specific context that explains the chunk using the context of the overall document.
+    - WHOLE_DOCUMENT + CHUNK_CONTENT -> llm -> contextual text
+  - Using Prompt Caching to reduce the costs of Contextual Retrieval
+- Mon, 14 Oct 2024 [EasyRAG: Efficient Retrieval-Augmented Generation Framework for Automated Network Operations](https://arxiv.org/abs/2410.10315)
+  - https://zhuanlan.zhihu.com/p/7272025344
+  - Easy 的背后有多少人工就有多少智能
+
+
 # Routing
 In response to diverse queries, the RAG system routes to specific pipelines tailored for different scenario, a feature essential for a versatile RAG architecture designed to handle a wide array of situations.
 
@@ -174,7 +217,6 @@ Given the input question, the retrieved knowledge, and the generated answer, a s
     - Table 1 PubHealth 
       - Mistral7B  34.85 Mistral-Instruct7B 42.15 -> MDrafter-7B∗ 75.58 ？
 
-
 # Advanced RAG\Agentic RAG
 利用llm的Planning&reasoning, 做RAG复杂流程调度
 - Tue, 17 Oct 2023 [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](https://arxiv.org/abs/2310.11511)
@@ -189,23 +231,6 @@ reasoning 的风吹到了 RAG
 # Best Practice
 - Mon, 1 Jul 2024 [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/abs/2407.01219)
 - Wed, 10 Jul 2024 [FACTS About Building Retrieval Augmented Generation-based Chatbots](https://arxiv.org/abs/2407.07858)
-
-
-# Survey 
-- Fri, 26 Jul 2024 [Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks](https://arxiv.org/abs/2407.21059)
-- Mon, 23 Sep 2024 [Retrieval Augmented Generation (RAG) and Beyond: A Comprehensive Survey on How to Make your LLMs use External Data More Wisely](https://arxiv.org/abs/2409.14924)
-  - levels
-    - Level-1 Explicit Facts -> RAG
-    - Level-2 Implicit Facts -> Iterative RAG
-    - Level-3 Interpretable Rationales -> Prompt Tuning / CoT Prompting
-    - Level-4 Hidden Rationales -> Offline Learning / In Context Learning (ICL) / Fine-tuning
-  - advantages
-    - Enhanced Professionalism and Timeliness
-    - Alignment with Domain Expert
-    - Reduction in Model Hallucination
-    - Improved Controllability and Explainability
-- Thu, 3 Oct 2024 [A Comprehensive Survey of Retrieval-Augmented Generation (RAG): Evolution, Current Landscape and Future Directions](https://arxiv.org/abs/2410.12837)
-  - 非常基础
 
 # Benchmark
 - Mon, 4 Sep 2023 [Benchmarking Large Language Models in Retrieval-Augmented Generation](https://arxiv.org/abs/2309.01431)
@@ -259,7 +284,6 @@ reasoning 的风吹到了 RAG
   - RQ-RAG shows superior performance on multi-hop QA datasets
 - Mon, 6 May 2024 [When to Retrieve: Teaching LLMs to Utilize Information Retrieval Effectively](https://arxiv.org/abs/2404.19705)
   - LLMs are trained to generate a special token, ⟨RET⟩, when they do not know the answer to a question. 
-
 
 # Knowledge Graph RAG
 - Wed, 24 Apr 2024 [From Local to Global: A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130)
@@ -382,28 +406,6 @@ the accumulated summary and the current text.
 # Long-Context inference
 - Thu, 10 Oct 2024 [TurboRAG: Accelerating Retrieval-Augmented Generation with Precomputed KV Caches for Chunked Text](https://arxiv.org/abs/2410.07590)
   - 使用 Chunked Text 预计算 KV Caches，在线重建 kvcache 推理
-
-# Practice
-- Wed, 8 May 2024 [A Method for Parsing and Vectorization of Semi-structured Data used in Retrieval Augmented Generation](https://arxiv.org/abs/2405.03989)
-  - unstructured -> .docx -> chunk by title -> RAG
-- Mon, 17 Jun 2024 [Evaluating the Efficacy of Open-Source LLMs in Enterprise-Specific RAG Systems: A Comparative Study of Performance and Scalability](https://arxiv.org/abs/2406.11424v1)
-  - Web Crawling + BAAI/bge-large-en-v1.5 + FAISS + Ensemble Retriever + DeepEval +  Llama3-8B 
-- Mon, 24 Jun 2024 [Context-augmented Retrieval: A Novel Framework for Fast Information Retrieval based Response Generation using Large Language Model](https://arxiv.org/abs/2406.16383)
-  - Query-Index Classification Model: The query is classified into the appropriate domain/category using the classification model
-    - DistilBERT Training Accuracy 1.00 Testing Accuracy 0.42 Recall 0.42 Precision 0.59 ???
-  - Entity Extraction, BM25 retriever, Hybrid Retriever
-  - Index Generation: OpenAI’s text-embedding-ada-002 embeddings with a chunk size limit of 512 tokens
-- Fri, 20 Sep 2024 [Introducing Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval)
-  - A note on simply using a longer prompt
-    - Sometimes the simplest solution is the best. If your knowledge base is smaller than 200,000 tokens (about 500 pages of material), you can just include the entire knowledge base in the prompt that you give the model, with no need for RAG or similar methods.
-  - Using Prompt Caching
-  - BM25 + semantic embeddings
-  - We’ve written a prompt that instructs the model to provide concise, chunk-specific context that explains the chunk using the context of the overall document.
-    - WHOLE_DOCUMENT + CHUNK_CONTENT -> llm -> contextual text
-  - Using Prompt Caching to reduce the costs of Contextual Retrieval
-- Mon, 14 Oct 2024 [EasyRAG: Efficient Retrieval-Augmented Generation Framework for Automated Network Operations](https://arxiv.org/abs/2410.10315)
-  - https://zhuanlan.zhihu.com/p/7272025344
-  - Easy 的背后有多少人工就有多少智能
 
 # LAB
 - Wed, 22 May 2024 [FlashRAG: A Modular Toolkit for Efficient Retrieval-Augmented Generation Research](https://arxiv.org/abs/2405.13576)

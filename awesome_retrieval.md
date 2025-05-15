@@ -624,7 +624,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 
 # Training data
 ## Synthetic data (Data Augmentation (DA))
-### Query Augmentation (pseudo query generation(GenQ))
+### Synthetic Query (Query Augmentation, pseudo query generation(GenQ))
 - Wed, 17 Apr 2019 [Document Expansion by Query Prediction](https://arxiv.org/abs/1904.08375)
   - the task is to predict a set of queries for which that document will be relevant.
   - We optionally re-rank these retrieved documents using BERT (Devlin et al., 2018) as described by Nogueira and Cho (2019).
@@ -636,15 +636,6 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - 2022.11.30. OpenAI 发布GPT-3.5
 - Wed, 15 Feb 2023 [How to Train Your DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval](https://arxiv.org/abs/2302.07452)
   - 使用 docTTTTTquery？为什么不用GPT-3.5
-- Wed, 3 May 2023 [Improving Contrastive Learning of Sentence Embeddings from AI Feedback](https://arxiv.org/abs/2305.01918)
-  - we first mask some words of the original sentence with different mask rates using the <mask> token, in order to delete some information in the original sentence.
-  - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
-  - We write a task description prompt to steer GPT-3 to generate a similarity score between 0 and 1 for each sample pair generated in step 1
-  - 居然效果比 SimCSE 好，是 SimCSE 效果太差了吗
-- Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
-  - 为 sts任务 生成 positive/negative pairs
-- Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
-  - query positive_document hard_negative_document 全合成啊？？这也太野了
 - Sat, 24 Feb 2024 [OpenAI vs Open-Source Multilingual Embedding Models Choosing the model that works best for your data](https://towardsdatascience.com/openai-vs-open-source-multilingual-embedding-models-e5ccb7c90f05)
   - 用ChatGPT合成问答数据集训练模型，用ChatGPT合成问答数据集测试模型的世界达成了
 - Mon, 5 Feb 2024 [BGE M3-Embedding](https://arxiv.org/abs/2402.03216)
@@ -656,8 +647,27 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - MLDR is a Multilingual Long-Document Retrieval dataset built on Wikipeida, Wudao and mC4, covering 13 typologically diverse languages. Specifically, we sample lengthy articles from Wikipedia, Wudao and mC4 datasets and randomly choose paragraphs from them. Then we use GPT-3.5 to generate questions based on these paragraphs. 
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - we leverage Large Language Models to generate novel queries
-
-
+### Synthetic Document
+- Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
+  - 为 sts任务 生成 positive/negative pairs
+- Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
+  - query positive_document hard_negative_document 全合成啊？？这也太野了
+### LLM Scoring
+- Mon, 30 Jan 2023 [REPLUG: Retrieval-Augmented Black-Box Language Models](https://arxiv.org/abs/2301.12652)
+  - REPLUG LSR (REPLUG with LM-Supervised Retrieval) treating the LM as a frozen, black-box scoring function.
+  - 4.1. Computing Retrieval Likelihood
+  - 4.2. Computing LM likelihood
+    - We use the LM as a scoring function to measure how much each document could improve the LM perplexity. 
+    - Specifically, we first compute PLM(y | d, x), the LM probability of the ground truth output y given the input context x and a document d. 
+    - The higher the probability, the better the document di is at improving the LM’s perplexity. 
+  - 4.3. Loss Function ( KL divergence )
+  - 4.4. Asynchronous Update of the Datastore Index
+- Wed, 3 May 2023 [Improving Contrastive Learning of Sentence Embeddings from AI Feedback](https://arxiv.org/abs/2305.01918)
+  - we first mask some words of the original sentence with different mask rates using the <mask> token, in order to delete some information in the original sentence.
+  - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
+  - We write a task description prompt to steer GPT-3 to generate a similarity score between 0 and 1 for each sample pair generated in step 1
+  - 居然效果比 SimCSE 好，是 SimCSE 效果太差了吗
+  
 # Knowledge distillation
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
 - Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
@@ -692,3 +702,8 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 # Hard Negative Mining
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - Tunable Hard Negative Mining
+
+# Loss
+- Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
+- Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
+  - ANGLE OBJECTIVE 
