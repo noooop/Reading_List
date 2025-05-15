@@ -710,7 +710,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - In stage 1, stage 2 and stage 3, we use fineweb-edu as our main text training dataset
   - Stage 3: Dimension Reduction
     - Matryoshka Embedding
- - Stage 4: Unlock Multimodal Potential
+  - Stage 4: Unlock Multimodal Potential
 - Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
   -  Knowledge Distillation with Rank Loss
 - Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
@@ -731,12 +731,27 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
         - RecursiveCharacterTextSplitter in langchain 70% probability
 
 # Hard Negative Mining
+Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fine-tuning 使用另一个强模型离线找好负样本
+- Wed, 1 Jul 2020 [Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval](https://arxiv.org/abs/2007.00808)
+  - Inefficacy of Local In-Batch Negatives
+  - Approximate nearest neighbor Negative Contrastive Learning (ANCE)
+    - Asynchronous Index Refresh
+    - 在线搜全局 Hard Negative
+    - 现在 Supervised Fine-tuning 阶段都使用另外一个强模型离线 Hard Negative Mining
 - Fri, 16 Oct 2020 [RocketQA: An Optimized Training Approach to Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2010.08191)
   - Cross-batch Negatives
   - Denoised Hard Negatives
   - Data Augmentation
+- Thu, 14 Sep 2023 [C-Pack: Packed Resources For General Chinese Embeddings](https://arxiv.org/abs/2309.07597)
+  - Contrastive Pre-training
+    - we purely rely on in-batch negative samples [25] and resort to a big batch size (as large as 19,200) to improve the discriminativeness of the embedding.
+- Sun, 4 Feb 2024 [为RAG而生-BCE embedding技术报告](https://zhuanlan.zhihu.com/p/681370855)
+  - 难负样例挖掘？
+    - 我们在训练Embedding模型时发现，过难的负样本对模型训练有损害，训练过程中会使模型“困惑”，[影响模型最终性能](https://kexue.fm/archives/8847#%E9%9A%BE%E6%90%9E%E7%9A%84%E9%98%88%E5%80%BC)。
+    - 在大量的语料库中，脱离人工校验的自动化难负样例挖掘，难免会“挖到正例”。
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
-  - Tunable Hard Negative Mining
+  - Supervised Fine-tuning
+    - Tunable Hard Negative Mining
 
 # Loss
 - Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
