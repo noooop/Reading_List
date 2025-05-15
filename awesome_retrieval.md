@@ -161,6 +161,8 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
     - DPR 全面超越 BM25，multi-dataset训练出来的模型效果更好，DPR+BM25相互补充效果稍微有提高
     - <img src="https://github.com/noooop/noooop.github.io/blob/main/applications/rag/dpr2.png?raw=true" width="400">
     - <img src="https://github.com/noooop/noooop.github.io/blob/main/applications/rag/dpr1.png?raw=true" width="400">
+- Fri, 16 Oct 2020 [RocketQA: An Optimized Training Approach to Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2010.08191)
+  - 百度的 ERNIE 的 RocketQA 会不会因为使用 PaddlePaddle 而不是 pytorch 被低估 
 - Sun, 18 Apr 2021 [SimCSE: Simple Contrastive Learning of Sentence Embeddings](https://arxiv.org/abs/2104.08821)
   - We first describe an unsupervised approach, which takes an input sentence and predicts itself in a contrastive objective, 
   - with only standard dropout used as noise. 
@@ -176,6 +178,8 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - Wed, 15 Dec 2021 [Large Dual Encoders Are Generalizable Retrievers](https://arxiv.org/abs/2112.07899)
   - Google 的 Generalizable T5-based dense Retrievers (GTR)
   - Base 110M, Large 335M, XL 1.24B, XXL 4.8B
+- Thu, 14 Oct 2021 [RocketQAv2: A Joint Training Method for Dense Passage Retrieval and Passage Re-ranking](https://arxiv.org/abs/2110.07367)
+  - 百度的 ERNIE 的 RocketQA 会不会因为使用 PaddlePaddle 而不是 pytorch 被低估 
 - Thu, 14 Apr 2022 [Exploring Dual Encoder Architectures for Question Answering](https://arxiv.org/abs/2204.07120)
   - Dual encoders have been used for questionanswering (QA) and information retrieval (IR) tasks with good results.
   - Previous research focuses on two major types of dual encoders,
@@ -710,6 +714,10 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
         - RecursiveCharacterTextSplitter in langchain 70% probability
 
 # Hard Negative Mining
+- Fri, 16 Oct 2020 [RocketQA: An Optimized Training Approach to Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2010.08191)
+  - Cross-batch Negatives
+  - Denoised Hard Negatives
+  - Data Augmentation
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - Tunable Hard Negative Mining
 
