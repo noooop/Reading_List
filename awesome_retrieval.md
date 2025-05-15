@@ -569,6 +569,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - trained based on gemma2-9b
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - 从头训练一个基础模型，并微调成一个 Retrieval(Embeddings) model 和 Reranking Model, 有钱真好
+- Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-reranker-modernbert-base
 
 # learned sparse representations \ late-interaction methods
@@ -682,6 +683,8 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - Stage 3: Dimension Reduction
     - Matryoshka Embedding
  - Stage 4: Unlock Multimodal Potential
+- Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
+  -  Knowledge Distillation with Rank Loss
 - Wed, 26 Mar 2025 [Dewey Long Context Embedding Model: A Technical Report](https://arxiv.org/abs/2503.20376)
   - Architecture
     - modernbert-large
