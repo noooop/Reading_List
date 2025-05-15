@@ -199,12 +199,13 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - Wed, 7 Dec 2022 [Text Embeddings by Weakly-Supervised Contrastive Pre-training](https://arxiv.org/abs/2212.03533)
   - 微软的E5
   - We pre-train on our proposed text pair dataset for three model sizes: E5small, E5base and E5large initialized from MiniLM, bert-base-uncased, and bert-large-uncased-whole-wordmasking respectively
-  - Weakly-Supervised Contrastive Pre-training 
-    - 构建 CCPairs 数据集
-    - we use mined hard negatives and knowledge distillation from a cross-encoder (CE) teacher model
-  - Supervised Fine-tuning
-    - MS-MARCO， NQ， NLI
-    - We reuse the mined hard negatives and re-ranker scores from SimLM [58] for the first two datasets.
+  - Training Recipe (two-stage training) 
+    - Weakly-Supervised Contrastive Pre-training 
+      - 构建 CCPairs 数据集
+      - we use mined hard negatives and knowledge distillation from a cross-encoder (CE) teacher model
+    - Supervised Fine-tuning
+      - MS-MARCO， NQ， NLI
+      - We reuse the mined hard negatives and re-ranker scores from SimLM [58] for the first two datasets.
   - Evaluation
     - BEIR， MTEB
     - Weakly-Supervised Contrastive Pre-training 
@@ -251,6 +252,22 @@ dense retrievers.
       - PT 和 FT 都有用
     - Ablation of the Contrastive Objective
       - FT 上稍微有一点提高，但之后的mGTE并没有使用
+- Thu, 14 Sep 2023 [C-Pack: Packed Resources For General Chinese Embeddings](https://arxiv.org/abs/2309.07597)
+  - architecture, bert small, base, large  512 长度
+  - Training Recipe (three-stage training)
+    - MAE Pre-Training 使用 Wudao corpora 从零开始训练，We leverage the MAE-style approach presented in RetroMAE
+    - General purpose fine-tuning
+      - The pre-trained model is finetuned on C-MTP (unlabeled) via contrastive learning
+      - we purely rely on in-batch negative samples [25] and resort to a big batch size (as large as 19,200) to improve the discriminativeness of the embedding.
+    - Task-specific fine-tuning
+      -  The hard negative sample is mined from the task’s original corpus, following the ANN-style sampling strategy in [61].
+  - Detailed Analysis
+    - pretrain & finetune
+      - a mixture of high-quality and diversified labeled data is able to bring forth substantial and comprehensive improvements for a pre-trained embedding model.
+    - batch size
+      - By making a parallel comparison between bz: 256, 2028, 19,200, we observe consistent improvement in embedding quality with the expansion of batch size (noted as bz).
+    - Instruct
+      - using instructions may substantially contribute to the quality of task-specific fine-tuning
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - AnglE-BERT & AnglE-LLaMA2-7B
   - COSINE OBJECTIVE 可能饱和，所以提出 ANGLE OBJECTIVE 
