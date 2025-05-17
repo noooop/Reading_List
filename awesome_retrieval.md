@@ -226,6 +226,19 @@ obvious advantages in terms of simplicity, efficiency, and interpretability. For
 as Trec-Covid [55] and retrieval tasks that involve long documents (Touche-2020) [4] or rely heavily
 on exact lexical match (Fever) [54], further research efforts are still necessary to improve current
 dense retrievers.
+- Thu, 20 Jul 2023 [Jina Embeddings: A Novel Set of High-Performance Sentence Embedding Models]
+  - Architecture
+    - T5 architecture 估计是对标 Google 的 GTR
+  - Pairwise Data Preparation
+    - De-Duplication， Language Filtering， Consistency Filtering
+  - Triplet Data Preparation
+    - we leverage the ms-marco-MiniLM-L-6-v2 model5 to verify whether the difference in retrieval scores determined by the model exceeds a threshold r(q, p) − r(q, n) > κ, with threshold κ = 0.2, and eliminate all other pairs.
+    - This methodology draws inspiration from the de-noising strategy proposed in [Qu et al., 2021].
+  -  Negation Data Preparation
+    - This dataset, based on positive pairs from the SNLI dataset and negatives created with GPT-3.5
+  - Training
+    - Training on Pairwise Data
+    - Training on Triplet Data
 - Mon, 7 Aug 2023 [Towards General Text Embeddings with Multi-stage Contrastive Learning](https://arxiv.org/abs/2308.03281)
   - Alibaba 的 GTE
   - Architecture
@@ -282,6 +295,16 @@ size and the input text, respectively.
 - Thu, 12 Oct 2023 [Fine-Tuning LLaMA for Multi-Stage Text Retrieval](https://arxiv.org/abs/2310.08319)
   - LLM as Retrieval +1 
   - RepLLaMA & RankLLaMA 使用 LLaMA-2-7B 和 LLaMA-2-13B
+- Mon, 30 Oct 2023 [Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents](https://arxiv.org/abs/2310.19923)
+  - Architecture
+    - BERT with ALiBi, GEGLU, BF16, mean pooling
+    - bert-small 33M, bert-base 137M
+  - Training
+    - Pre-training the Backbone, (C4 + 30% MLM)
+    - First Fine-tuning with Text Pairs, InfoNCE 
+    - Second Fine-tuning with Hard Negatives
+      - includes one positive and 15 negative instances
+      - To ensure that hard negative passages are indeed less relevant than the annotated relevant ones, we employ a cross-encoder model to validate that their relevance score is indeed lower.
 - Fri, 29 Dec 2023 [MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining](https://arxiv.org/abs/2312.17482)
   - 这篇更多讲的是预训练bert 
   - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
@@ -384,6 +407,8 @@ size and the input text, respectively.
   - 用ChatGPT合成问答数据集训练模型，用ChatGPT合成问答数据集测试模型的世界达成了
 - Mon, 26 Feb 2024 [GISTEmbed: Guided In-sample Selection of Training Negatives for Text Embedding Fine-tuning](https://arxiv.org/abs/2402.16829)
   - 使用 Guided 模型移除 in-batch negative 里面的假负，相当于 CONSISTENCY FILTERING
+- Mon, 26 Feb 2024 [Multi-Task Contrastive Learning for 8192-Token Bilingual Text Embeddings](https://arxiv.org/abs/2402.17016)
+  - 多语言版 Jina Embeddings 2， BERT with ALiBi
 - Wed, 27 Mar 2024 [Scaling Laws For Dense Retrieval](https://arxiv.org/abs/2403.18684)
   - 24 BERT checkpoints from the original Google release, with model sizes ranging from 0.5 million (BERT-Tiny) to 82 million parameters (BERT-Base)
   - For experiments on Chinese retrieval benchmarks, we selected the ERNIE series
@@ -461,6 +486,7 @@ size and the input text, respectively.
   - Matryoshka Embedding
 - Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
   - Architecture
+    - bert_with_rope， MRL， mean pooling，FlashAttention 2，LoRA
     - Based on the Jina-XLM-RoBERTa architecture, this model supports Rotary Position Embeddings to handle long input sequences up to 8192 tokens.
   - Multilingual Embeddings With Task LoRA
     - retrieval.query: Used for query embeddings in asymmetric retrieval tasks
@@ -468,6 +494,19 @@ size and the input text, respectively.
     - separation: Used for embeddings in clustering and re-ranking applications
     - classification: Used for embeddings in classification tasks
     - text-matching: Used for embeddings in tasks that quantify similarity between two texts, such as STS or symmetric retrieval tasks
+  - Training
+    - We initialize the model using the weights of the original XLM-RoBERTa model.
+    - Pre-Training， MLM whole word masking
+    - Fine-Tuning for Embedding Tasks， InfoNCE
+    - Training Task-Specific Adapters
+  - Failure Analysis for Asymmetric Retrieval
+    - Misleading Syntactic Similarities
+    - Misinterpretation of Named Entities
+    - No Understanding of Polar Questions
+    - Preference for Low-Quality Documents
+  - Performance on LongEmbed MTEB
+    - Table 5 demonstrate that jina-embeddings-v3 with the text-matching adapter achieves the highest average performance. 
+    - These findings underscore the effectiveness of the RoPE-based positional embeddings, outperforming both the fixed positional embeddings used by bge-m3 and the ALiBi-based approach employed in jina-embeddings-v2.
 - Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
   - Architecture
     - m_v2: gte-multilingual-mlm-base
@@ -625,6 +664,8 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - Rotary Position Embedding
 - Wed, 7 Dec 2022 [Text Embeddings by Weakly-Supervised Contrastive Pre-training](https://arxiv.org/abs/2212.03533)
   - 经典 Bert 512 长度
+- Mon, 30 Oct 2023 [Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents](https://arxiv.org/abs/2310.19923)
+  - BERT with ALiBi, GEGLU, BF16, mean pooling
 - Fri, 29 Dec 2023 [MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining](https://arxiv.org/abs/2312.17482)
   - This architecture combines FlashAttention [11], ALiBi [44], Gated Linear Units[12, 50], a dynamic unpadding module [66], and low precision LayerNorm.
 - Fri, 2 Feb 2024 [Nomic Embed: Training a Reproducible Long Context Text Embedder](https://arxiv.org/abs/2402.01613)
@@ -677,6 +718,8 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - we leverage Large Language Models to generate novel queries
 ### Synthetic Document
+- Thu, 20 Jul 2023 [Jina Embeddings: A Novel Set of High-Performance Sentence Embedding Models]
+  - This dataset, based on positive pairs from the SNLI dataset and negatives created with GPT-3.5
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - 为 sts任务 生成 positive/negative pairs
 - Sun, 31 Dec 2023 [Improving Text Embeddings with Large Language Models](https://arxiv.org/abs/2401.00368)
@@ -761,3 +804,5 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
 # PEFT
 - Wed, 24 Aug 2022 [DPTDR: Deep Prompt Tuning for Dense Passage Retrieval](https://arxiv.org/abs/2208.11503)
   - 使用 Deep Prompt Tuning 能得到有竞争力的模型吗
+- Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
+  - 使用 lora 呢 
