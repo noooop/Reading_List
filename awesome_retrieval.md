@@ -440,7 +440,21 @@ size and the input text, respectively.
       - We truncate sequence lengths to 512 for queries and documents for all models, including the long-context variant m-long.
       -  For each query in a batch, we include one positive document and ten hard negative documents
 - Sat, 11 May 2024 [Piccolo2: General Text Embedding with Multi-task Hybrid Loss Training](https://arxiv.org/abs/2405.06932)
+  - 商汤的 piccolo2
+  - Architecture bert base 24层 1024维， 512序列长度，MRL Training
+  - 没有介绍 Weakly-Supervised Contrastive Pretraining，只 Supervised Contrastive Fine-tuning？ 居然比 gte-Qwen1.5-7B-instruct 都强？？？
   - Multi-task Hybrid Loss
+    - Retrieval and Reranking Loss，use the standard InfoNCE loss with in-batch negative
+    - STS and PairClassification Loss，cosent loss function
+    - Classification and Clustering Loss，SFR embedding method
+  - Datasets
+    - Datasets Synthetic Pipeline
+    - 数据收集
+  - Hard Negative Mining
+    - For each retrieval task, we use piccolo-base-zh [12] to conduct negative sample mining. 
+    - We randomly select 15 samples from the mining negatives of rank 50 - 100 as the final hard negative samples. 
+    - We avoid using higher-rank negative samples as their inclusion typically leads to a decline in performance. 
+    - This is caused by a variety of reasons, such as inaccurate dataset annotation.
 - Mon, 27 May 2024 [NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models](https://arxiv.org/abs/2405.17428)
   - LLM as Retrieval +3
 - Mon, 22 Jul 2024 [NV-Retriever: Improving text embedding models with effective hard-negative mining](https://arxiv.org/abs/2407.15831)
@@ -795,11 +809,21 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - Supervised Fine-tuning
     - Tunable Hard Negative Mining
+- Sat, 11 May 2024 [Piccolo2: General Text Embedding with Multi-task Hybrid Loss Training](https://arxiv.org/abs/2405.06932)
+  - For each retrieval task, we use piccolo-base-zh [12] to conduct negative sample mining. 
+  - We randomly select 15 samples from the mining negatives of rank 50 - 100 as the final hard negative samples. 
+  - We avoid using higher-rank negative samples as their inclusion typically leads to a decline in performance. 
+  - This is caused by a variety of reasons, such as inaccurate dataset annotation.
 
 # Loss
 - Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - ANGLE OBJECTIVE 
+- Sat, 11 May 2024 [Piccolo2: General Text Embedding with Multi-task Hybrid Loss Training](https://arxiv.org/abs/2405.06932)
+  - Multi-task Hybrid Loss
+    - Retrieval and Reranking Loss，use the standard InfoNCE loss with in-batch negative
+    - STS and PairClassification Loss，cosent loss function
+    - Classification and Clustering Loss，SFR embedding method
 
 # PEFT
 - Wed, 24 Aug 2022 [DPTDR: Deep Prompt Tuning for Dense Passage Retrieval](https://arxiv.org/abs/2208.11503)
