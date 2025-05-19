@@ -416,6 +416,30 @@ size and the input text, respectively.
   - 比较的模型略小，2025年大概能摸到模型大小的 sweet spot，再回看上面的图，多语言模型确实需要更多参数
     - 单语言对标 BERT BASE：L=12，H=768，A=12 110M
     - 多语言对标 BERT LARGE：L=24，H=1024，A=16 340M
+- Fri, 29 Mar 2024 [Gecko: Versatile Text Embeddings Distilled from Large Language Models](https://arxiv.org/abs/2403.20327)
+  - Training Recipe (two-stage training) 
+    - Weakly-Supervised Contrastive Pre-training 
+      - 类似构建 CCPairs 数据集
+      - Note that we do not utilize hard negatives during pre-finetuning and utilize the maximum batch size that fits into the device. 
+    - Supervised Fine-tuning
+      - FRet: Two-Step LLM Distillation
+        - LLM-based Diverse Query Generation
+          - we employ few-shot prompts to control the diversity of queries
+      - LLM-based Positive and Negative Mining
+        - we use an existing embedding model1 to retrieve top 𝑁 neighbors 𝑃 from the corpus given a generated query 𝑞. 
+        - We then employ the same LLM used for the query generation to rank these retrieved passages based on their relevance to the query
+          - query likelihood，  relevance classification
+        - we create the FRet dataset, comprised of 6.6M examples, each containing a task, a query, a positive passage, and a negative passage.
+  - Analysis
+    - LLM as a Labeler
+      - we find that using the most relevant passage chosen by an LLM is always better than using the original passage as positive.
+    - Diversity of FRet
+    - Learning Semantic Similarity and Classification
+    - Qualitative Analysis
+      - First, we observe that the LLM does generate diverse tasks and queries by conditioning on seed passages 𝑝 seed
+      - Second, the table highlights the LLM’s ability to find a passage (𝑝1) that provides a more direct and relevant answer to the generated query than the seed passage (𝑝seed)
+      - Furthermore, LLM-ranked hard negatives make a challenging task of understanding nuanced differences.
+      - These examples demonstrate how the 2-step LLM distillation process effectively brings the LLM’s diverse domain knowledge and global ranking preferences into the text embedding model.
 - Tue, 9 Apr 2024 [LLM2Vec: Large Language Models Are Secretly Powerful Text Encoders](https://arxiv.org/abs/2404.05961)
   - additional training phase with a specially designed masked token prediction to warm-up the bidirectional attention.
   - LLM as Retrieval +2
@@ -731,6 +755,9 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - MLDR is a Multilingual Long-Document Retrieval dataset built on Wikipeida, Wudao and mC4, covering 13 typologically diverse languages. Specifically, we sample lengthy articles from Wikipedia, Wudao and mC4 datasets and randomly choose paragraphs from them. Then we use GPT-3.5 to generate questions based on these paragraphs. 
 - Wed, 8 May 2024 [Arctic-Embed: Scalable, Efficient, and Accurate Text Embedding Models](https://arxiv.org/abs/2405.05374)
   - we leverage Large Language Models to generate novel queries
+- Fri, 29 Mar 2024 [Gecko: Versatile Text Embeddings Distilled from Large Language Models](https://arxiv.org/abs/2403.20327)
+  - LLM-based Diverse Query Generation
+    - we employ few-shot prompts to control the diversity of queries
 ### Synthetic Document
 - Thu, 20 Jul 2023 [Jina Embeddings: A Novel Set of High-Performance Sentence Embedding Models]
   - This dataset, based on positive pairs from the SNLI dataset and negatives created with GPT-3.5
@@ -753,6 +780,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
   - We write a task description prompt to steer GPT-3 to generate a similarity score between 0 and 1 for each sample pair generated in step 1
   - 居然效果比 SimCSE 好，是 SimCSE 效果太差了吗
+- Fri, 29 Mar 2024 [Gecko: Versatile Text Embeddings Distilled from Large Language Models](https://arxiv.org/abs/2403.20327)
+  - LLM-based Positive and Negative Mining
+    - we use an existing embedding model1 to retrieve top 𝑁 neighbors 𝑃 from the corpus given a generated query 𝑞. 
+    - We then employ the same LLM used for the query generation to rank these retrieved passages based on their relevance to the query
+      - query likelihood， relevance classification
+    - we create the FRet dataset, comprised of 6.6M examples, each containing a task, a query, a positive passage, and a negative passage.
+    - we find that using the most relevant passage chosen by an LLM is always better than using the original passage as positive.
   
 # Knowledge distillation
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
