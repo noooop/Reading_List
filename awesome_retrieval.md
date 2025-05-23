@@ -55,6 +55,9 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
     - (WebQuestions 2013(WQ), CuratedTREC 2015(TREC), WikiMovies 2016, SQuAD v1.1 2016)
     - Evidence Corpus
       - We use the 2016-12-21 dump of English Wikipedia for all of our full-scale experiments as the knowledge source used to answer questions.
+- Fri, 5 May 2017 [Supervised Learning of Universal Sentence Representations from Natural Language Inference Data](https://arxiv.org/abs/1705.02364)
+  - BiLSTM with mean/max pooling 我的天
+  - head (u, v, |u − v|, u ∗ v) -> fully-connected layers -> 3-way softmax
 - Sat, 1 Jun 2019 [Latent Retrieval for Weakly Supervised Open Domain Question Answering](https://arxiv.org/abs/1906.00300)
   - 将 ORQA 列在历史里，而将 DPR 列为 Retrieval 模型的第一篇是否有失偏颇？
   - open domain question answering (QA)
@@ -112,11 +115,17 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 # Retrieval(Embeddings) model
 - Tue, 27 Aug 2019 [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
   - sbert 是 Siamese Dual Encoder 也就是一个模型，DPR 是 Asymmetric Dual Encoder 也就是两个模型。SDE效果比ADE好，当然这是后话了。
-  - 这篇论文没有向open domain question answering 方向发力，非常可惜，评估方法现在没什么论文follow，所以一般都没有跟DPR进行比较。当然sentence-transformers的名气也很大了。
+  - 这篇论文没有向open domain question answering 方向发力，非常可惜，对每个数据集都 Supervised Fine-tuning
+  - 评估方法现在没什么论文follow，所以一般都没有跟DPR进行比较。当然sentence-transformers的名气也很大了。
   - [sentence-transformers](https://github.com/UKPLab/sentence-transformers/)
   - [Document](https://www.sbert.net/)
+  - Objective Function
+    - Classification Objective Function o = softmax(Wt(u, v, |u − v|))
+    - Regression Objective Function cosine-sim(u, v)
+    - Triplet Objective Function max(||sa − sp|| − ||sa − sn|| + s, 0)
   - Ablation Study
-    - Pooling Strategy MEAN > CLS > MAX
+    - Pooling Strategy MEAN 80.78 > CLS 79.07 > MAX 79.80
+    - Concatenation (u, v, |u − v|) 80.78 效果居然还不错
 - Fri, 10 Apr 2020 [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906)
   - DPR 论文提出的整个体系，包括模型、训练、在线推理，都跟现在主流相近，数据集的处理方式最新论文还在follow，在几个数据集上的结果最新论文仍作为baseline比较。那就多写一点。
   - Transformer 2017年发布，BERT 2019年发布，开始刷nlp任务。真是勃勃生机万物竞发的时代。
@@ -850,6 +859,11 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
   - This is caused by a variety of reasons, such as inaccurate dataset annotation.
 
 # Loss
+- Tue, 27 Aug 2019 [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
+  - Objective Function
+    - Classification Objective Function o = softmax(Wt(u, v, |u − v|))
+    - Regression Objective Function cosine-sim(u, v)
+    - Triplet Objective Function max(||sa − sp|| − ||sa − sn|| + s, 0)
 - Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - ANGLE OBJECTIVE 
