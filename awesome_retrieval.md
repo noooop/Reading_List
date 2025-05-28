@@ -632,6 +632,17 @@ size and the input text, respectively.
        - SE / NTK is short for SelfExtend / NTK-Aware Interpolation
      - Further, our analysis reveals the superiority of RoPE-based embedding models over APE-based ones in context window extension. 
      - Hence, we advocate for the use of RoPE for future embedding models.
+- Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
+  - we introduce BRIGHT, the first text retrieval benchmark that requires intensive reasoning to retrieve relevant documents. 
+  - 我觉得你在故意难为检索模型
+  - MAIN RESULTS
+    - Existing retrieval systems perform poorly on BRIGHT.
+    - Querying with LLM reasoning steps improves retrieval performance.
+    - Retrieval augmentation boosts performance in question-answering. 
+  - ANALYSIS
+    - RERANKING WITH LLMS ENHANCES RETRIEVAL PERFORMANCE
+    - ROBUSTNESS AGAINST DATA LEAKAGE FROM PRETRAINING  
+    - LONG-CONTEXT RETRIEVAL WITH A REDUCED SEARCH SPACE IS CHALLENGING
 - Tue, 17 Dec 2024 [AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark](https://arxiv.org/abs/2412.13102)
 - Wed, 19 Feb 2025 [MMTEB: Massive Multilingual Text Embedding Benchmark](https://arxiv.org/abs/2502.13595)
   - we optimize tasks such as retrieval by sampling hard negatives, creating smaller but effective splits. 
