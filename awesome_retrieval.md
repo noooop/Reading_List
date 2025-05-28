@@ -731,6 +731,10 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - Reasoning-intensive Information Retrieval (IR) Performance
       - REASONIR-8B benefits from test-time scaling with query rewriting on BRIGHT
       - REASONIR-8B can form an ensemble with a sparse retriever or be combined with an LLM-based reranker for better retrieval.
+- Thu, 22 May 2025 [lightonai/Reason-ModernColBERT](https://huggingface.co/lightonai/Reason-ModernColBERT/tree/main)
+  - Reason-ModernColBERT is a late interaction model trained on the reasonir-hq dataset. 
+  - It achieves extremely competitive performance on the BRIGHT benchmark aimed at evaluating reasoning-intensive retrieval performance
+  - modernbert 和 ColBERT 的含金量不断提升
 
 # learned sparse representations \ late-interaction methods
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
