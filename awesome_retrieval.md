@@ -697,6 +697,41 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-reranker-modernbert-base
 
+# reasoning-intensive retrieval
+- Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
+  - we introduce BRIGHT, the first text retrieval benchmark that requires intensive reasoning to retrieve relevant documents. 
+- Tue, 29 Apr 2025 [ReasonIR: Training Retrievers for Reasoning Tasks](https://arxiv.org/abs/2504.20595)
+  - Pilot Study
+    - Existing public training datasets are helpful for factual retrieval but not for reasoning-intensive retrieval
+      - Queries from these two datasets are mostly simple factual questions, whose relevant documents can often be retrieved using direct lexical or semantic matching. 
+      - However, queries in reasoning benchmarks are much longer and more complex. 
+    - Longer effective context length is desirable to better leverage test-time scaling through query rewriting.
+      - the length of a rewritten query can be a new dimension of test-time scaling and a longer effective context length is desirable for long rewritten queries.
+      - Query decomposition has been shown to be effective in multi-hop retrieval tasks
+        - an information-rich long query is better than several decomposed short queries on BRIGHT
+  - ReasonIR: Synthesizing Hard and Varied-length Retriever Training Data
+    - public data to specifically train a general autoregressive LLM for retrieval
+    - varied-length (VL ) data to extend the effective context length of the retriever for input queries
+      - we ask the LLM to also generate a positive document for the query, following the distillation idea in Wang et al. (2023b)
+    - hard query (HQ) data to improve the retriever’s ability to handle reasoning-intensive queries
+      - we synthesize reasoning-intensive training data by generating hard queries (HQ) from high-quality documents using a “human-like brainstorm guideline” for hard query generation.
+      - Reasoning-worthy seed document selection
+      - Reasoning-intensive document-to-query generation.
+        - An ideal set of reasoning-intensive queries has three properties: challenging, self-contained, diverse
+        - As previous work has shown unsuccessful attempts on directly prompting an LLM to generate difficult questions
+        - we ask the LLM to reason about the background knowledge, common problem-solving patterns, and realistic scenarios before formulating a difficult question.
+        - ...
+    - Multi-turn Hard Negative Generation
+      - Existing research typically identifies hard negatives by selecting top-ranked but irrelevant documents from a retriever such as BM25
+      - However, we find that this does not work for reasoning-intensive queries for 3 reasons:
+        - First, existing retrievers perform poorly on reasoning-intensive queries
+        - Second, the goal of retrieval has shifted from finding documents that contain direct answers to finding a wide range of documents that are helpful for reasoning
+        - Third, the seed document may not be the most relevant to the generated query
+      - generating the hard negative in a separate turn
+    - Reasoning-intensive Information Retrieval (IR) Performance
+      - REASONIR-8B benefits from test-time scaling with query rewriting on BRIGHT
+      - REASONIR-8B can form an ensemble with a sparse retriever or be combined with an LLM-based reranker for better retrieval.
+
 # learned sparse representations \ late-interaction methods
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
 - Mon, 5 Feb 2024 [BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation](https://arxiv.org/abs/2402.03216)
@@ -807,6 +842,10 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
       - query likelihood， relevance classification
     - we create the FRet dataset, comprised of 6.6M examples, each containing a task, a query, a positive passage, and a negative passage.
     - we find that using the most relevant passage chosen by an LLM is always better than using the original passage as positive.
+### reasoning-intensive
+- Tue, 29 Apr 2025 [ReasonIR: Training Retrievers for Reasoning Tasks](https://arxiv.org/abs/2504.20595)
+  - Varied-length Synthetic Query and Positive Document Generation
+  - Reasoning-intensive Document-to-query Generation
   
 # Knowledge distillation
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
