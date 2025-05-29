@@ -410,6 +410,9 @@ size and the input text, respectively.
            | Fine-tune                    | 60.5   | 
            | RetroMAE + Fine-tune         | 66.1   | 
            | RetroMAE + Unsup + Fine-tune | 69.2   |
+- Thu, 8 Feb 2024 [Multilingual E5 Text Embeddings: A Technical Report](https://arxiv.org/abs/2402.05672)
+  - Initialization: microsoft/Multilingual-MiniLM-L12-H384, xlm-roberta-base, xlm-roberta-large
+  - contrastive pre-training + fine-tuning
 - Sat, 24 Feb 2024 [OpenAI vs Open-Source Multilingual Embedding Models Choosing the model that works best for your data](https://towardsdatascience.com/openai-vs-open-source-multilingual-embedding-models-e5ccb7c90f05)
   - Generate a custom Q/A dataset
   - 介绍了一种用ChatGPT合成问答数据集测试检索模型的方法
