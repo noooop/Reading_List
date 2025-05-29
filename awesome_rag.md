@@ -265,6 +265,8 @@ reasoning 的风吹到了 RAG
   - We constructed a search-augmented instruction training corpus.
   - We fine-tune a 7B-parameter language model (SAIL-7B) with the constructed training set, which outperforms strong baseline models including GPT-3.5-Turbo and Vicuna-13B on several NLP tasks.
 - Thu, 18 Jan 2024 [ChatQA: Surpassing GPT-4 on Conversational QA and RAG](https://arxiv.org/abs/2401.10225)
+- Fri, 15 Mar 2024 [RAFT: Adapting Language Model to Domain Specific RAG](https://arxiv.org/abs/2403.10131)
+  - This paper studies the following question – How do we adapt pre-trained LLMs for Retrieval Augmented Generation (RAG) in specialized domains?
 - Fri, 19 Jul 2024 [ChatQA 2: Bridging the Gap to Proprietary LLMs in Long Context and RAG Capabilities](https://arxiv.org/abs/2407.14482)
 - Thu, 15 Aug 2024 [Hermes 3 Technical Report](https://arxiv.org/abs/2408.11857)
   - For RAG, the model has been trained to cite retrieval sources using the <co> tag
