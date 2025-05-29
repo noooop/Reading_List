@@ -700,6 +700,11 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-reranker-modernbert-base
 
+# ColBERT
+ColBERT + Late Chunking 有没有搞头？
+- Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
+- Thu, 2 Dec 2021 [ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction](https://arxiv.org/abs/2112.01488)
+
 # reasoning-intensive retrieval
 - Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
   - we introduce BRIGHT, the first text retrieval benchmark that requires intensive reasoning to retrieve relevant documents. 
