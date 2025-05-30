@@ -708,6 +708,8 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 ColBERT + Late Chunking 有没有搞头？
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
 - Thu, 2 Dec 2021 [ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction](https://arxiv.org/abs/2112.01488)
+- Mon, 23 Sep 2024 [Reducing the Footprint of Multi-Vector Retrieval with Minimal Performance Impact via Token Pooling](https://arxiv.org/abs/2409.14683)
+  - Token Pooling 一半，性能甚至有所提升
 
 # reasoning-intensive retrieval
 - Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
