@@ -187,6 +187,11 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
 - Wed, 15 Dec 2021 [Large Dual Encoders Are Generalizable Retrievers](https://arxiv.org/abs/2112.07899)
   - Google 的 Generalizable T5-based dense Retrievers (GTR)
   - Base 110M, Large 335M, XL 1.24B, XXL 4.8B
+- Thu, 16 Dec 2021 [Unsupervised Dense Information Retrieval with Contrastive Learning](https://arxiv.org/abs/2112.09118)
+  - Finally, we also consider additional data augmentations such as random word deletion, replacement or masking. 
+  - We use these perturbations in addition to random cropping.
+  - MoCo
+  - Contriever 比 SimCSE 效果好，接近BM25 
 - Thu, 14 Oct 2021 [RocketQAv2: A Joint Training Method for Dense Passage Retrieval and Passage Re-ranking](https://arxiv.org/abs/2110.07367)
   - 百度的 ERNIE 的 RocketQA 会不会因为使用 PaddlePaddle 而不是 pytorch 被低估 
 - Thu, 14 Apr 2022 [Exploring Dual Encoder Architectures for Question Answering](https://arxiv.org/abs/2204.07120)
