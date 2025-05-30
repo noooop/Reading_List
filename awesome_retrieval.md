@@ -606,6 +606,10 @@ size and the input text, respectively.
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
   - 苦涩的教训？
     通过提升数据利用效率，现有规模的嵌入模型仍有巨大优化空间，根本无需盲目扩张语料库或堆砌参数。
+- Fri, 9 May 2025 [喝下这一碗模型汤，掌握向量模型的训练秘方](https://mp.weixin.qq.com/s/BKPO_zIGvKysxmW5iMkFZg)
+  - 通过融合不同阶段的检查点, 泛化性更好
+  - 类似 mergekit
+
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
