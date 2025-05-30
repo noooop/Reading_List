@@ -837,8 +837,14 @@ ColBERT + Late Chunking 有没有搞头？
 - Dec, 2 2019 [From doc2query to docTTTTTquery](https://cs.uwaterloo.ca/~jimmylin/publications/Nogueira_Lin_2019_docTTTTTquery-v2.pdf)
   - 好短，只有三页
   - 用 T5 做 Query 生成， 恍如隔世，人类能生成自由只有短短几年
+- Wed, 29 Apr 2020 [Zero-shot Neural Passage Retrieval via Domain-targeted Synthetic Question Generation](https://arxiv.org/abs/2004.14503)
+  - QGen (3 Synthetic Question Generation)
+  - Our question generator is an encoder-decoder with Transformer
+  - Parameter weights are also shared and are initialized from a pretrained RoBERTa (Liu et al., 2019) checkpoints.
 - Mar 1, 2021[BeIR/query-gen-msmarco-t5-large-v1](https://sbert.net/examples/sentence_transformer/unsupervised_learning/query_generation/README.html)
   - 还在使用docTTTTTquery
+- Tue, 14 Dec 2021 [GPL: Generative Pseudo Labeling for Unsupervised Domain Adaptation of Dense Retrieval](https://arxiv.org/abs/2112.07577)
+  Query Generation via T5 (DocT5Query)
 - 2022.11.30. OpenAI 发布GPT-3.5
 - Wed, 15 Feb 2023 [How to Train Your DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval](https://arxiv.org/abs/2302.07452)
   - 使用 docTTTTTquery？为什么不用GPT-3.5
@@ -892,6 +898,14 @@ ColBERT + Late Chunking 有没有搞头？
   
 # Knowledge distillation
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
+- Tue, 14 Dec 2021 [GPL: Generative Pseudo Labeling for Unsupervised Domain Adaptation of Dense Retrieval](https://arxiv.org/abs/2112.07577)
+  - In this paper, we propose the novel unsupervised domain adaptation method Generative Pseudo Labeling (GPL), which combines a query generator with pseudo labeling from a cross-encoder. 
+  - Query Generation via T5 (DocT5Query)
+  - Negative Mining via Dense Retrieval (msmarco-distilbert-base-v3 and msmarco-MiniLML-6-v3)
+  - Pseudo Labeling via Cross-Encoder  (ms-marco-MiniLM-L6-v2 cross-encoder)
+    - Previous work has shown that cross-encoders achieve much higher performances 
+    - and are less prone to domain shifts
+  - MultipleNegativesRanking(MNRL) loss
 - Mon, 19 Aug 2024 [Improving embedding with contrastive fine-tuning on small datasets with expert-augmented scores](https://arxiv.org/abs/2408.11868)
   - utilizes soft labels derived from expert-augmented scores
 - Thu, 26 Dec 2024 [Jasper and Stella: distillation of SOTA embedding models](https://arxiv.org/abs/2412.19048)
