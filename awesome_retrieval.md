@@ -749,7 +749,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - 从头训练一个基础模型，并微调成一个 Retrieval(Embeddings) model 和 Reranking Model, 有钱真好
 - Thu, 7 Nov 2024 [Best Practices for Distilling Large Language Models into BERT for Web Search Ranking](https://arxiv.org/abs/2411.04539)
-- Wed, 22 Jan 2025 Alibaba-NLP/gte-reranker-modernbert-base
+- Wed, 22 Jan 2025 [Alibaba-NLP/gte-reranker-modernbert-base](https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base)
+- Wed, 13 Mar 2025 [Baked-in Brilliance: Reranking Meets RL with mxbai-rerank-v2](https://www.mixedbread.com/blog/mxbai-rerank-v2)
+  - Qwen2ForCausalLM
+  - we used a three-step reinforcement-learning process:
+    - GRPO (Guided Reinforcement Prompt Optimization)
+    - Contrastive Learning
+    - Preference Learning
 
 # ColBERT
 ColBERT + Late Chunking 有没有搞头？
