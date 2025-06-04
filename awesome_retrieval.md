@@ -562,6 +562,28 @@ size and the input text, respectively.
   - Performance on LongEmbed MTEB
     - Table 5 demonstrate that jina-embeddings-v3 with the text-matching adapter achieves the highest average performance. 
     - These findings underscore the effectiveness of the RoPE-based positional embeddings, outperforming both the fixed positional embeddings used by bge-m3 and the ALiBi-based approach employed in jina-embeddings-v2.
+- Fri, 28 Oct 2024 [SFR-Embedding-Mistral: Enhance Text Retrieval with Transfer Learning](https://www.salesforce.com/blog/sfr-embedding/)
+  - The SFR-Embedding-Mistral marks a significant advancement in text-embedding models, building upon the solid foundations of E5-mistral-7b-instruct and Mistral-7B-v0.1
+  - LoRA adapters with rank r=8 are added to all linear layers, resulting in 21M trainable parameters. 
+  - Multi-task Training Benefits Generalization
+    - incorporating additional clustering training yields significant improvements across all tasks
+  - Task-Homogenous Batching
+    - Consequently, the in-batch negative becomes more challenging as other examples within the batch closely resemble the test case scenario.
+  - Impact of Hard Negatives
+    - Strategy to Eliminate False Negatives
+      - The results indicate that the range from 30 to 100 yields improved performance. 
+      - This implies that the top-ranked documents (0-100) may include some false negatives, 
+      - while those ranked lower (50-100) lack sufficient challenge.
+    - Number of Hard Negatives
+      - Nevertheless, our findings suggest that the training process remains relatively stable regardless of the number of hard negatives utilized.
+    - Impact of Batch Size
+      -  However, enlarging the batch size from 2048 to 8192 does not result in any significant change in performance.
+    - Teacher models for hard negative mining
+      - in general, more powerful models can yield more effective hard negatives (SFR-Embedding-Mistral > E5-Mistral > BGE-base). 
+      - In the future, it will be intriguing to explore the impact of multi-round training on two fronts
+  - Impact of Context Length
+    - we observe that after a certain length threshold, i.e., 25 for queries and 700 for documents, 
+    - BGE model is significantly less likely to rank the gold document higher than SFR-Embedding-Mistral owing to the inherent power of LLMs to represent long-context.
 - Tue, 3 Dec 2024 [Arctic-Embed 2.0: Multilingual Retrieval Without Compromise](https://arxiv.org/abs/2412.04506)
   - Architecture
     - m_v2: gte-multilingual-mlm-base
@@ -964,6 +986,19 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
   - We randomly select 15 samples from the mining negatives of rank 50 - 100 as the final hard negative samples. 
   - We avoid using higher-rank negative samples as their inclusion typically leads to a decline in performance. 
   - This is caused by a variety of reasons, such as inaccurate dataset annotation.
+- Fri, 28 Oct 2024 [SFR-Embedding-Mistral: Enhance Text Retrieval with Transfer Learning](https://www.salesforce.com/blog/sfr-embedding/)
+  - Impact of Hard Negatives
+    - Strategy to Eliminate False Negatives
+      - The results indicate that the range from 30 to 100 yields improved performance. 
+      - This implies that the top-ranked documents (0-100) may include some false negatives, 
+      - while those ranked lower (50-100) lack sufficient challenge.
+    - Number of Hard Negatives
+      - Nevertheless, our findings suggest that the training process remains relatively stable regardless of the number of hard negatives utilized.
+    - Impact of Batch Size
+      -  However, enlarging the batch size from 2048 to 8192 does not result in any significant change in performance.
+    - Teacher models for hard negative mining
+      - in general, more powerful models can yield more effective hard negatives (SFR-Embedding-Mistral > E5-Mistral > BGE-base). 
+      - In the future, it will be intriguing to explore the impact of multi-round training on two fronts
 
 # Loss
 - Tue, 27 Aug 2019 [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
@@ -985,3 +1020,6 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
   - 使用 Deep Prompt Tuning 能得到有竞争力的模型吗
 - Mon, 16 Sep 2024 [jina-embeddings-v3: Multilingual Embeddings With Task LoRA](https://arxiv.org/abs/2409.10173)
   - 使用 lora 呢 
+- Fri, 28 Oct 2024 [SFR-Embedding-Mistral: Enhance Text Retrieval with Transfer Learning](https://www.salesforce.com/blog/sfr-embedding/)
+  - The SFR-Embedding-Mistral marks a significant advancement in text-embedding models, building upon the solid foundations of E5-mistral-7b-instruct and Mistral-7B-v0.1
+  - LoRA adapters with rank r=8 are added to all linear layers, resulting in 21M trainable parameters. 
