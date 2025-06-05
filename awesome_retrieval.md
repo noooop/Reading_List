@@ -698,6 +698,25 @@ size and the input text, respectively.
     - ROBUSTNESS AGAINST DATA LEAKAGE FROM PRETRAINING  
     - LONG-CONTEXT RETRIEVAL WITH A REDUCED SEARCH SPACE IS CHALLENGING
 - Tue, 17 Dec 2024 [AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark](https://arxiv.org/abs/2412.13102)
+  - Automated, Heterogeneous, Dynamic
+  - Candidate Generation
+    - Sample one document from the raw corpus as the positive document
+    - Prompt LLM to generate the characters who might find the document useful
+    - Prompt LLM to generate the scenarios in which the character might find the document useful
+    - Prompt LLM to generate the query ori_qi based on the specific character and scenario
+    - To diversify the generated queries, we consider the following attributes when designing the prompt: query length, query type, information-based type, and expression style.
+    - Prompt LLM to rewrite the generated query for multiple times to try to avoid the duplicated tokens as in the raw corpus
+    - Prompt LLM to generate some hard negative documents based on the generated query qi and the positive document
+    - Repeat Step 1-6
+  - Quality Control
+    - Filter low-quality queries
+      - To improve the quality of generated queries, we utilize LLM to access the relevance between the query qi and the positive document
+    - Correct the false relevance labels 
+      - we design a three-step pipeline to correct the false relevance labels
+      - Recall with embedding model
+      - Pre-label with re-ranking models
+        - Use multiple re-ranking models to re-rank Lrecall
+      - Label with LLM (Use LLM as labeler.)
 - Wed, 19 Feb 2025 [MMTEB: Massive Multilingual Text Embedding Benchmark](https://arxiv.org/abs/2502.13595)
   - we optimize tasks such as retrieval by sampling hard negatives, creating smaller but effective splits. 
   - These optimizations allow us to introduce benchmarks that drastically reduce computational demands
@@ -858,6 +877,8 @@ ColBERT + Late Chunking 有没有搞头？
 
 # Training data
 ## Synthetic data (Data Augmentation (DA))
+- Tue, 17 Dec 2024 [AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark](https://arxiv.org/abs/2412.13102)
+  - Automated, Heterogeneous, Dynamic
 ### Synthetic Query (Query Augmentation, pseudo query generation(GenQ))
 - Wed, 17 Apr 2019 [Document Expansion by Query Prediction](https://arxiv.org/abs/1904.08375)
   - the task is to predict a set of queries for which that document will be relevant.
