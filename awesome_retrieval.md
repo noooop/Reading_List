@@ -656,7 +656,27 @@ size and the input text, respectively.
 - Fri, 9 May 2025 [喝下这一碗模型汤，掌握向量模型的训练秘方](https://mp.weixin.qq.com/s/BKPO_zIGvKysxmW5iMkFZg)
   - 通过融合不同阶段的检查点, 泛化性更好
   - 类似 mergekit
-
+- Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
+  - The Qwen3 embedding and reranking models are built on the dense version of Qwen3 foundation models and are available in three sizes: 0.6B, 4B, and 8B parameters
+    - For text embeddings, we utilize LLMs with causal attention, appending an [EOS] token at the end of the input sequence. 没有使用双向掩码（bidirectional mask）进行向量级别的建模 (LLM2Vec)
+    - Reranking Models， 使用 生成模型的模版，Reranking 认为是个生成 yes 和 no token问题
+  - Models Training
+    - Embedding Models
+      - Training Objective InfoNCE
+      - stage 1 Large-Scale Synthetic Data-Driven Weak Supervision Training
+        - Large-Scale Synthetic Data-Driven Weak Supervision Training
+        - Due to the exceptional performance of the Qwen3 Foundation model, the synthesized data is of notably high quality.\
+      - stage 2 Supervised Fine-Tuning with High-Quality Synthetic and labeled Data
+      - stage 3 Model Merging using sampled Checkpoints from stage 2
+    - Reranking Models
+      - Supervised Fine-Tuning (SFT) loss
+      - stage 2 Supervised Fine-Tuning with High-Quality Synthetic and labeled Data
+      - stage 3 Model Merging using sampled Checkpoints from stage 2
+  - Analysis
+    - Effectiveness of Large-Scale Weakly Supervised Pre-Training
+    - Effectiveness of Model Merging
+    - 没有使用 LLM2Vec, 没有使用 Hard Negative Mining, 没有用 Knowledge distillation， 没有多各种任务使用不同的 instruct
+    - Without bells and whistles 的感觉
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
@@ -775,6 +795,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - GRPO (Guided Reinforcement Prompt Optimization)
     - Contrastive Learning
     - Preference Learning
+- Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
+  - Reranking Models， 使用 生成模型的模版，Reranking 认为是个生成 yes 和 no token问题
+  - Models Training
+    - Reranking Models
+      - Supervised Fine-Tuning (SFT) loss
+      - stage 2 Supervised Fine-Tuning with High-Quality Synthetic and labeled Data
+      - stage 3 Model Merging using sampled Checkpoints from stage 2
 
 # ColBERT
 ColBERT + Late Chunking 有没有搞头？
@@ -873,12 +900,14 @@ ColBERT + Late Chunking 有没有搞头？
   - l_v2: bge-m3-retromae
 - Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
 - Tue, 11 Feb 2025 [Training Sparse Mixture Of Experts Text Embedding Models](https://arxiv.org/abs/2502.07972)
-  - Embedding Models 进入 Mixture Of Experts 时代 
+  - Embedding Models 进入 Mixture Of Experts 时代
 
 # Training data
 ## Synthetic data (Data Augmentation (DA))
 - Tue, 17 Dec 2024 [AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark](https://arxiv.org/abs/2412.13102)
   - Automated, Heterogeneous, Dynamic
+- Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
+  - stage 2 Supervised Fine-Tuning with High-Quality Synthetic and labeled Data
 ### Synthetic Query (Query Augmentation, pseudo query generation(GenQ))
 - Wed, 17 Apr 2019 [Document Expansion by Query Prediction](https://arxiv.org/abs/1904.08375)
   - the task is to predict a set of queries for which that document will be relevant.
