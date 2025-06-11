@@ -228,6 +228,12 @@ reasoning 的风吹到了 RAG
 - Thu, 20 Jan 2025 [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1)
 - Wed, 26 Mar 2025 [MCTS-RAG: Enhancing Retrieval-Augmented Generation with Monte Carlo Tree Search](https://arxiv.org/abs/2503.20757)
 
+# multi-hop QA
+- Fri, 11 Oct 2024 [DeepNote: Note-Centric Deep Retrieval-Augmented Generation](https://arxiv.org/abs/2410.08821)
+  - DeepNote employs notes as carriers for refining and accumulating knowledge. 
+  - During in-depth exploration, it uses these notes to determine retrieval timing, formulate retrieval queries, and iteratively assess knowledge growth, 
+  - ultimately leveraging the best note for answer generation.
+
 # Best Practice
 - Mon, 1 Jul 2024 [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/abs/2407.01219)
 - Wed, 10 Jul 2024 [FACTS About Building Retrieval Augmented Generation-based Chatbots](https://arxiv.org/abs/2407.07858)
