@@ -498,6 +498,30 @@ size and the input text, respectively.
     - This is caused by a variety of reasons, such as inaccurate dataset annotation.
 - Mon, 27 May 2024 [NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models](https://arxiv.org/abs/2405.17428)
   - LLM as Retrieval +3
+  - Architecture
+    - Mistral-7B + LLM2Vec + latent attention layer
+  - Training (two-stage contrastive instruction-tuning method)
+    - starting with the pretrained Mistral-7B
+    - In the first stage, we apply contrastive training with instructions on retrieval datasets, utilizing in-batch negative and curated hard-negative examples
+    - In the second stage, we blend carefully curated non-retrieval datasets into the stage-one training data.
+  - hard-negative technique (NV-Retriever)
+    - we apply the recently proposed positiveaware hard-negative technique (Moreira et al., 2024) that considers the positive relevance scores for better false negatives removal
+    - Following the ablation studies in Moreira et al. (2024), we use E5-mistral-7b-instruct (Wang et al., 2023b) as a teacher retrieval model to identify the optimal hardnegative passages relevant to the query. 
+    - We set the maximum threshold for negative scores based on a percentage of the positive score (TopKPercPos) with a 95% margin, described as follows: 
+    - max_negative_score_threshold = pos_score * percentage_margin
+  - ABLATION STUDY
+    - TWO-STAGE TRAINING 
+    - CAUSAL ATTENTION VS. BIDIRECTIONAL ATTENTION  
+      - This indicates that embeddings generated with causal attention masks are significantly less effective than those produced with bidirectional attention masks.
+    - POOLING METHODS
+      - <EOS>-last, mean, latent-attention, and self-attention pooling types
+      - In contrast, the latent-attention layer proved beneficial for majority of embedding tasks
+    - MULTI-CLASS CLASSIFICATION AND CLUSTERING LABELS
+    - HARDNEGATIVE MINING AND SYNTHETICALLY GENERATED DATASET
+      - baseline (S0) 70.73
+      - hard negative mining technique (S1) 71.83
+      - additional public retrieval data (S2) 72.07
+      - synthetically generated data (S3) 72.31
 - Mon, 22 Jul 2024 [NV-Retriever: Improving text embedding models with effective hard-negative mining](https://arxiv.org/abs/2407.15831)
   - hard-negative mining
 - Fri, 26 Jul 2024 [bge-multilingual-gemma2,bge-en-icl](https://github.com/FlagOpen/FlagEmbedding/tree/master)
@@ -887,6 +911,8 @@ ColBERT + Late Chunking 有没有搞头？
   - v1, BertModel 22m, 33m, 110m, 137m, 335m.  512 长度
   - m-long, NomicBertModel, max_trained_positions: 2048
   - m-v1.5, BertModel, 512 长度
+- Mon, 27 May 2024 [NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models](https://arxiv.org/abs/2405.17428)
+  - Mistral-7B + LLM2Vec + latent attention layer
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小
   - pre-trained by masked language modeling (MLM) via a two-stage curriculum for the native 8,192 tokens context.
@@ -901,6 +927,8 @@ ColBERT + Late Chunking 有没有搞头？
 - Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
 - Tue, 11 Feb 2025 [Training Sparse Mixture Of Experts Text Embedding Models](https://arxiv.org/abs/2502.07972)
   - Embedding Models 进入 Mixture Of Experts 时代
+- Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
+  - Qwen3
 
 # Training data
 ## Synthetic data (Data Augmentation (DA))
@@ -1042,6 +1070,8 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
   - We randomly select 15 samples from the mining negatives of rank 50 - 100 as the final hard negative samples. 
   - We avoid using higher-rank negative samples as their inclusion typically leads to a decline in performance. 
   - This is caused by a variety of reasons, such as inaccurate dataset annotation.
+- Mon, 22 Jul 2024 [NV-Retriever: Improving text embedding models with effective hard-negative mining](https://arxiv.org/abs/2407.15831)
+  - hard-negative mining
 - Fri, 28 Oct 2024 [SFR-Embedding-Mistral: Enhance Text Retrieval with Transfer Learning](https://www.salesforce.com/blog/sfr-embedding/)
   - Impact of Hard Negatives
     - Strategy to Eliminate False Negatives
