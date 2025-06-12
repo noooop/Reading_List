@@ -1010,6 +1010,7 @@ ColBERT + Late Chunking 有没有搞头？
 随着开源的模型越来越多，知识蒸馏越来越成为高效的训练手段
 - Tue, 14 Dec 2021 [GPL: Generative Pseudo Labeling for Unsupervised Domain Adaptation of Dense Retrieval](https://arxiv.org/abs/2112.07577)
   - In this paper, we propose the novel unsupervised domain adaptation method Generative Pseudo Labeling (GPL), which combines a query generator with pseudo labeling from a cross-encoder. 
+  - As we show in Appendix E, just using these unsupervised techniques is not sufficient and the resulting models perform poorly.
   - Query Generation via T5 (DocT5Query)
   - Negative Mining via Dense Retrieval (msmarco-distilbert-base-v3 and msmarco-MiniLML-6-v3)
   - Pseudo Labeling via Cross-Encoder  (ms-marco-MiniLM-L6-v2 cross-encoder)
