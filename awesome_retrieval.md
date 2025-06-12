@@ -990,6 +990,10 @@ ColBERT + Late Chunking 有没有搞头？
   - Then we write a task description prompt to steer GPT-3 to generate new sentences based on masked sentences. 
   - We write a task description prompt to steer GPT-3 to generate a similarity score between 0 and 1 for each sample pair generated in step 1
   - 居然效果比 SimCSE 好，是 SimCSE 效果太差了吗
+- Sat, 21 Oct 2023 [Beyond Yes and No: Improving Zero-Shot LLM Rankers via Scoring Fine-Grained Relevance Labels](https://arxiv.org/abs/2310.14122)
+  - However, the lack of intermediate relevance label options may cause the LLM to provide noisy or biased answers for documents that are partially relevant to the query. 
+  - We propose to incorporate fine-grained relevance labels into the prompt for LLM rankers, 
+  - enabling them to better differentiate among documents with different levels of relevance to the query and thus derive a more accurate ranking
 - Fri, 29 Mar 2024 [Gecko: Versatile Text Embeddings Distilled from Large Language Models](https://arxiv.org/abs/2403.20327)
   - LLM-based Positive and Negative Mining
     - we use an existing embedding model1 to retrieve top 𝑁 neighbors 𝑃 from the corpus given a generated query 𝑞. 
