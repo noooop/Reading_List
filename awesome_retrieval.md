@@ -652,6 +652,11 @@ size and the input text, respectively.
     - 3.3.3. HARD NEGATIVE MINING
       - Text embedding models are typically finetuned with hard negatives mined by an existing retriever
       - positive-aware hard negative mining
+- Tue, 7 Jan 2025 [voyage-3-large: the new state-of-the-art general-purpose embedding model](https://blog.voyageai.com/2025/01/07/voyage-3-large/)
+  - Enabled by Matryoshka learning and quantization-aware training, 
+  - voyage-3-large supports smaller dimensions and int8 and binary quantization that dramatically reduce vectorDB costs with minimal impact on retrieval quality.
+  - The following figure illustrates the tradeoff between retrieval quality and storage cost (which is proportion to the number of bits per vector). 
+  - We see that voyage-3-large with int8 precision and 1024 dimensions is only 0.31% below voyage-3-large with float precision and 2048 dimensions, despite using 8x less storage.
 - Wed, 22 Jan 2025 Alibaba-NLP/gte-modernbert-base
 - Fri, 27 Jan 2025 [ModernBERT 为我们带来了哪些启示？](https://mp.weixin.qq.com/s/RsxT7DbocGzDu_T0YnSd2Q)
   - 对比 ModernBERT（2024 年 12 月）， jina-XLM-RoBERTa（2024 年 9 月）， RoBERTa-large（2019 年 7 月）
@@ -680,6 +685,8 @@ size and the input text, respectively.
 - Fri, 9 May 2025 [喝下这一碗模型汤，掌握向量模型的训练秘方](https://mp.weixin.qq.com/s/BKPO_zIGvKysxmW5iMkFZg)
   - 通过融合不同阶段的检查点, 泛化性更好
   - 类似 mergekit
+- Tue, 20 May 2025 [voyage-3.5 and voyage-3.5-lite: improved quality for a new retrieval frontier](https://blog.voyageai.com/2025/05/20/voyage-3-5/)
+  - Matryoshka learning and quantization-aware training
 - Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
   - The Qwen3 embedding and reranking models are built on the dense version of Qwen3 foundation models and are available in three sizes: 0.6B, 4B, and 8B parameters
     - For text embeddings, we utilize LLMs with causal attention, appending an [EOS] token at the end of the input sequence. 没有使用双向掩码（bidirectional mask）进行向量级别的建模 (LLM2Vec)
