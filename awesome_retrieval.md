@@ -826,6 +826,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
     - GRPO (Guided Reinforcement Prompt Optimization)
     - Contrastive Learning
     - Preference Learning
+- Wed, 4 Jun 2025 [ProRank: Prompt Warmup via Reinforcement Learning for Small Language Models Reranking](https://www.arxiv.org/abs/2506.03487)
+  - Qwen2.5 llm as reranker
+  - In summary, our paper demonstrates three-fold contributions:
+    - Our quantitative analysis reveals that SLMs struggle with understanding task prompts and generating correctly formatted outputs for reranking tasks without task-specific fine-tuning.
+    - We propose a novel two-stage approach, ProRank, to activate the power of SLMs to effectively rerank documents with interpretable relevance scores, combining GRPO (Shao et al., 2024) for coarse-grained scoring, followed by fine-grained scoring.
+    - Extensive evaluations demonstrate that our approach achieves superior reranking performance, with ProRank 0.5B SLM model outperforming the larger 32B fine-tuned LLM reranking models.
+  - GRPO 对输出格式是否为 0，1 有明显帮助。 但GRPO + sft 相比 直接sft是否有提高好像没有说清楚，不失为一种 Warmup 的方法。
 - Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
   - Reranking Models， 使用 生成模型的模版，Reranking 认为是个生成 yes 和 no token问题
   - Models Training
