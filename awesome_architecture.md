@@ -1,6 +1,22 @@
 
 # Bert like (encode only)
 - Thu, 11 Oct 2018 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+  - Bidirectional： Such restrictions(unidirectional) are sub-optimal for sentence-level tasks,
+and could be very harmful when applying finetuning based approaches to token-level tasks such
+as question answering, where it is crucial to incorporate context from both directions
+  - Model Architecture
+    - BERTBASE (L=12, H=768, A=12, Total Parameters=110M) 
+    - BERTLARGE (L=24, H=1024, A=16, Total Parameters=340M).
+  - Input/Output Representations
+    - The first token of every sequence is always a special classification token ([CLS]).
+    - The final hidden state corresponding to this token is used as the aggregate sequence representation for classification tasks. 
+    - Sentence pairs are packed together into a single sequence. We differentiate the sentences in two ways.
+      - First, we separate them with a special token ([SEP]). 
+      - Second, we add a learned embedding to every token indicating whether it belongs to sentence A or sentence B.
+    - For a given token, its input representation is constructed by summing the corresponding token, segment, and position embeddings.
+  - Pre-training BERT
+    - Task #1: Masked LM
+    - Task #2: Next Sentence Prediction (NSP)
 - Fri, 5 Jun 2020 [DeBERTa: Decoding-enhanced BERT with Disentangled Attention](https://arxiv.org/abs/2006.03654)
   - mask language modeling (MLM)
   - Disentangled attention (the attention weight of a word pair can be computed as a sum of four attention scores
