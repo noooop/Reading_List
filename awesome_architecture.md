@@ -48,9 +48,31 @@ position-to-content, and position-to-position)
   - Embedding Models 进入 Mixture Of Experts 时代 
 - Tue, 22 Apr 2025 [腾讯Conan-Embedding-V2发布](https://zhuanlan.zhihu.com/p/1897675709696149020)
   - SoftMask (LLM2Vec)
+- Fri, 7 Mar 2025 [EuroBERT: Scaling Multilingual Encoders for European Languages](https://arxiv.org/abs/2503.05500)
+  - Architecture
+    The EuroBERT models are based on a standard dense transformer (Vaswani et al., 2017),
+    with several architectural changes. Similarly to Llama 2 (Touvron et al., 2023), we remove
+    all biases. Additionally, we incorporate grouped query attention (Ainslie et al., 2023), swish
+    gated linear units (Shazeer, 2020), root mean square layer normalization (Zhang & Sennrich,
+    2019), and rotary position embeddings (Su et al., 2024).
 - Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
   - 没使用  bidirectional attention 是不是逆潮流而动
   - The Qwen3 embedding and reranking models are built on the dense version of Qwen3 foundation models and are available in three sizes: 0.6B, 4B, and 8B parameters
+- Tue, 1 Jul 2025 [Should We Still Pretrain Encoders with Masked Language Modeling?](https://arxiv.org/abs/2507.00994)
+  - 这个实验和结论真的太扎实了 
+  - Pretraining with CLM or MLM
+    - MLM generally outperforms CLM on text representation tasks.
+    - There is no universally optimal masking ratio.
+    - CLM models can perform competitively
+    - CLM is more data-efficient than MLM in the early stages of training.
+    - CLM-based pretraining improves fine-tuning stability.
+  - Two-Stage CLM+MLM Pretraining
+    - Under fixed compute constraints, starting pretraining with CLM and continuing with MLM yields better results than MLM alone. 
+      - Overall, a split between 25%-75% and 50%-50% seems to provide the best balance.
+    - CLM-based models exhibit lower sensitivity to masking ratio.
+  - Continued Pretraining from CLM and MLM Models
+    - MLM CPT on a CLM-pretrained model outperforms MLM-only training.
+    - Fewer CPT steps already show strong performance
 
 # Positional Encoding
 - Mon, 12 Jun 2017 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
