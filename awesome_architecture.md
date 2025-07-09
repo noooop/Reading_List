@@ -32,6 +32,9 @@ position-to-content, and position-to-position)
   - NomicBertModel 架构比较现代 bert_with_rope
 - Tue, 9 Apr 2024 [LLM2Vec: Large Language Models Are Secretly Powerful Text Encoders](https://arxiv.org/abs/2404.05961)
   - additional training phase with a specially designed masked token prediction to warm-up the bidirectional attention.
+- Mon, 15 Jun 2024 [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
+  - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
+  - LLM as Retrieval + LLM2Vec
 - Mon, 29 Jul 2024 [mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval](https://arxiv.org/abs/2407.19669)
   - BERT + RoPE + GLU + xformers， 12 层 768 维，306M 比 bge m3 小，  [CLS] pooling
 - Wed, 18 Dec 2024 [ModernBERT](https://arxiv.org/abs/2412.13663)
@@ -46,6 +49,7 @@ position-to-content, and position-to-position)
 - Tue, 22 Apr 2025 [腾讯Conan-Embedding-V2发布](https://zhuanlan.zhihu.com/p/1897675709696149020)
   - SoftMask (LLM2Vec)
 - Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
+  - 没使用  bidirectional attention 是不是逆潮流而动
   - The Qwen3 embedding and reranking models are built on the dense version of Qwen3 foundation models and are available in three sizes: 0.6B, 4B, and 8B parameters
 
 # Positional Encoding
