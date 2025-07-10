@@ -41,6 +41,11 @@ position-to-content, and position-to-position)
   - NomicBertModel 架构比较现代 bert_with_rope
 - Tue, 9 Apr 2024 [LLM2Vec: Large Language Models Are Secretly Powerful Text Encoders](https://arxiv.org/abs/2404.05961)
   - additional training phase with a specially designed masked token prediction to warm-up the bidirectional attention.
+- Thu, 18 Apr 2024 [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096)
+   - 检索模型进入长上下文时代，RoPE 含金量还在不断上升
+   - LONGEMBED benchmark, which includes two synthetic and four real-world tasks
+   - we pretrain E5-RoPE following the training procedure and data of E5.
+   - 通过控制变量，对比 E5 和 E5-RoPE， 确认 RoPE 能显著提高长上下文能力
 - Mon, 15 Jun 2024 [gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) [gte-Qwen1.5-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct) 
   - gte-Qwen2-7B-instruct is the latest model in the gte (General Text Embedding) model family that ranks No.1 in both English and Chinese evaluations on the Massive Text Embedding Benchmark MTEB benchmark (as of June 16, 2024).
   - LLM as Retrieval + LLM2Vec
