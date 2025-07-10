@@ -22,6 +22,15 @@ as question answering, where it is crucial to incorporate context from both dire
   - Disentangled attention (the attention weight of a word pair can be computed as a sum of four attention scores
 using disentangled matrices on their contents and positions as content-to-content, content-to-position,
 position-to-content, and position-to-position)
+- Fri, 26 Jul 2019 [RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/abs/1907.11692)
+  - we instead consider training BERT with a larger byte-level BPE vocabulary containing 50K subword units
+  - removing the NSP loss matches or slightly improves downstream task performance
+    - 这里就有一个小细节
+      - Bert 的 tokenizer 会输出 token_type_ids， 比如 cross-encoder/ms-marco-TinyBERT-L-2-v2
+      - RoBERTa 的 tokenizer 不会，比如 BAAI/bge-reranker-base
+  - Static vs. Dynamic Masking
+  - Training with large batches
+  - we pretrain RoBERTa for significantly longer, increasing the number of pretraining steps from 100K to 300K, and then further to 500K
 - Thu, 18 Nov 2021 [DeBERTaV3: Improving DeBERTa using ELECTRA-Style Pre-Training with Gradient-Disentangled Embedding Sharing](https://arxiv.org/abs/2111.09543)
   - replaced token detection (RTD) (ELECTRA-Style Pre-Training)
 - Mon, 30 Oct 2023 [Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents](https://arxiv.org/abs/2310.19923)
