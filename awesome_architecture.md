@@ -93,8 +93,19 @@ position-to-content, and position-to-position)
   - In this work, we use sine and cosine functions of different frequencies
 - Thu, 11 Oct 2018 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
   - Learnable Token Embeddings + Segment Embeddings + Position Embeddings
+- Wed, 23 Oct 2019 [Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer](https://arxiv.org/abs/1910.10683)
+  - the T5 model of Raffel et al. (2020) uses a relative position method (Shaw et al., 2018; Huang et al., 2019) 
+  - that adds no position information to word embeddings (as in the previous method)
 - Sun, 28 Jun 2020 [Rethinking Positional Encoding in Language Pre-training](https://arxiv.org/abs/2006.15595)
   - 位置嵌入应该在attention里面计算，而不是在加在词向量里
 - Tue, 20 Apr 2021 [RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864)
   - 大名鼎鼎的 Rotary Position Embedding
+- Fri, 27 Aug 2021 [Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation](https://arxiv.org/abs/2108.12409)
+  - trained on shorter-L sequences and assumed to generalize to longer contexts at inference time
+  - We find that transformer language models (LMs) that use sinusoidal position embeddings have very weak extrapolation abilities
+  - We therefore introduce Attention with Linear Biases (ALiBi) to facilitate efficient extrapolation. 
+  - ALiBi negatively biases attention scores with a linearly decreasing penalty proportional to the distance between the relevant key and query
+  - ATTENTION WITH LINEAR BIASES (ALIBI)
+    - When using ALiBi, we do not add position embeddings at any point in the network. The only modification we apply is after the query-key dot product, where we add a static, non-learned bias
+    - softmax(qiK> + m · [−(i − 1), ..., −2, −1, 0])
 
