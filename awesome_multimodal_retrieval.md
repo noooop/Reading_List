@@ -8,8 +8,8 @@
   - which could significantly alter the way document retrieval is approached in the industry moving forward. 
 
 
-# Retrieval(Embeddings) model
-- Mon, 23 Jun 2025[jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
+# Multilingual Multimodal Retrieval(Embeddings)
+- Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
     - Matryoshka Representational Learning (MRL) as a way to train models for truncatable embedding vectors. 
@@ -21,3 +21,10 @@
     - LongEmbed benchmark
     - Multimodal Retrieval：Jina VDR， ViDoRe
     - Code Retrieval：MTEB-CoIR
+
+# Multilingual Multimodal Reranker
+- Thu, 27 Mar 2025 [jinaai/jina-reranker-m0](https://huggingface.co/jinaai/jina-reranker-m0)
+  - Base model: Qwen2-VL-2B-Instruct, utilizing its vision encoder, projection layer, and language model
+  - Adaptation: Fine-tuned the language model with LoRA (Low-Rank Adaptation) techniques
+  - Output layer: Post-trained MLP head to generate ranking scores measuring query-document relevance
+  - Training objective: Optimized with pairwise and listwise ranking losses to produce discriminative relevance scores
