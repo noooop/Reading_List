@@ -18,3 +18,10 @@
   - ViT-L/14 from CLIP (Radford et al., 2021) and (2) ViT-g/14 from EVA-CLIP (Fang et al., 2022).
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
   - Qwen-7B +  Openclip’s ViT-bigG
+    - Qwen-VL & Qwen-VL-Chat & (Qwen-VL-Plus & Qwen-VL-Max) (404)
+  - IO
+    - 448*448 resolution image
+    - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
+    - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
+    - Its corresponding text description can be identified by <ref>text_caption</ref>.
+  
