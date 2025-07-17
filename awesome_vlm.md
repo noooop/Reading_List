@@ -24,4 +24,8 @@
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
-  
+- Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
+  - Qwen2 + 675M Vision Encoder(DFN’s ViT) + RoPE-2D
+  - Naive Dynamic Resolution
+  - Multimodal Rotary Position Embedding (M-RoPE)
+  - Unified Image and Video Understanding
