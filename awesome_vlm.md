@@ -39,3 +39,11 @@ These are then summed together
   - Naive Dynamic Resolution
   - Multimodal Rotary Position Embedding (M-RoPE)
   - Unified Image and Video Understanding
+- Wed, 25 Sep 2024 [Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models](https://arxiv.org/abs/2409.17146)
+  - img: OpenAI’s ViT-L/14 336px CLIP model
+  - txt: 
+    - OLMoE-1B-7B, OLMo-7B-1024-preview, Qwen2 7B, Qwen2 72B
+  - Evaluation
+    - Broadly speaking, the academic benchmark results and human evaluation agree, with the exception of Qwen2- VL , 
+    - which performs strongly on the academic benchmarks and comparatively underperforms in the human evaluation
+
