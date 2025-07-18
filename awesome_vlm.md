@@ -8,6 +8,8 @@
 # CLIP (Contrastive Language-Image Pre-Training)
 - Fri, 26 Feb 2021 [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020)
   - CLIP dual-encoder architecture
+  - 这么简单的方法效果居然出奇的好，效果让人瞠目结舌
+  - openai当时还是那个力大砖飞的openai
 - Tue, 9 Nov 2021 [FILIP: Fine-grained Interactive Language-Image Pre-Training](https://arxiv.org/abs/2111.07783):
   - FILIP 和 ColPali 是不是很像 
 - Mon, 15 Nov 2021 [LiT: Zero-Shot Transfer with Locked-image text Tuning](https://arxiv.org/abs/2111.07991)
