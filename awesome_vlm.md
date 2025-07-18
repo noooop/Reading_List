@@ -10,6 +10,8 @@
   - CLIP dual-encoder architecture
 - Tue, 9 Nov 2021 [FILIP: Fine-grained Interactive Language-Image Pre-Training](https://arxiv.org/abs/2111.07783):
   - FILIP 和 ColPali 是不是很像 
+- Mon, 15 Nov 2021 [LiT: Zero-Shot Transfer with Locked-image text Tuning](https://arxiv.org/abs/2111.07991)
+  - Locked-image text Tuning
 - Mon, 27 Mar 2023 [EVA-CLIP: Improved Training Techniques for CLIP at Scale](https://arxiv.org/abs/2303.15389)
   - EVA-CLIP
 
