@@ -9,6 +9,18 @@
 
 
 # Multilingual Multimodal Retrieval(Embeddings)
+- Thu, 30 May 2024 [Jina CLIP: Your CLIP Model Is Also Your Text Retriever](https://arxiv.org/abs/2405.20204)
+  - txt: BERT with AliBi, img: EVA02
+  - Our experiments show that EVA02 significantly outperforms comparable image encoders like DinoV2 (Oquab et al., 2024) and ViT B/16 models from OpenCLIP (Ilharco et al., 2021)
+  - Training Recipe (three-stage training) 
+    - Stage 1 focuses on learning to align image and text representations while minimizing losses in text-text performance. To this end, we train on large-scale and weakly
+supervised text-image and text-text pair datasets.
+    - Stage 2 presents longer, synthetic image captions to
+the model while continuing to train with text-text pairs.
+    - Stage 3 uses hard negatives to further improve the text
+encoder in separating relevant from irrelevant text. To
+maintain text-image alignment, we continue training
+on long image captions.
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
