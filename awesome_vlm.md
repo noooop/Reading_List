@@ -16,6 +16,10 @@
   - Locked-image text Tuning
 - Mon, 27 Mar 2023 [EVA-CLIP: Improved Training Techniques for CLIP at Scale](https://arxiv.org/abs/2303.15389)
   - EVA-CLIP
+- Wed, 12 Jul 2023 [Patch n' Pack: NaViT, a Vision Transformer for any Aspect Ratio and Resolution](https://arxiv.org/abs/2307.06304)
+  - To support variable aspect ratios and readily extrapolate to unseen resolutions, we introduce factorized
+positional embeddings, where we decompose into separate embeddings ϕx and ϕy of x and y coordinates.
+These are then summed together
 
 # Vision-Language Models
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
