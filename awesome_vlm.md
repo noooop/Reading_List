@@ -26,6 +26,19 @@
   - To support variable aspect ratios and readily extrapolate to unseen resolutions, we introduce factorized
 positional embeddings, where we decompose into separate embeddings ϕx and ϕy of x and y coordinates.
 These are then summed together
+- Thu, 21 Dec 2023 [InternVL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks](https://arxiv.org/abs/2312.14238)
+  - a vision encoder InternViT-6B
+  - a language middleware QLLaMA
+    - QLLaMA is developed based on the pre-trained multilingual LLaMA,
+and newly added 96 learnable queries and cross-attention
+layers (1 billion parameters) that are randomly initialized.
+This manner allows QLLaMA to smoothly integrate visual
+elements into the language model, thereby enhancing the
+coherence and effectiveness of the combined features.
+  - Training 
+    - stage 1: contrastive pre-training
+      - InternViT-6B vs LLaMA-7B -> contrastive loss
+      - 等一下，为什么要跟 LLaMA-7B 对比学习，LLaMA-7B 输出的 embed 是用来做采样下一个词的，跟检索没啥关系啊？？？？
 
 # Multimodal Bridge(abstractors)
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
