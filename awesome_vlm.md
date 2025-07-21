@@ -54,6 +54,17 @@ These are then summed together
       - we keep both the visual encoder and LLM weights frozen, 
       - and maximize the likelihood of (3) with trainable parameters θ = W (the projection matrix) only
     - Stage 2: Fine-tuning End-to-End.
+- Thu, 5 Oct 2023 [Improved Baselines with Visual Instruction Tuning](https://arxiv.org/abs/2310.03744)
+  - LLaVA-1.5
+    - +VQA-v2, +Format prompt, +MLP VL connector, +OKVQA/OCR 
+    - +Region-level VQA, +Scale up resolution(336), +GQA,  +ShareGPT, +Scale up LLM 
+    - Architecture
+      - txt: Vicuna
+      - img: CLIP visual encoder ViT-L/14
+      - Bridge:
+        - we find that improving the vision-language connector’s representation power with a two-layer MLP 
+        - can improve LLaVA’s multimodal capabilities, compared with the original linear projection.
+  - LLaVA-1.5-HD
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
   - Architecture
     - txt: Qwen-7B
