@@ -27,6 +27,13 @@
 positional embeddings, where we decompose into separate embeddings ϕx and ϕy of x and y coordinates.
 These are then summed together
 
+# Multimodal Bridge(abstractors)
+- Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
+  - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
+- Mon, 11 Dec 2023 [Honeybee: Locality-enhanced Projector for Multimodal LLM](https://arxiv.org/abs/2312.06742)
+  - 高效将M个视觉模态中间状态映射为N个LLM状态
+  - C-Abstractor & D-Abstractor
+
 # Vision-Language Models
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
