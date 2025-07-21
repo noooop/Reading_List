@@ -30,59 +30,70 @@ These are then summed together
 # Multimodal Bridge(abstractors)
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
+- Mon, 17 Apr 2023 [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)
+  - We consider a simple linear layer to connect image features into the word embedding space.
 - Mon, 11 Dec 2023 [Honeybee: Locality-enhanced Projector for Multimodal LLM](https://arxiv.org/abs/2312.06742)
   - 高效将M个视觉模态中间状态映射为N个LLM状态
   - C-Abstractor & D-Abstractor
 
 # Vision-Language Models
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
-  - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
-  - BLIP-2 OPT/FlanT5 + ViT 
-  - ViT-L/14 from CLIP (Radford et al., 2021) and (2) ViT-g/14 from EVA-CLIP (Fang et al., 2022).
+  - Architecture
+    - txt: OPT/FlanT5
+    - img: ViT-L/14 from CLIP (Radford et al., 2021) and ViT-g/14 from EVA-CLIP (Fang et al., 2022).
+    - Bridge: 
+      - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
 - Mon, 17 Apr 2023 [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)
   - Architecture
     - txt: Vicuna
     - img: CLIP visual encoder ViT-L/14
-    - Adaptive: We consider a simple linear layer to connect image features into the word embedding space.
+    - Bridge:
+      - We consider a simple linear layer to connect image features into the word embedding space.
   - Training
     - Stage 1: Pre-training for Feature Alignment.
       - we keep both the visual encoder and LLM weights frozen, 
       - and maximize the likelihood of (3) with trainable parameters θ = W (the projection matrix) only
     - Stage 2: Fine-tuning End-to-End.
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
-  - Qwen-7B +  Openclip’s ViT-bigG
-    - Qwen-VL & Qwen-VL-Chat & (Qwen-VL-Plus & Qwen-VL-Max) (404)
+  - Architecture
+    - txt: Qwen-7B
+    - img: Openclip’s ViT-bigG
+    - Bridge:
   - IO
     - 448*448 resolution image
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
 - Sat, 3 Aug 2024 [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](https://arxiv.org/abs/2408.01800)
-  - img:  SigLIP SoViT-400m/14 
-  - Adaptive: 
-    - we take advantage of the adaptive visual encoding method proposed by LLaVA-UHD
-    - Image Partition & Slice Encoding
-    - Token Compression
-      - the visual tokens of each slice are compressed into 64 queries for MiniCPM
-    - 64 queries for MiniCPM V1&2 and 96 tokens for MiniCPM-Llama3-V 2.5 through this layer.
-    - Spatial Schema
-  - txt: 
-    - MiniCPM 2B & Llama3-Instruct 8B
+  - Architecture
+    - txt: 
+      - MiniCPM 2B & Llama3-Instruct 8B
+    - img:  SigLIP SoViT-400m/14 
+    - Bridge: 
+      - we take advantage of the adaptive visual encoding method proposed by LLaVA-UHD
+      - Image Partition & Slice Encoding
+      - Token Compression
+        - the visual tokens of each slice are compressed into 64 queries for MiniCPM
+      - 64 queries for MiniCPM V1&2 and 96 tokens for MiniCPM-Llama3-V 2.5 through this layer.
+      - Spatial Schema
   - Training
     - Pre-training
       - Stage-1 224×224，只训练 compression layer
       - Stage-2 224×224 to 448×448，  The whole visual encoder is trained, leaving other parameters frozen
       - Stage-3 The LLM is kept frozen to avoid disruption from the relatively low-quality pre-training data
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
-  - Qwen2 + 675M Vision Encoder(DFN’s ViT) + RoPE-2D
-  - Naive Dynamic Resolution
-  - Multimodal Rotary Position Embedding (M-RoPE)
-  - Unified Image and Video Understanding
+  - Architecture
+    - txt: Qwen2
+    - img:  
+      - 675M Vision Encoder(DFN’s ViT) + RoPE-2D
+      - Naive Dynamic Resolution
+      - Multimodal Rotary Position Embedding (M-RoPE)
+      - Unified Image and Video Understanding
 - Wed, 25 Sep 2024 [Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models](https://arxiv.org/abs/2409.17146)
-  - img: OpenAI’s ViT-L/14 336px CLIP model
-  - txt: 
-    - OLMoE-1B-7B, OLMo-7B-1024-preview, Qwen2 7B, Qwen2 72B
-  - Evaluation
-    - Broadly speaking, the academic benchmark results and human evaluation agree, with the exception of Qwen2- VL , 
-    - which performs strongly on the academic benchmarks and comparatively underperforms in the human evaluation
+  - Architecture
+    - txt: OLMoE-1B-7B, OLMo-7B-1024-preview, Qwen2 7B, Qwen2 72B
+    - img: OpenAI’s ViT-L/14 336px CLIP model
+    - Evaluation**
+      - Broadly speaking, the academic benchmark results and human evaluation agree, with the exception of Qwen2- VL , 
+      - which performs strongly on the academic benchmarks and comparatively underperforms in the human evaluation
 
