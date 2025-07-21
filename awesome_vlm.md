@@ -47,6 +47,23 @@ These are then summed together
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
+- Sat, 3 Aug 2024 [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](https://arxiv.org/abs/2408.01800)
+  - img:  SigLIP SoViT-400m/14 
+  - Adaptive: 
+    - we take advantage of the adaptive visual encoding method proposed by LLaVA-UHD
+    - Image Partition & Slice Encoding
+    - Token Compression
+      - the visual tokens of each slice are compressed into 64 queries for MiniCPM
+    - 64 queries for MiniCPM V1&2 and 96 tokens for MiniCPM-Llama3-V 2.5 through this layer.
+    - Spatial Schema
+  - txt: 
+    - MiniCPM 2B & Llama3-Instruct 8B
+  - Training
+    - Pre-training
+      - Stage-1 224×224，只训练 compression layer
+      - Stage-2 224×224 to 448×448，  The whole visual encoder is trained, leaving other parameters frozen
+      - Stage-3 The LLM is kept frozen to avoid disruption from the relatively low-quality pre-training data
+    
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
   - Qwen2 + 675M Vision Encoder(DFN’s ViT) + RoPE-2D
   - Naive Dynamic Resolution
