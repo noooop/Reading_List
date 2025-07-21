@@ -39,6 +39,16 @@ These are then summed together
   - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
   - BLIP-2 OPT/FlanT5 + ViT 
   - ViT-L/14 from CLIP (Radford et al., 2021) and (2) ViT-g/14 from EVA-CLIP (Fang et al., 2022).
+- Mon, 17 Apr 2023 [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)
+  - Architecture
+    - txt: Vicuna
+    - img: CLIP visual encoder ViT-L/14
+    - Adaptive: We consider a simple linear layer to connect image features into the word embedding space.
+  - Training
+    - Stage 1: Pre-training for Feature Alignment.
+      - we keep both the visual encoder and LLM weights frozen, 
+      - and maximize the likelihood of (3) with trainable parameters θ = W (the projection matrix) only
+    - Stage 2: Fine-tuning End-to-End.
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
   - Qwen-7B +  Openclip’s ViT-bigG
     - Qwen-VL & Qwen-VL-Chat & (Qwen-VL-Plus & Qwen-VL-Max) (404)
@@ -63,7 +73,6 @@ These are then summed together
       - Stage-1 224×224，只训练 compression layer
       - Stage-2 224×224 to 448×448，  The whole visual encoder is trained, leaving other parameters frozen
       - Stage-3 The LLM is kept frozen to avoid disruption from the relatively low-quality pre-training data
-    
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
   - Qwen2 + 675M Vision Encoder(DFN’s ViT) + RoPE-2D
   - Naive Dynamic Resolution
