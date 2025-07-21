@@ -16,6 +16,12 @@
   - Locked-image text Tuning
 - Mon, 27 Mar 2023 [EVA-CLIP: Improved Training Techniques for CLIP at Scale](https://arxiv.org/abs/2303.15389)
   - EVA-CLIP
+- Mon, 27 Mar 2023 [Sigmoid Loss for Language Image Pre-Training](https://arxiv.org/abs/2303.15343)
+  - Unlike standard contrastive learning with softmax normalization, 
+  - the sigmoid loss operates solely on image-text pairs and does not require a global view of the pairwise similarities for normalization. 
+  - The sigmoid loss simultaneously allows further scaling up the batch size, while also performing better at smaller batch sizes. 
+  - 对比学习，batchsize 越大效果越好，32K 差不多饱和
+  - The input images are resized to 224×224 resolution
 - Wed, 12 Jul 2023 [Patch n' Pack: NaViT, a Vision Transformer for any Aspect Ratio and Resolution](https://arxiv.org/abs/2307.06304)
   - To support variable aspect ratios and readily extrapolate to unseen resolutions, we introduce factorized
 positional embeddings, where we decompose into separate embeddings ϕx and ϕy of x and y coordinates.
