@@ -86,7 +86,14 @@ coherence and effectiveness of the combined features.
       - projector:
         - we find that improving the vision-language connector’s representation power with a two-layer MLP 
         - can improve LLaVA’s multimodal capabilities, compared with the original linear projection.
-  - LLaVA-1.5-HD
+  - LLaVA-1.5-HD(AnyRes)
+    - Dynamic High Resolution (split & resize)
+    - we overcome this by dividing the image into smaller image patches of the resolution that the vision encoder is originally trained for, and encode them independently. 
+    - After obtaining the feature maps of individual patches, we then combine them into a single large feature map of the target resolution, and feed that into the LLM.
+    - To provide the LLM with the global context and to reduce the artifact of the split-encode-merge operation, 
+    - we additionally concatenate the feature of a downsampled image to the merged feature map.
+    - This allows us to scale the input to any arbitrary resolution and maintain the data efficiency of LLaVA-1.5. 
+    - We call this resulting model LLaVA-1.5-HD.
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
   - Architecture
     - txt: Qwen-7B
@@ -97,6 +104,9 @@ coherence and effectiveness of the combined features.
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
+- Tue, 30 Apr 2024 [LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild](https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/)
+  - 使用相同的303.5M Vision Encoder，更新更大的 Qwen1.5-110B， Qwen1.5-72B，LLaMA3-8B， 效果就是好
+  - 多模态MMMU 和 单模态 MMLU & 模型大小非常相关
 - Mon, 18 Mar 2024 [LLaVA-UHD: an LMM Perceiving Any Aspect Ratio and High-Resolution Images](https://arxiv.org/abs/2403.11703)
     - Architecture (LLaVA-1.5)
       - txt: Vicuna
