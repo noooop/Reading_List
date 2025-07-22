@@ -40,7 +40,7 @@ coherence and effectiveness of the combined features.
       - InternViT-6B vs LLaMA-7B -> contrastive loss
       - 等一下，为什么要跟 LLaMA-7B 对比学习，LLaMA-7B 输出的 embed 是用来做采样下一个词的，跟检索没啥关系啊？？？？
 
-# Multimodal Bridge(abstractors)
+# Multimodal Projector(abstractors)
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
 - Mon, 17 Apr 2023 [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)
@@ -55,19 +55,21 @@ coherence and effectiveness of the combined features.
   - Arbitrary Aspect Ratio Slice Encoding
   - Compression Layer
   - Spatial Schema for Image Slices
+- Wed, 18 Dec 2024 [LLaVA-UHD v2: an MLLM Integrating High-Resolution Semantic Pyramid via Hierarchical Window Transformer](https://arxiv.org/abs/2412.13871)
+  - Hierarchical window (Hiwin) transformer
 
 # Vision-Language Models
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - Architecture
     - txt: OPT/FlanT5
     - img: ViT-L/14 from CLIP (Radford et al., 2021) and ViT-g/14 from EVA-CLIP (Fang et al., 2022).
-    - Bridge: 
+    - projector: 
       - We propose Q-Former as the trainable module to bridge the gap between a frozen image encoder and a frozen LLM
 - Mon, 17 Apr 2023 [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)
   - Architecture
     - txt: Vicuna
     - img: CLIP visual encoder ViT-L/14
-    - Bridge:
+    - projector:
       - We consider a simple linear layer to connect image features into the word embedding space.
   - Training
     - Stage 1: Pre-training for Feature Alignment.
@@ -81,7 +83,7 @@ coherence and effectiveness of the combined features.
     - Architecture
       - txt: Vicuna
       - img: CLIP visual encoder ViT-L/14
-      - Bridge:
+      - projector:
         - we find that improving the vision-language connector’s representation power with a two-layer MLP 
         - can improve LLaVA’s multimodal capabilities, compared with the original linear projection.
   - LLaVA-1.5-HD
@@ -89,7 +91,7 @@ coherence and effectiveness of the combined features.
   - Architecture
     - txt: Qwen-7B
     - img: Openclip’s ViT-bigG
-    - Bridge:
+    - projector:
   - IO
     - 448*448 resolution image
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
@@ -99,7 +101,7 @@ coherence and effectiveness of the combined features.
     - Architecture (LLaVA-1.5)
       - txt: Vicuna
       - img: CLIP visual encoder ViT-L/14
-      - Bridge:
+      - projector:
         - we compress the visual tokens of each image slice using a shared perceiver resampler layer,
     - Modularized Visual Encoding
       - High-Resolution Image Partition Strategy
@@ -125,7 +127,7 @@ slice positions for LMMs.
     - txt: 
       - MiniCPM 2B & Llama3-Instruct 8B
     - img:  SigLIP SoViT-400m/14 
-    - Bridge: 
+    - projector: 
       - we take advantage of the adaptive visual encoding method proposed by LLaVA-UHD
       - Image Partition & Slice Encoding
       - Token Compression
@@ -152,4 +154,10 @@ slice positions for LMMs.
     - Evaluation**
       - Broadly speaking, the academic benchmark results and human evaluation agree, with the exception of Qwen2- VL , 
       - which performs strongly on the academic benchmarks and comparatively underperforms in the human evaluation
-
+- Wed, 18 Dec 2024 [LLaVA-UHD v2: an MLLM Integrating High-Resolution Semantic Pyramid via Hierarchical Window Transformer](https://arxiv.org/abs/2412.13871)
+  - projector: 
+    - we present LLaVA-UHD v2, an MLLM with advanced
+perception abilities by introducing a well-designed vision-language projector, the
+Hierarchical window (Hiwin) transformer. Hiwin transformer enhances MLLM’s
+ability to capture diverse multi-modal visual granularities, by incorporating our
+constructed high-resolution semantic pyramid. 
