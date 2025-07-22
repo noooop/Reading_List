@@ -49,6 +49,13 @@ coherence and effectiveness of the combined features.
   - 高效将M个视觉模态中间状态映射为N个LLM状态
   - C-Abstractor & D-Abstractor
 
+# High-resolution LMMs
+- Mon, 18 Mar 2024 [LLaVA-UHD: an LMM Perceiving Any Aspect Ratio and High-Resolution Images](https://arxiv.org/abs/2403.11703)
+  - High-Resolution Image Partition Strategy
+  - Arbitrary Aspect Ratio Slice Encoding
+  - Compression Layer
+  - Spatial Schema for Image Slices
+
 # Vision-Language Models
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - Architecture
@@ -88,6 +95,31 @@ coherence and effectiveness of the combined features.
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
+- Mon, 18 Mar 2024 [LLaVA-UHD: an LMM Perceiving Any Aspect Ratio and High-Resolution Images](https://arxiv.org/abs/2403.11703)
+    - Architecture (LLaVA-1.5)
+      - txt: Vicuna
+      - img: CLIP visual encoder ViT-L/14
+      - Bridge:
+        - we compress the visual tokens of each image slice using a shared perceiver resampler layer,
+    - Modularized Visual Encoding
+      - High-Resolution Image Partition Strategy
+      - Arbitrary Aspect Ratio Slice Encoding
+      - Compression Layer
+      - Spatial Schema for Image Slices
+    - Ablation Study
+      -  (1) We replace
+the padding strategy of LLaVA-1.5 with the adaptive encoding strategy of LLaVA-UHD, supporting
+arbitrary aspect ratios while maintaining identical maximum resolutions. We can observe consistent
+improvement since wasted computation from padding is avoided.
+      -  (2) We replace the perceiver
+resampler of LLaVA-UHD with the 2-layer MLP of LLaVA-1.5. We observe that perceiver resampler
+achieves comparable or better performance than MLP, using only 12.9% computation cost.
+      -  (3) We
+further replace the LLaVA-UHD image partition strategy with the naive partition strategy [24] (i.e.,
+fixed 2 × 2 slices). Results show that LLaVA-UHD can more properly divide images into slices for better performance.
+      -  (4) We remove the spatial schema from LLaVA-UHD. The performance
+degradation demonstrates the effectiveness and necessity of spatial schema in informing the dynamic
+slice positions for LMMs.
 - Sat, 3 Aug 2024 [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](https://arxiv.org/abs/2408.01800)
   - Architecture
     - txt: 
