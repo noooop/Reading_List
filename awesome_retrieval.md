@@ -1114,11 +1114,16 @@ Contrastive Pre-training 使用大 batchsize in-batch negatives，Supervised Fin
 - Tue, 25 Feb 2020 [Circle Loss: A Unified Perspective of Pair Similarity Optimization](https://arxiv.org/abs/2002.10857)
 - Fri, 22 Sep 2023 [AnglE-optimized Text Embeddings](https://arxiv.org/abs/2309.12871)
   - ANGLE OBJECTIVE 
+- Mon, 27 Mar 2023 [Sigmoid Loss for Language Image Pre-Training](https://arxiv.org/abs/2303.15343)
+  - The sigmoid loss simultaneously allows further scaling up the batch size, while also performing better at smaller batch sizes. 
 - Sat, 11 May 2024 [Piccolo2: General Text Embedding with Multi-task Hybrid Loss Training](https://arxiv.org/abs/2405.06932)
   - Multi-task Hybrid Loss
     - Retrieval and Reranking Loss，use the standard InfoNCE loss with in-batch negative
     - STS and PairClassification Loss，cosent loss function
     - Classification and Clustering Loss，SFR embedding method
+- Wed, 11 Jun 2025 [On the Similarities of Embeddings in Contrastive Learning](https://arxiv.org/abs/2506.09781)
+  - we propose an auxiliary loss that reduces the variance of negative-pair similarities in mini-batch settings. 
+  - Empirical results show that incorporating the proposed loss improves performance in small-batch settings.
 
 # PEFT
 - Wed, 24 Aug 2022 [DPTDR: Deep Prompt Tuning for Dense Passage Retrieval](https://arxiv.org/abs/2208.11503)
