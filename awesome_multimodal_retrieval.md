@@ -35,8 +35,16 @@ on long image captions.
       - Unsurprisingly, increasing image resolution has a positive impact on linking queries to visually rich documents.
       - We consider (512, 512) the optimal image resolution for this model, with a reasonable balance between performance and cost.
 ## VLM2Vec
+- Wed, 17 Jul 2024 [E5-V: Universal Embeddings with Multimodal Large Language Models](https://arxiv.org/abs/2407.12580)
+  - Built on LLaVA-NeXT-8B(LLaVA-1.6)
+  - modality gap
+    - Compared to CLIP, although MLLM represents the image and text with the same encoder, 
+    - the multimodal embeddings from MLLM show a clear modality gap between text and image embeddings.
+  - Single Modality Training
+    - E5-V trains MLLMs with contrastive learning on text pairs
+    - 这也太省钱了
 - Mon, 7 Oct 2024 [VLM2Vec: Training Vision-Language Models for Massive Multimodal Embedding Tasks](https://arxiv.org/abs/2410.05160)
-  - Built on Phi-3.5-V LLaVA-1.6
+  - Built on Phi-3.5-V LLaVA-1.6 (LLaVA-1.6比Phi-3.5-V好一些，尤其是使用res=1344×1344作为输入)
   - VLM2VEC:
     - (1) VLMs are trained on massive multimodal datasets and can handle any combination of images and text, as well as high-resolution images and long text inputs; 
     - (2) vision and language features are deeply fused in the transformer model, improving the model’s ability to capture cross-modal relationships; 
