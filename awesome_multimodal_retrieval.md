@@ -64,6 +64,18 @@ on long image captions.
     - LongEmbed benchmark
     - Multimodal Retrieval：Jina VDR， ViDoRe
     - Code Retrieval：MTEB-CoIR
+- Mon, 7 Jul 2025 [VLM2Vec-V2: Advancing Multimodal Embedding for Videos, Images, and Visual Documents](https://arxiv.org/abs/2507.04590)
+  - Built on Qwen2-VL
+  - MMEB-V2
+    - Video Retrieval (V-RET)
+    - Moment Retrieval (M-RET)
+    - Video Classification (V-CLS)
+    - Video QA (V-QA)
+    - Visual Document Retrieval (VisDoc)
+  - Main Results
+    - 加入 VisDoc 数据，VisDoc Overall 分数相比 VLM2Vec-Qwen2VL 立竿见影，但是打不过 ColPali v1.3 (3B)， GME (2B) & GME (7B)
+    - In visual document retrieval, VLM2Vec-V2 outperforms all VLM2Vec variants, 
+    - although still trailing behind ColPali, which is specifically optimized for VisDoc tasks.
 
 # Multilingual Multimodal Reranker
 - Thu, 27 Mar 2025 [jinaai/jina-reranker-m0](https://huggingface.co/jinaai/jina-reranker-m0)
