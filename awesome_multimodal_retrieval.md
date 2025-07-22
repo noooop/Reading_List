@@ -9,6 +9,7 @@
 
 
 # Multilingual Multimodal Retrieval(Embeddings)
+## CLIP
 - Mon, 30 Oct 2023 [Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents](https://arxiv.org/abs/2310.19923)
 - Thu, 30 May 2024 [Jina CLIP: Your CLIP Model Is Also Your Text Retriever](https://arxiv.org/abs/2405.20204)
   - txt: BERT with AliBi(jina-embeddings-v2), img: EVA02 ViT B/16 (224*224) 
@@ -33,6 +34,16 @@ on long image captions.
     - THE ROLE OF IMAGE RESOLUTION IN VISUAL DOCUMENT RETRIEVAL
       - Unsurprisingly, increasing image resolution has a positive impact on linking queries to visually rich documents.
       - We consider (512, 512) the optimal image resolution for this model, with a reasonable balance between performance and cost.
+## VLM2Vec
+- Mon, 7 Oct 2024 [VLM2Vec: Training Vision-Language Models for Massive Multimodal Embedding Tasks](https://arxiv.org/abs/2410.05160)
+  - Built on Phi-3.5-V LLaVA-1.6
+  - VLM2VEC:
+    - (1) VLMs are trained on massive multimodal datasets and can handle any combination of images and text, as well as high-resolution images and long text inputs; 
+    - (2) vision and language features are deeply fused in the transformer model, improving the model’s ability to capture cross-modal relationships; 
+    - and (3) these models are well-suited for generalizing across diverse tasks, particularly those requiring instruction-following capabilities.
+  - MMEB
+    - We introduce a novel benchmark, MMEB (Massive Multimodal Embedding Benchmark), which includes 36 datasets spanning four meta-task categories
+    - classification, visual question answering, retrieval, and visual grounding
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
