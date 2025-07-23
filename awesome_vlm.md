@@ -104,6 +104,14 @@ coherence and effectiveness of the combined features.
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
+- Mon, 22 Apr 2024 [Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone](https://arxiv.org/abs/2404.14219)
+  - Phi-3.5-Vision 
+  - Architecture
+    - txt: phi-3.5-mini
+    - img: CLIP ViT-L/14
+    - projector:
+      - dynamic cropping strategy [DZZ+24b] is utilized to split the input image into a 2d array of blocks
+      - InternLM-XComposer2-4KHD
 - Tue, 30 Apr 2024 [LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild](https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/)
   - 使用相同的303.5M Vision Encoder，更新更大的 Qwen1.5-110B， Qwen1.5-72B，LLaMA3-8B， 效果就是好
   - 多模态MMMU 和 单模态 MMLU & 模型大小非常相关
