@@ -55,6 +55,21 @@ on long image captions.
   - MMEB
     - We introduce a novel benchmark, MMEB (Massive Multimodal Embedding Benchmark), which includes 36 datasets spanning four meta-task categories
     - classification, visual question answering, retrieval, and visual grounding
+- Sun, 22 Dec 2024 [GME: Improving Universal Multimodal Retrieval by Multimodal LLMs](https://arxiv.org/abs/2412.16855)
+  - GME-Qwen2-VL-2B & GME-Qwen2-VL-7B Built on Qwen2-VL 2B & Qwen2-VL 7B
+  - Fused-Modal Data Synthesis
+    - our preliminary experiments demonstrate that more diverse multimodal training data can further unlock the potential of MLLMs
+    - motivates us to develop a training data synthesis pipeline and construct a large-scale
+  - Training
+    - Contrastive Learning， InfoNCE， Hard Negatives
+    - 估计训练不足
+  - Ablation Study on Modeling
+    - Fine-tuning strategy, LoRA r=8 效果不错
+    - Training data organization,  removal of hard negatives led to performance declines
+    - Retrieval instructions, retrieval instructions are crucial for better UMR
+    - Model Design
+      - casual attention mode: negatively impact performance
+      - use the EOS token state as the embedding: negatively impact performance
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
@@ -76,7 +91,8 @@ on long image captions.
     - Video QA (V-QA)
     - Visual Document Retrieval (VisDoc)
   - Main Results
-    - 加入 VisDoc 数据，VisDoc Overall 分数相比 VLM2Vec-Qwen2VL 立竿见影，但是打不过 ColPali v1.3 (3B)， GME (2B) & GME (7B)
+    - 加入 VisDoc 数据，VisDoc Overall 分数相比 VLM2Vec-Qwen2VL 立竿见影，但是打不过 ColPali v1.3 (3B)
+    - 等一下，GME (2B) & GME (7B) 没有使用 ColPali 为什么效果这么好
     - In visual document retrieval, VLM2Vec-V2 outperforms all VLM2Vec variants, 
     - although still trailing behind ColPali, which is specifically optimized for VisDoc tasks.
 
