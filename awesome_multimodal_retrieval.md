@@ -9,7 +9,9 @@
   - Our method, ColPali, significantly outperforms all other retrieval systems on ViDoRe while being fast and end-to-end trainable. 
   - These results demonstrate the potential and the many benefits of this novel Retrieval in Vision Space concept, 
   - which could significantly alter the way document retrieval is approached in the industry moving forward. 
-
+- Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
+  - 对比 jina-embeddings-v4 (dense) 和 jina-embeddings-v4 (late)
+  - J-VDR 73.98 vs 80.55， ViDoRe 84.11 vs 90.17， 好像 late 方法提升并不显著
 
 # Multilingual Multimodal Retrieval(Embeddings)
 ## CLIP
@@ -82,6 +84,9 @@ on long image captions.
     - LongEmbed benchmark
     - Multimodal Retrieval：Jina VDR， ViDoRe
     - Code Retrieval：MTEB-CoIR
+  - dense vs late
+    - 对比 jina-embeddings-v4 (dense) 和 jina-embeddings-v4 (late)
+    - J-VDR 73.98 vs 80.55， ViDoRe 84.11 vs 90.17， 好像 late 方法提升并不显著
 - Mon, 7 Jul 2025 [VLM2Vec-V2: Advancing Multimodal Embedding for Videos, Images, and Visual Documents](https://arxiv.org/abs/2507.04590)
   - Built on Qwen2-VL
   - MMEB-V2
