@@ -57,6 +57,23 @@ on long image captions.
   - MMEB
     - We introduce a novel benchmark, MMEB (Massive Multimodal Embedding Benchmark), which includes 36 datasets spanning four meta-task categories
     - classification, visual question answering, retrieval, and visual grounding
+- Mon, 2 Dec 2024 [LamRA: Large Multimodal Model as Your Advanced Retrieval Assistant](https://arxiv.org/abs/2412.01720)
+  - Built on Qwen2-VL 7B
+  - Training for Retrieval
+    - stage-I: Adapting LMMs for Retrieval Tasks 
+      - we start by adapting LMMs for text-to-text retrieval by training LoRA modules on the Natural Language Inference (NLI) dataset
+      - 参考 E5-V 这确实是个高效的做法
+    - Stage-II: Instruction Tuning for Universal Retrieval.
+  - Training for Reranking
+    - Collecting Training Data for Reranking
+      - train the reranking model on its top 100 retrieved candidates and use them as hard negatives
+    - Joint Training for Pointwise and Listwise Reranking.
+      - Pointwise YES & NO
+      - Listwise Llist = Lce(GT-POSITION, Reranker(q, cpos, c1, c2, · · · , cM)).
+  - Ablation Study
+    - Effectiveness of Two-stage Training
+    - Scaling Trends of LamRA
+    - Discussion on Pointwise and Listwise Rerank Methods. 好像Listwise效果略微好一点点
 - Sun, 22 Dec 2024 [GME: Improving Universal Multimodal Retrieval by Multimodal LLMs](https://arxiv.org/abs/2412.16855)
   - GME-Qwen2-VL-2B & GME-Qwen2-VL-7B Built on Qwen2-VL 2B & Qwen2-VL 7B
   - Fused-Modal Data Synthesis
