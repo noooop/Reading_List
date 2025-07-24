@@ -55,6 +55,8 @@ on long image captions.
   - Single Modality Training
     - E5-V trains MLLMs with contrastive learning on text pairs
     - 这也太省钱了
+- Mon, 17 Jun 2024 [Unifying Multimodal Retrieval via Document Screenshot Embedding](https://arxiv.org/abs/2406.11251)
+  - Built on Phi-3.5-V
 - Mon, 7 Oct 2024 [VLM2Vec: Training Vision-Language Models for Massive Multimodal Embedding Tasks](https://arxiv.org/abs/2410.05160)
   - Built on Phi-3.5-V LLaVA-1.6 (LLaVA-1.6比Phi-3.5-V好一些，尤其是使用res=1344×1344作为输入)
   - VLM2VEC:
@@ -103,6 +105,8 @@ on long image captions.
   - This release includes four models, available in two sizes (3B and 7B parameters) and two variants:
     - ColNomic Embed Multimodal (3B and 7B): Multi-vector late interaction multimodal embedding models (more powerful)
     - Nomic Embed Multimodal (3B and 7B): Single-vector multimodal embedding models (faster & use less memory/storage)
+  - 不太懂为什么要把 DSE 和 ColPali 并列，难道 DSE 是第一篇 VLM2Vec？ 
+    - Both the ColPali and DSE approach significantly outperform multimodal models with CLIP-style architectures by addressing the modality gap through interleaved processing of text and images.
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
