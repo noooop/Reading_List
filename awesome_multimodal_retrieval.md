@@ -96,6 +96,8 @@ on long image captions.
     - Model Design
       - casual attention mode: negatively impact performance
       - use the EOS token state as the embedding: negatively impact performance
+- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+  - Qwen VL 每代都引领潮流 
 - Wed, 2 Apr 2025 [Nomic Embed Multimodal: Open Source Multimodal Embedding Models for Text, Images, PDFs, and Charts](https://www.nomic.ai/blog/posts/nomic-embed-multimodal)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, Qwen/Qwen2.5-VL-7B-Instruct
   - This release includes four models, available in two sizes (3B and 7B parameters) and two variants:
