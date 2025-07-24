@@ -9,6 +9,13 @@
   - Our method, ColPali, significantly outperforms all other retrieval systems on ViDoRe while being fast and end-to-end trainable. 
   - These results demonstrate the potential and the many benefits of this novel Retrieval in Vision Space concept, 
   - which could significantly alter the way document retrieval is approached in the industry moving forward. 
+- Wed, 2 Apr 2025 [Nomic Embed Multimodal: Open Source Multimodal Embedding Models for Text, Images, PDFs, and Charts](https://www.nomic.ai/blog/posts/nomic-embed-multimodal)
+  - late 方法到底有没有用？
+    - ColNomic Embed Multimodal 7B 62.7
+    - ColNomic Embed Multimodal 3B 61.2
+    - Nomic Embed Multimodal 7B 59.7
+    - GME Qwen2 7B 59.0
+    - Nomic Embed Multimodal 3B 58.8
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - 对比 jina-embeddings-v4 (dense) 和 jina-embeddings-v4 (late)
   - J-VDR 73.98 vs 80.55， ViDoRe 84.11 vs 90.17， 好像 late 方法提升并不显著
@@ -89,6 +96,11 @@ on long image captions.
     - Model Design
       - casual attention mode: negatively impact performance
       - use the EOS token state as the embedding: negatively impact performance
+- Wed, 2 Apr 2025 [Nomic Embed Multimodal: Open Source Multimodal Embedding Models for Text, Images, PDFs, and Charts](https://www.nomic.ai/blog/posts/nomic-embed-multimodal)
+  - Built on Qwen/Qwen2.5-VL-3B-Instruct, Qwen/Qwen2.5-VL-7B-Instruct
+  - This release includes four models, available in two sizes (3B and 7B parameters) and two variants:
+    - ColNomic Embed Multimodal (3B and 7B): Multi-vector late interaction multimodal embedding models (more powerful)
+    - Nomic Embed Multimodal (3B and 7B): Single-vector multimodal embedding models (faster & use less memory/storage)
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct, jina-embeddings-v4 features:
   - features:
