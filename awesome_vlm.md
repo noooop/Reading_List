@@ -104,6 +104,19 @@ coherence and effectiveness of the combined features.
     - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
     - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
     - Its corresponding text description can be identified by <ref>text_caption</ref>.
+- Tue, 9 Apr 2024 [InternLM-XComposer2-4KHD: A Pioneering Large Vision-Language Model Handling Resolutions from 336 Pixels to 4K HD](https://arxiv.org/abs/2404.06512)
+  - Architecture
+    - txt: InternLM2-7B
+    - img: CLIP visual encoder ViT-L/14(336×336)
+    - projector:
+      - Dynamic Image Partition + Global-Local Format + Image 2D Structure Newline Indicator.
+  - Dive into Resolution
+    - High-Resolution Training is Critical for HD-OCR tasks.
+    - Higher Inference Resolution Leads to better results on Text-related Tasks.
+  - High-Resolution Strategy Ablation
+    - The Role of Global-View
+    - The Role of the Newline Token
+    - Influence of Token Merging Strategy
 - Mon, 22 Apr 2024 [Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone](https://arxiv.org/abs/2404.14219)
   - Phi-3.5-Vision 
   - Architecture
