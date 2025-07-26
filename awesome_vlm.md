@@ -157,7 +157,7 @@ slice positions for LMMs.
   - Architecture
     - txt: 
       - MiniCPM 2B & Llama3-Instruct 8B
-    - img:  SigLIP SoViT-400m/14 
+    - img: SigLIP SoViT-400m/14 
     - projector: 
       - we take advantage of the adaptive visual encoding method proposed by LLaVA-UHD
       - Image Partition & Slice Encoding
@@ -192,3 +192,8 @@ perception abilities by introducing a well-designed vision-language projector, t
 Hierarchical window (Hiwin) transformer. Hiwin transformer enhances MLLM’s
 ability to capture diverse multi-modal visual granularities, by incorporating our
 constructed high-resolution semantic pyramid. 
+- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+- Mon, 20 Jan 2025 [Eagle 2: Building Post-Training Data Strategies from Scratch for Frontier Vision-Language Models](https://arxiv.org/abs/2501.14818)
+  - Architecture
+    - txt: Qwen2.5-7B
+    - img: SigLIP 448*448 + ConvNeXt 512*512
