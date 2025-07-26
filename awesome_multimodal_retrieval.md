@@ -19,6 +19,15 @@
 - Mon, 23 Jun 2025 [jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval](https://arxiv.org/abs/2506.18902)
   - 对比 jina-embeddings-v4 (dense) 和 jina-embeddings-v4 (late)
   - J-VDR 73.98 vs 80.55， ViDoRe 84.11 vs 90.17， 好像 late 方法提升并不显著
+- Mon, 7 Jul 2025 [Llama Nemoretriever Colembed: Top-Performing Text-Image Retrieval Model]
+  - We initialized our models from NVIDIA’s Eagle2 vision-language model [10, 11], 
+  - replaced the causal attention with bidirectional attention, 
+  - Training Recipe (Two-stage training) 
+    - Stage 1: Text-Only Pretraining
+    - Stage 2: Text-Image Fine-Tuning
+  - Results
+    - ranking No.1 on both benchmarks (as of June 27, 2025)
+    - 没有dense vs late 对比
 
 # Multilingual Multimodal Retrieval(Embeddings)
 ## CLIP
