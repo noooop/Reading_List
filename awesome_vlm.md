@@ -170,6 +170,35 @@ slice positions for LMMs.
       - Stage-1 224×224，只训练 compression layer
       - Stage-2 224×224 to 448×448，  The whole visual encoder is trained, leaving other parameters frozen
       - Stage-3 The LLM is kept frozen to avoid disruption from the relatively low-quality pre-training data
+- Wed, 28 Aug 2024 [Eagle: Exploring The Design Space for Multimodal LLMs with Mixture of Encoders](https://arxiv.org/abs/2408.15998)
+  - STRONGER CLIP ENCODER
+    - Direct interpolation (CLIP encoder) to 448 × 448 can achieve competitive performance while being more efficient
+  - VISION EXPERTS
+    - experts
+      - (1) Vision-Language Alignment: CLIP/ConvNeXt/OpenCLIP
+      - (2) Object-Centric: EVA-02
+      - (3) OCR: Pix2Struct
+      - (4) Segmentation: SAM
+      - (5) Self-supervised: DINOv2
+    - distinct advantages of different experts
+      - We resize the output 2D feature maps of each vision encoder using bilinear interpolation or 
+      - pixel shuffle (Shi et al., 2016) to ensure that the visual token number equals 1024.
+      - unfreezing the vision experts again leads to consistent improvement,
+        - MLLMs with these task specific vision encoders achieve optimal performance in their pretraining domains
+  - FUSION STRATEGY
+    - (1) Sequence Append
+    - (2) Channel Concatenation
+    - (3) LLaVA-HR: injecting highresolution features into low-resolution vision encoders using mixture-of-resolution adapter
+    - (4) Mini-Gemini: using the CLIP tokens as the low-resolution queries to cross-attend another high-resolution vision encoder in the co-located local windows
+    - (5) Deformable Attention
+    - Channel Concatenation stands out with the best performance, expandability, and efficiency.
+  - VISON-LANGUAGE PRE-ALIGNMENT
+    - 1) training each pre-trained vision expert with their own projector, while keeping the language model frozen; 
+    - 2) combining all vision experts from the first step and training both the projector and vision experts; 
+    - 3) training the whole model on SFT data.
+  - EXTENSION TO MULTI-EXPERTS
+    - introducing additional vision encoders enhances the performance
+    - CLIP-448 + ConvNext-1024 组合作为baseline
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
   - Architecture
     - txt: Qwen2
