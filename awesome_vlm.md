@@ -256,3 +256,6 @@ constructed high-resolution semantic pyramid.
     - 𝒞: ℬ - OpenAICLIP + SigLIP: Better VLM
     - 𝒟: 𝒞 + ViT-H: Bigger backbone
     - ℰ: 𝒟 + Token Merging: Improve VLM
+
+# Token Merging
+- Thu, 30 Mar 2023[Token Merging for Fast Stable Diffusion](https://arxiv.org/abs/2303.17604)
