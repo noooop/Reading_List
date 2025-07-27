@@ -197,3 +197,33 @@ constructed high-resolution semantic pyramid.
   - Architecture
     - txt: Qwen2.5-7B
     - img: SigLIP 448*448 + ConvNeXt 512*512
+
+# Knowledge Distillation
+- Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
+  - CLIP, DINOv2, and SAM
+- Tue, 10 Dec 2024 [RADIOv2.5: Improved Baselines for Agglomerative Vision Foundation Models](https://arxiv.org/abs/2412.07679)
+  - Challenges
+    - 3.1. Achieving Multi-Resolution Robustness
+      - where feature distributions shift significantly based on input resolution 
+      - Specifically, low-resolution inputs yield DINO-like features, 
+      - while high-resolution inputs produce SAM-like features
+      - We trace this behavior to the student learning from different teachers at different resolutions during training
+    - 3.2. Token Count
+      - an excessive number of vision tokens can negatively impact performance or lead to sequence overflows
+  - Method
+    - Finding 1. High-resolution inference through tiling causes the vision encoder to lose global context and exhibit poor scaling equivariance.
+    - Finding 2. For the student model to be consistently accurate across resolutions, it is sufficient to match all teachers at all resolutions, and to train at two resolutions simultaneously in the final training stage.
+    - Finding 3. Mosaic augmentation greatly reduces the training cost associated with learning from high-resolution teachers and eliminates the need for feature interpolation. Student quality is even improved with this optimization.
+    - Finding 4. PHI Standardization helps balance the energy spent learning from each teacher.
+    - Finding 5. All teachers are beneficial, including SAM, despite recent trends. It also has broad downstream applicability, granting our student the same abilities.
+    - Finding 6. Minimizing the number of partitions seems to be beneficial, assuming you can afford the teacher overhead. Under compute constraints, partitioning is an effective strategy to reduce the overhead.
+    - SigLIP Teacher
+      - Our choice is validated by the significant improvements observed in VLM tasks
+    - Finding 7. Token Merging is very effective at retaining the most diverse information under high compression ratios.
+    - Finding 8. Intermediate layer activations greatly benefit downstream tasks if a non-linear transformation is employed.
+  - Ablation Studies
+    - 𝒜: RADIOv2.1-L*: Baseline
+    - ℬ: 𝒜 + multi-res: Eliminate modes
+    - 𝒞: ℬ - OpenAICLIP + SigLIP: Better VLM
+    - 𝒟: 𝒞 + ViT-H: Bigger backbone
+    - ℰ: 𝒟 + Token Merging: Improve VLM
