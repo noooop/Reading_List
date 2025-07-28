@@ -153,6 +153,7 @@ fixed 2 × 2 slices). Results show that LLaVA-UHD can more properly divide image
       -  (4) We remove the spatial schema from LLaVA-UHD. The performance
 degradation demonstrates the effectiveness and necessity of spatial schema in informing the dynamic
 slice positions for LMMs.
+- Mon, 24 Jun 2024 [Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs](https://arxiv.org/abs/2406.16860)
 - Sat, 3 Aug 2024 [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](https://arxiv.org/abs/2408.01800)
   - Architecture
     - txt: 
