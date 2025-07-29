@@ -154,6 +154,8 @@ fixed 2 × 2 slices). Results show that LLaVA-UHD can more properly divide image
 degradation demonstrates the effectiveness and necessity of spatial schema in informing the dynamic
 slice positions for LMMs.
 - Mon, 24 Jun 2024 [Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs](https://arxiv.org/abs/2406.16860)
+  - 内容太丰富了，但最重要的一点是使用多个 vision feature extractor 互补
+  - 比如 CLIP 视觉和文本对齐，OpenCLIP ConvNeXt-XXL@1024 支持高分辨率，DINOv2 ViT-L/14@518 视觉任务比较强
 - Sat, 3 Aug 2024 [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](https://arxiv.org/abs/2408.01800)
   - Architecture
     - txt: 
