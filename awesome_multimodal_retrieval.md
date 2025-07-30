@@ -144,6 +144,19 @@ on long image captions.
     - 等一下，GME (2B) & GME (7B) 没有使用 ColPali 为什么效果这么好
     - In visual document retrieval, VLM2Vec-V2 outperforms all VLM2Vec variants, 
     - although still trailing behind ColPali, which is specifically optimized for VisDoc tasks.
+- Sun, 20 Jul 2025 [U-MARVEL: Unveiling Key Factors for Universal Multimodal Retrieval via Embedding Learning with MLLMs](https://www.arxiv.org/abs/2507.14902)
+  - Built on Qwen2-VL
+  - Finding
+    - Generating embeddings with bidirectional attention and mean pooling outperforms the common approach of using compression prompts with the last token mechanism.
+    - Masking instruction tokens during mean pooling enhances embedding performance.
+    - Progressive transition effectively adapts decorder-only MLLMs to embedding models through stepwise training.
+    - Increasing batch size yields performance gains, but these improvements plateau without appropriate learning rate scaling. Additionally, learnable temperature parameters play a pivotal role in enhancing the effectiveness of contrastive learning.
+    - Hard negatives may hinder convergence during training. Filtering false negatives and mixing random in-batch negatives help balance difficulty and improve performance.
+    - Distillation from the Reranker model using just 10% of the data achieves a notable performance boost, providing an efficient approach that can streamline the recall-then-rerank cascade structure by removing the rankers.
+  - U-MARVEL Framework
+    - (1) Progressive transition: the model is progressively fine-tuned on the increasing complexity levels of the retrieval data, which enables the model to gradually adapt to retrieval tasks. 
+    - (2) Hard Negative Mining: building on Progressive transition, the model’s retrieval performance is further enhanced through hard negative mining, accompanied by the filtering of false negatives. 
+    - (3) Distillation: we perform knowledge distillation on the reranker model using the sampled dataset sequentially.
 
 # Multilingual Multimodal Reranker
 - Thu, 27 Mar 2025 [jinaai/jina-reranker-m0](https://huggingface.co/jinaai/jina-reranker-m0)
