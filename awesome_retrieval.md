@@ -845,8 +845,14 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 ColBERT + Late Chunking 有没有搞头？
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
 - Thu, 2 Dec 2021 [ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction](https://arxiv.org/abs/2112.01488)
+- Tue, 23 Apr 2024 [A Reproducibility Study of PLAID](https://arxiv.org/abs/2404.14989)
+  - maxsim 加速
+- Wed, 29 May 2024 [MUVERA: Multi-Vector Retrieval via Fixed Dimensional Encodings](https://arxiv.org/abs/2405.19504)
+  - maxsim 加速
 - Mon, 23 Sep 2024 [Reducing the Footprint of Multi-Vector Retrieval with Minimal Performance Impact via Token Pooling](https://arxiv.org/abs/2409.14683)
   - Token Pooling 一半，性能甚至有所提升
+- Thu, 10 Jul 2025 [maxsim-cpu](https://github.com/mixedbread-ai/maxsim-cpu)
+  - maxsim 加速
 
 # reasoning-intensive retrieval
 - Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
