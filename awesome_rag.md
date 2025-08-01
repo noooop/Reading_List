@@ -295,10 +295,18 @@ reasoning 的风吹到了 RAG
 
 # Knowledge Graph RAG
 - Wed, 24 Apr 2024 [From Local to Global: A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130)
+- Tue, 8 Oct 2024 [LightRAG: Simple and Fast Retrieval-Augmented Generation](https://arxiv.org/abs/2410.05779)
+
+# Meta KDD Cup
+## Cup 2024
+2024 年是 Knowledge Graph (KG)
 - Fri, 7 Jun 2024 [CRAG -- Comprehensive RAG Benchmark](https://arxiv.org/abs/2406.04744)
 - Fri, 9 Aug 2024 [A Hybrid RAG System with Comprehensive Enhancement on Complex Reasoning](https://arxiv.org/abs/2408.05141)
-  - CRAG + 1
-- Tue, 8 Oct 2024 [LightRAG: Simple and Fast Retrieval-Augmented Generation](https://arxiv.org/abs/2410.05779)
+## Cup 2025
+2025 年是 Vision Question Answering
+- Tue, 29 Jul 2025 [Solution for Meta KDD Cup'25: A Comprehensive Three-Step Framework for Vision Question Answering](https://arxiv.org/abs/2507.21520)
+  - Data augmentation & Model Fine-Tuning
+  - listwise reranking
 
 # Long-Context Evaluate
 - Mar, 8 Feb 2023 [Needle in a haystack](https://github.com/gkamradt/LLMTest_NeedleInAHaystack)
