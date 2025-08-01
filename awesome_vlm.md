@@ -232,6 +232,11 @@ constructed high-resolution semantic pyramid.
   - Architecture
     - txt: Qwen2.5-7B
     - img: SigLIP 448*448 + ConvNeXt 512*512
+- Thu, 31 Jul 2025 [https://stepfun.ai/research/zh/step3](Step3: Cost-Effective Multimodal Intelligence)
+  - VL 开启 MOE 时代
+  - Architecture
+    - txt: Step3 321B total parameters and 38B active
+    - img: 16 spatial down-sampling + Eva-CLIP 5B
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
