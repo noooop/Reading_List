@@ -17,6 +17,7 @@ retrieval rerank 两阶段检索，第一阶段先用双塔模型大量召回比
   - 2022 年对于 Dense Text Retrieval 的 Survey 已经有 351 引用
   - 其中包括 6 篇 之前的 Survey。行吧
 - Mon, 27 May 2024 [Recent advances in text embedding: A Comprehensive Review of Top-Performing Methods on the MTEB Benchmark](https://arxiv.org/abs/2406.01607)
+- Mon, 28 Jul 2025 [On The Role of Pretrained Language Models in General-Purpose Text Embeddings: A Survey](https://arxiv.org/abs/2507.20783)
 
 # Traditional Retrieval(Sparse lexical search algorithms)
 虽然 dense retrieval 从2020年开始变成检索模型的主流，传统检索算法比如 BM25 对关键词、专业名词等召回效果比较好，仍然是 dense retrieval 有效的补充。
