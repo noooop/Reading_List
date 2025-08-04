@@ -227,11 +227,29 @@ perception abilities by introducing a well-designed vision-language projector, t
 Hierarchical window (Hiwin) transformer. Hiwin transformer enhances MLLM’s
 ability to capture diverse multi-modal visual granularities, by incorporating our
 constructed high-resolution semantic pyramid. 
-- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
 - Mon, 20 Jan 2025 [Eagle 2: Building Post-Training Data Strategies from Scratch for Frontier Vision-Language Models](https://arxiv.org/abs/2501.14818)
   - Architecture
     - txt: Qwen2.5-7B
     - img: SigLIP 448*448 + ConvNeXt 512*512
+- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+- Wed, 4 Jun 2025 [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569)
+  - Architecture
+    - txt: MiMo-7B
+    - img: Qwen2.5-VL
+    - projector: Multi-Layer Perceptron (MLP)
+  - Training
+    - Stage 1 Projector Warmup
+    - Stage 2 Vision-Language Alignment
+    - Stage 3 Multimodal Pre-training
+    - Stage 4 Long-context SFT
+  - Post-Training
+    - Reinforcement Learning with Verifiable Rewards
+      - Visual Reasoning\Text Reasoning\Image Grounding\Visual Counting\Temporal Video Grounding
+    - Mixed On-Policy Reinforcement Learning
+  - Discussion
+    - Boosting Reasoning Capability in Pre-training
+    - On-Policy RL v.s. Vanilla GRPO
+    - Interference Between RL Tasks
 - Thu, 31 Jul 2025 [https://stepfun.ai/research/zh/step3](Step3: Cost-Effective Multimodal Intelligence)
   - VL 开启 MOE 时代
   - Architecture
