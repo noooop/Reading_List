@@ -255,6 +255,32 @@ constructed high-resolution semantic pyramid.
   - Architecture
     - txt: Step3 321B total parameters and 38B active
     - img: 16 spatial down-sampling + Eva-CLIP 5B
+- Tue, 1 Jul 2025 [GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](https://arxiv.org/abs/2507.01006)
+  - Architecture
+    - txt: GLM as the LLM
+    - img: AIMv2- Huge
+    - projector: MLP adapter
+  - Pre-training
+    - Pre-training Data
+    - Training Recipe
+      - Multimodal pre-training
+      - Long-context continual training
+  - Supervised Fine-Tuning
+    - Supervised Fine-Tuning Data
+    - Training Recipe
+      - Interestingly, we observe that even when cold-start training uses noisy reasoning data, which contain
+formatting inconsistencies or repetitive patterns, subsequent RL remains effective. This suggests that
+imperfect reasoning traces can still provide useful guidance. Nonetheless, models initialized with
+clean and consistent data show more stable RL convergence and achieve higher overall performance.
+  - Reinforcement Learning: What’s Challenging and What Works
+    - Data preparation
+    - Reward system
+      - The extraction of the final answer in RLVR.
+      - Avoid reward hacking
+      - Domain-specific reward system
+    - Reinforcement Learning with Curriculum Sampling (RLCS)
+    - Infrastructure
+  - Evaluation
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
