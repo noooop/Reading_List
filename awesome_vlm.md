@@ -232,6 +232,20 @@ constructed high-resolution semantic pyramid.
     - txt: Qwen2.5-7B
     - img: SigLIP 448*448 + ConvNeXt 512*512
 - Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+- Mon, 14 Apr 2025 [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](https://arxiv.org/abs/2504.10479)
+  - Architecture
+    - txt: Qwen2.5 series and InternLM3-8B
+    - img: InternViT-300M and InternViT-6B
+    - projector: Multi-Layer Perceptron (MLP) + pixel unshuffle operation 
+  - Native Multimodal Pre-Training
+    - 不使用 projector warming up 
+    - our method updates all model parameters jointly during multimodal pre-training
+  - Post-Training
+    - Supervised Fine-Tuning
+    - Mixed Preference Optimization (DPO)
+  - Test-Time Scaling
+    - Visual Process Reward Model
+  - Infrastructure
 - Wed, 4 Jun 2025 [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569)
   - Architecture
     - txt: MiMo-7B
