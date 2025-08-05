@@ -1,11 +1,12 @@
-# Visual Backbone Networks
+
+# Pre-training of Large Vision Encoders
+## Visual Backbone Networks
 使用 ImageNet-1K classification 和 ImageNet-22K 训练
 - Thu, 22 Oct 2020 [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
   - ViT
 - Mon, 10 Jan 2022 [A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545)
   - ConvNext
-
-# CLIP (Contrastive Language-Image Pre-Training)
+## CLIP (Contrastive Language-Image Pre-Training)
 - Fri, 26 Feb 2021 [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020)
   - CLIP dual-encoder architecture
   - 这么简单的方法效果居然出奇的好，效果让人瞠目结舌
@@ -42,6 +43,30 @@ coherence and effectiveness of the combined features.
       - 等一下，为什么要跟 LLaMA-7B 对比学习，LLaMA-7B 输出的 embed 是用来做采样下一个词的，跟检索没啥关系啊？？？？
 - Tue, 29 Jul 2025 [MetaCLIP 2: A Worldwide Scaling Recipe](https://arxiv.org/abs/2507.22062)
   - 在2025年训练一个输入为224的 CLIP. 可以，这很Meta
+
+## Others
+- Thu, 21 Nov 2024 [Multimodal Autoregressive Pre-training of Large Vision Encoders](https://arxiv.org/abs/2411.14402)
+  - 使用自回归方法训练 Large Vision Encoders
+  - Causal Multimodal Decoder + Pixel MSE Loss + Cross-entropy Loss
+  - Architecture
+    - Vision Transformer (ViT) architecture 
+    - Prefix Attention
+      - Following El-Nouby et al. [33], we constrain the self-attention mechanism within the vision encoder by applying a prefix attention mask [95]. 
+      - This strategy facilitates the use of bidirectional attention during inference without additional tuning.
+  - Post-Training
+    - High-resolution Adaptation
+    - Native Resolution Fine-tuning
+  - Multimodal Instruction Tuning
+    - Architecture
+      - txt:  Llama 3.0 8B
+      - img: AIMV2-L
+      - projector:  2-layer MLP connector 
+    - Varying the LLM and Data Mixture
+      - Across all settings, AIMV2 provides a stronger, or at worst on par, performance compared the OAI CLIP and SigLIP
+    - High-Resolution via Tiling
+      - We observe that the performance of all methods improves with higher resolutions, 
+      - with a significant improvement for TextVQA. 
+      - Notably, AIMV2 maintains its advantage over the baselines in high-resolution tiling settings, demonstrating its versatility.
 
 # Multimodal Projector(abstractors)
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
