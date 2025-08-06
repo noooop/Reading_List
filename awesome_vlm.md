@@ -125,13 +125,23 @@ coherence and effectiveness of the combined features.
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
   - Architecture
     - txt: Qwen-7B
-    - img: Openclip’s ViT-bigG
+    - img: Openclip’s ViT-bigG, input images are resized to a specific resolution
     - projector:
+      - Learnable Query Embs + CrossAttn + 2D absolute positional encodings
+      - This mechanism compresses the visual feature sequence to a fixed length of 256
   - IO
-    - 448*448 resolution image
-    - The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, 
-    - where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
-    - Its corresponding text description can be identified by <ref>text_caption</ref>.
+    - img tag: 448*448 resolution image -> compresses the visual feature sequence to a fixed length of 256
+    - box tag: The coordinate box is expressed as <box>(x1,y1),(x2,y2)</box>·, where (x1, y1) and (x2, y2) are normalized values in the range [0, 1000). 
+    - ref tag: Its corresponding text description can be identified by <ref>text_caption</ref>.
+  - Training
+    - Pre-training
+      - The input images are resized to 224 × 224
+      - We freeze the large language model and only optimize the vision encoder and VL adapter in this stage.
+    - Multi-task Pre-training
+      - We increase the input resolution of the visual encoder from 224 × 224 to 448 × 448
+      - We unlocked the large language model and trained the whole model
+    - Supervised Fine-tuning
+      - In this stage, we freeze the visual encoder and optimize the language model and adapter module
 - Tue, 9 Apr 2024 [InternLM-XComposer2-4KHD: A Pioneering Large Vision-Language Model Handling Resolutions from 336 Pixels to 4K HD](https://arxiv.org/abs/2404.06512)
   - Architecture
     - txt: InternLM2-7B
@@ -231,13 +241,23 @@ slice positions for LMMs.
     - introducing additional vision encoders enhances the performance
     - CLIP-448 + ConvNext-1024 组合作为baseline
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
+  - 2B 7B 72B
   - Architecture
-    - txt: Qwen2
+    - txt: Qwen2 series 1.5B, 7.6B, 72B
     - img:  
       - 675M Vision Encoder(DFN’s ViT) + RoPE-2D
       - Naive Dynamic Resolution
       - Multimodal Rotary Position Embedding (M-RoPE)
       - Unified Image and Video Understanding
+  - Training
+    - Following Qwen-VL (Bai et al., 2023b), we adopt a three-stage training methodology
+      - In the first stage, we focus exclusively on training the Vision Transformer (ViT) component
+      - In the second stage, we unfreeze all parameters and train with a wider range of data for more comprehensive learning
+      - In the final stage, we lock the ViT parameters and perform exclusive fine-tuning of the LLM using instructional datasets
+  - Ablation Study
+    - Dynamic Resolution
+    - M-RoPE
+    - Model Scaling
 - Wed, 25 Sep 2024 [Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models](https://arxiv.org/abs/2409.17146)
   - Architecture
     - txt: OLMoE-1B-7B, OLMo-7B-1024-preview, Qwen2 7B, Qwen2 72B
@@ -257,6 +277,32 @@ constructed high-resolution semantic pyramid.
     - txt: Qwen2.5-7B
     - img: SigLIP 448*448 + ConvNeXt 512*512
 - Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+  - 3B 7B 72B
+  - Architecture
+    - txt: Qwen2.5 series 
+    - img:
+      - redesigned Vision Transformer (ViT) architecture
+      - 2D-RoPE and window attention
+      - During both training and inference, the height and width of the input images are resized to multiples of 28 before being fed into the ViT
+      - The vision encoder processes images by splitting them into patches with a stride of 14, generating a set of image features
+    - projector:
+      - we first group spatially adjacent sets of four patch features
+      - These grouped features are then concatenated and passed through a two-layer multi-layer perceptron (MLP) 
+      - to project them into a dimension that aligns with the text embeddings used in the LLM
+  - Training
+    - ViT
+      - we train the redesigned ViT from scratch
+      - CLIP pre-training, vision-language alignment, end-to-end fine-tuning
+      - Native Dynamic Resolution and Frame Rate
+      - Multimodal Rotary Position Embedding Aligned to Absolute Time
+    - Pre-Training
+      - Pre-Training Data
+      - In the first phase, only the Vision Transformer (ViT) is trained to improve its alignment with the language model, laying a solid foundation for multimodal understanding
+      - In the second phase, all model parameters are unfrozen, and the model is trained on a diverse set of multimodal image data to enhance its capacity to process complex visual information. 
+      - In the third phase, to further enhance the model’s reasoning capabilities over longer sequences, video, and agent-based data are incorporated, alongside an increase in sequence length
+    - Post-training
+      - Supervised Fine-Tuning (SFT)
+      - Direct Preference Optimization (DPO) 
 - Mon, 14 Apr 2025 [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](https://arxiv.org/abs/2504.10479)
   - Architecture
     - txt: Qwen2.5 series and InternLM3-8B
@@ -282,18 +328,13 @@ constructed high-resolution semantic pyramid.
     - Stage 3 Multimodal Pre-training
     - Stage 4 Long-context SFT
   - Post-Training
-    - Reinforcement Learning with Verifiable Rewards
+    - Reinforcement Learning with Verifiable Rewards (On-Policy GRPO)
       - Visual Reasoning\Text Reasoning\Image Grounding\Visual Counting\Temporal Video Grounding
     - Mixed On-Policy Reinforcement Learning
   - Discussion
     - Boosting Reasoning Capability in Pre-training
     - On-Policy RL v.s. Vanilla GRPO
     - Interference Between RL Tasks
-- Thu, 31 Jul 2025 [https://stepfun.ai/research/zh/step3](Step3: Cost-Effective Multimodal Intelligence)
-  - VL 开启 MOE 时代
-  - Architecture
-    - txt: Step3 321B total parameters and 38B active
-    - img: 16 spatial down-sampling + Eva-CLIP 5B
 - Tue, 1 Jul 2025 [GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](https://arxiv.org/abs/2507.01006)
   - Architecture
     - txt: GLM as the LLM
@@ -311,7 +352,7 @@ constructed high-resolution semantic pyramid.
 formatting inconsistencies or repetitive patterns, subsequent RL remains effective. This suggests that
 imperfect reasoning traces can still provide useful guidance. Nonetheless, models initialized with
 clean and consistent data show more stable RL convergence and achieve higher overall performance.
-  - Reinforcement Learning: What’s Challenging and What Works
+  - Reinforcement Learning: What’s Challenging and What Works (GRPO)
     - Data preparation
     - Reward system
       - The extraction of the final answer in RLVR.
@@ -320,6 +361,11 @@ clean and consistent data show more stable RL convergence and achieve higher ove
     - Reinforcement Learning with Curriculum Sampling (RLCS)
     - Infrastructure
   - Evaluation
+- Thu, 31 Jul 2025 [https://stepfun.ai/research/zh/step3](Step3: Cost-Effective Multimodal Intelligence)
+  - VL 开启 MOE 时代
+  - Architecture
+    - txt: Step3 321B total parameters and 38B active
+    - img: 16 spatial down-sampling + Eva-CLIP 5B
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
