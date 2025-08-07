@@ -366,6 +366,8 @@ clean and consistent data show more stable RL convergence and achieve higher ove
   - Architecture
     - txt: Step3 321B total parameters and 38B active
     - img: 16 spatial down-sampling + Eva-CLIP 5B
+- Wed, 6 Aug 2025 [dots.vlm1](https://github.com/rednote-hilab/dots.vlm1)
+  - 1.2B vision encoder + DeepSeek V3 ┓( ´∀` )┏
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
