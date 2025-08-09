@@ -6,9 +6,17 @@
 - Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
 - Tue, 20 May 2025 [Dolphin: Document Image Parsing via Heterogeneous Anchor Prompting](https://arxiv.org/abs/2505.14059)
   - Swin Transformer + mBart
+- Sun, 1 Jun 2025 [Infinity Parser: Layout Aware Reinforcement Learning for Scanned Document Parsing](https://arxiv.org/abs/2506.03197)
+  - Built on Qwen/Qwen2.5-VL-8B-Instruct
+  - optimized via Group Relative Policy Optimization (GRPO)
+    - Edit Distance Reward (Rdist)
+    - Count Reward (Rcount)
+    - Order Reward (Rorder)
+  - We fine-tune the Qwen2.5-VL-7B model using GRPO within a distributed training setup based on Verl [45, 66], utilizing 8 A100 GPUs (80GB).
 - Thu, 5 Jun 2025 [MonkeyOCR: Document Parsing with a Structure-Recognition-Relation Triplet Paradigm](https://arxiv.org/abs/2506.05218)
   - Structure Detection, Content Recognition, Relation Prediction
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
+  - Our 3B model was trained for 53 hours on 32 A800 GPUs.
 - Thu, 12 Jun 2025 [OCRFlux-3B](https://huggingface.co/ChatDOC/OCRFlux-3B)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
 - Wed, 30 Jul 2025 [dots.ocr: Multilingual Document Layout Parsing in a Single Vision-Language Model](https://huggingface.co/rednote-hilab/dots.ocr)
