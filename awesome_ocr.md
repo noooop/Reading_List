@@ -9,6 +9,8 @@
 - Thu, 5 Jun 2025 [MonkeyOCR: Document Parsing with a Structure-Recognition-Relation Triplet Paradigm](https://arxiv.org/abs/2506.05218)
   - Structure Detection, Content Recognition, Relation Prediction
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
+- Thu, 12 Jun 2025 [OCRFlux-3B](https://huggingface.co/ChatDOC/OCRFlux-3B)
+  - Built on Qwen/Qwen2.5-VL-3B-Instruct
 - Wed, 30 Jul 2025 [dots.ocr: Multilingual Document Layout Parsing in a Single Vision-Language Model](https://huggingface.co/rednote-hilab/dots.ocr)
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
 - Fri, 1 Aug 2025 [DocTron-Formula: Generalized Formula Recognition in Complex and Structured Scenarios](https://arxiv.org/abs/2508.00311)
