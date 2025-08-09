@@ -1,9 +1,13 @@
 
 # VLMs
+- Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
 - Fri, 27 Sep 2024 [MinerU: An Open-Source Solution for Precise Document Content Extraction](https://arxiv.org/abs/2409.18839)
   - opendatalab/MinerU2.0-2505-0.9B
   - Built on Qwen2 + siglip-so400m-patch14-384
 - Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+- Tue, 25 Feb 2025 [olmOCR: Unlocking Trillions of Tokens in PDFs with Vision Language Models](https://arxiv.org/abs/2502.18443)
+  - Built on Qwen2-VL-7B-Instruct
+  - We use single node with 8 x NVIDIA H100 (80GB) GPUs. A single training run took 16 node hours, with all training experiments totaling 365 node hours
 - Tue, 20 May 2025 [Dolphin: Document Image Parsing via Heterogeneous Anchor Prompting](https://arxiv.org/abs/2505.14059)
   - Swin Transformer + mBart
 - Sun, 1 Jun 2025 [Infinity Parser: Layout Aware Reinforcement Learning for Scanned Document Parsing](https://arxiv.org/abs/2506.03197)
