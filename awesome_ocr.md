@@ -3,6 +3,9 @@
 - Fri, 27 Sep 2024 [MinerU: An Open-Source Solution for Precise Document Content Extraction](https://arxiv.org/abs/2409.18839)
   - opendatalab/MinerU2.0-2505-0.9B
   - Built on Qwen2 + siglip-so400m-patch14-384
+- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+- Tue, 20 May 2025 [Dolphin: Document Image Parsing via Heterogeneous Anchor Prompting](https://arxiv.org/abs/2505.14059)
+  - Swin Transformer + mBart
 - Thu, 5 Jun 2025 [MonkeyOCR: Document Parsing with a Structure-Recognition-Relation Triplet Paradigm](https://arxiv.org/abs/2506.05218)
   - Structure Detection, Content Recognition, Relation Prediction
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
