@@ -211,6 +211,28 @@ slice positions for LMMs.
       - Stage-1 224×224，只训练 compression layer
       - Stage-2 224×224 to 448×448，  The whole visual encoder is trained, leaving other parameters frozen
       - Stage-3 The LLM is kept frozen to avoid disruption from the relatively low-quality pre-training data
+- Fri, 16 Aug 2024 [xGen-MM (BLIP-3): A Family of Open Large Multimodal Models](https://arxiv.org/abs/2408.08872)
+  - Architecture
+    - txt: phi-3.5-mini 4B & 14B
+    - img: DFN vs SigLIP
+  - Training
+    - Stage-1 Base Resolution Pre-training
+    - Stage-2 High Resolution Pre-training
+    - Single-Image Supervised Fine-tuning
+    - Interleaved Multi-Image Supervised Fine-tuning
+  - Data Recipe
+  - Ablation Studies
+    - Ablation on Stage-1 Pre-training
+      - Few-shot Pre-training Evaluation
+      - Scaling Pre-training Data
+      - Visual Backbones 
+      - we find SigLIP provides better visual representations that boost performance on OCR tasks, and we adopt SigLIP in the final model architecture as the ViT backbone.
+    - Ablation on Stage-2 Pre-training
+      - Impact of Adding Stage-2 Pre-training and with Different Resolutions.
+    - Ablation on Instruction Tuning
+      - Perceiver Resampler vs. MLP
+      - Any-Resolution Vision Token Sampling
+      - Instruction-Aware Vision Token Sampling
 - Wed, 28 Aug 2024 [Eagle: Exploring The Design Space for Multimodal LLMs with Mixture of Encoders](https://arxiv.org/abs/2408.15998)
   - STRONGER CLIP ENCODER
     - Direct interpolation (CLIP encoder) to 448 × 448 can achieve competitive performance while being more efficient
