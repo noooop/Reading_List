@@ -686,6 +686,18 @@ size and the input text, respectively.
 - Fri, 9 May 2025 [喝下这一碗模型汤，掌握向量模型的训练秘方](https://mp.weixin.qq.com/s/BKPO_zIGvKysxmW5iMkFZg)
   - 通过融合不同阶段的检查点, 泛化性更好
   - 类似 mergekit
+- Mon, 10 Mar 2025 [Gemini Embedding: Generalizable Embeddings from Gemini](https://arxiv.org/abs/2503.07891)
+  - Architecture Gemini + mean pooling, dimensional embeddings 3072 估计是 gemma-3-4b-it
+  - noise-contrastive estimation (NCE) loss + MRL
+  - two-stage training
+    - Pre-finetuning on a large number of potentially noisy (query, target) pairs
+    - Finetuning on a large mixture of task-specific datasets which contain(query, target, hard negative target) triples
+  - Model Soup
+    - To obtain additional generalization performance, we averaged the parameters obtained from individual fine-tuning runs
+  - Improving Data Quality with Gemini
+    - Synthetic Data Generation
+    - Data Filtering
+    - Hard Negative Mining
 - Tue, 20 May 2025 [voyage-3.5 and voyage-3.5-lite: improved quality for a new retrieval frontier](https://blog.voyageai.com/2025/05/20/voyage-3-5/)
   - Matryoshka learning and quantization-aware training
 - Thu, 5 Jun 2025 [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](https://arxiv.org/abs/2506.05176)
