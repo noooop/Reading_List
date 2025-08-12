@@ -1,4 +1,7 @@
 
+# Survey
+- 19 Jul 2025 [The Big LLM Architecture Comparison](https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison)
+
 # Bert like (encode only)
 - Thu, 11 Oct 2018 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
   - Bidirectional： Such restrictions(unidirectional) are sub-optimal for sentence-level tasks,
