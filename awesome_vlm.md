@@ -390,6 +390,8 @@ clean and consistent data show more stable RL convergence and achieve higher ove
     - img: 16 spatial down-sampling + Eva-CLIP 5B
 - Wed, 6 Aug 2025 [dots.vlm1](https://github.com/rednote-hilab/dots.vlm1)
   - 1.2B vision encoder + DeepSeek V3 ┓( ´∀` )┏
+- Mon, 11 Aug 2025 [GLM-4.5V](https://huggingface.co/zai-org/GLM-4.5V)
+  - txt: GLM-4.5-Air (106B parameters, 12B active)
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
