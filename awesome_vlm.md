@@ -394,7 +394,9 @@ clean and consistent data show more stable RL convergence and achieve higher ove
 - Wed, 6 Aug 2025 [dots.vlm1](https://github.com/rednote-hilab/dots.vlm1)
   - 1.2B vision encoder + DeepSeek V3 ┓( ´∀` )┏
 - Mon, 11 Aug 2025 [GLM-4.5V](https://huggingface.co/zai-org/GLM-4.5V)
+  - technical_report: https://github.com/zai-org/GLM-V/blob/main/resources/GLM-4.5V_technical_report.pdf
   - txt: GLM-4.5-Air (106B parameters, 12B active)
+  - SFT+RL 相对 SFT 都所有项目都有比较大的提高
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
