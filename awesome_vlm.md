@@ -1,4 +1,7 @@
 
+# Survey
+- 03 Nov 2024 [Understanding Multimodal LLMs](https://magazine.sebastianraschka.com/p/understanding-multimodal-llms)
+
 # Pre-training of Large Vision Encoders
 ## Visual Backbone Networks
 使用 ImageNet-1K classification 和 ImageNet-22K 训练
