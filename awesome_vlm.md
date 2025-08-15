@@ -47,6 +47,8 @@ coherence and effectiveness of the combined features.
 - Tue, 29 Jul 2025 [MetaCLIP 2: A Worldwide Scaling Recipe](https://arxiv.org/abs/2507.22062)
   - 在2025年训练一个输入为224的 CLIP. 可以，这很Meta
 ## DINO
+- Thu, 29 Apr 2021 [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294)
+- Fri, 14 Apr 2023 [DINOv2: Learning Robust Visual Features without Supervision](https://arxiv.org/abs/2304.07193)
 - Thu, 14 Aug 2025 [DINOv3](https://ai.meta.com/research/publications/dinov3/)
 
 ## Others
