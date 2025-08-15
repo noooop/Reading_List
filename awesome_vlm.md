@@ -94,6 +94,9 @@ coherence and effectiveness of the combined features.
   - Hierarchical window (Hiwin) transformer
 
 # Vision-Language Models
+- Fri, 28 Jan 2022 [BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation](https://arxiv.org/abs/2201.12086)
+  - loss ITC + ITM + LM
+  - 2022 年 11 月 30 日 chatgpt 发布之前的模型，还没有 GPT like NTP 大一统
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
   - Architecture
     - txt: OPT/FlanT5
