@@ -46,6 +46,8 @@ coherence and effectiveness of the combined features.
       - 等一下，为什么要跟 LLaMA-7B 对比学习，LLaMA-7B 输出的 embed 是用来做采样下一个词的，跟检索没啥关系啊？？？？
 - Tue, 29 Jul 2025 [MetaCLIP 2: A Worldwide Scaling Recipe](https://arxiv.org/abs/2507.22062)
   - 在2025年训练一个输入为224的 CLIP. 可以，这很Meta
+## DINO
+- Thu, 14 Aug 2025 [DINOv3](https://ai.meta.com/research/publications/dinov3/)
 
 ## Others
 - Thu, 21 Nov 2024 [Multimodal Autoregressive Pre-training of Large Vision Encoders](https://arxiv.org/abs/2411.14402)
