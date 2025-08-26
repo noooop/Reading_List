@@ -853,6 +853,9 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
       - Supervised Fine-Tuning (SFT) loss
       - stage 2 Supervised Fine-Tuning with High-Quality Synthetic and labeled Data
       - stage 3 Model Merging using sampled Checkpoints from stage 2
+- Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
+  - llm + pairwise & listwise approaches 有没有搞头 
+  - colbert ranker 确实比 embedding强一些，比正经的ranker弱一些
 
 # ColBERT
 ColBERT + Late Chunking 有没有搞头？
