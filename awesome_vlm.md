@@ -404,6 +404,21 @@ clean and consistent data show more stable RL convergence and achieve higher ove
   - technical_report: https://github.com/zai-org/GLM-V/blob/main/resources/GLM-4.5V_technical_report.pdf
   - txt: GLM-4.5-Air (106B parameters, 12B active)
   - SFT+RL 相对 SFT 都所有项目都有比较大的提高
+- Mon, 25 Aug 2025 [InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency](https://arxiv.org/abs/2508.18265)
+  - Architecture
+    - txt: Qwen3 series and GPT-OSS-20B
+    - img: InternViT-300M and InternViT-6B
+    - projector: Multi-Layer Perceptron (MLP) + pixel unshuffle operation 
+  - Pre-Training
+    - next token prediction (NTP) ~250B tokens
+  - Post-Training
+    - Supervised Fine-Tuning(SFT) ~130B tokens
+    - Cascade Reinforcement Learning (Cascade RL) 270K samples
+      - mixed preference optimization (MPO)
+      - GSPO
+    - Visual Consistency Learning (ViCO) ~30Btokens
+      - ConsistencyTraining
+      - Router Training (InternVL3.5-Flash)
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
