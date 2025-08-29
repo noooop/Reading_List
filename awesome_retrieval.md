@@ -908,6 +908,27 @@ ColBERT + Late Chunking 有没有搞头？
   - Reason-ModernColBERT is a late interaction model trained on the reasonir-hq dataset. 
   - It achieves extremely competitive performance on the BRIGHT benchmark aimed at evaluating reasoning-intensive retrieval performance
   - modernbert 和 ColBERT 的含金量不断提升
+- Mon, 11 Aug 2025 [DIVER: A Multi-Stage Approach for Reasoning-intensive Information Retrieval](https://arxiv.org/abs/2508.07995)
+  - DIVER-DChunk
+    -  To handle lengthy documents, we employed the Chonkie2 library to perform semantic-aware chunking. 
+    - Using the Qwen3-Embedding-0.6B (Zhang et al., 2025b) model with a similarity threshold of 0.5, 
+    - the text was divided into smaller chunks of up to 4096 tokens, with a minimum size of one sentence per chunk. 
+  - DIVER-QExpand
+    - we retain its iterative design in DIVER-QExpand but make two practical modifications
+      - First, we replace the BM25 retriever with a dense retriever trained for reasoningintensive task
+      - Second, instead of concatenating all intermediate query expansions, which can often exceed 2000 tokens, we simplify the process by retaining only the original query and the final-round expansion. 
+  - DIVER-Retriever
+    - 通用Retriever不如Reason专用Retriever，Qwen3-4B Avg只有 5.6 2333
+    - +BM25 (Hybrid) 提高比较大
+  - DIVER-Rerank
+    - DIVER(v2) includes advanced query expansion and combined pointwise and listwise DIVER-Rerank, achieving the latest state-of-the-art.
+    - DIVER(v2) reaches an nDCG@10 of 45.8, surpassing BGE-Reasoner by +0.8 points and establishing a new SOTA
+    - To complement this local evaluation, the listwise module (DIVER-Rerank-Listwise) employs an LLM (e.g.
+Deepseek-R1-0528) to directly rank the top-100 candidate documents of the query, offering a global view
+of document relevance. The final reranking result integrates both modules, leveraging the fine-grained
+local scoring of pointwise rerankers and the holistic ranking ability of listwise rerankers.
+    - 使用 Deepseek-R1-0528 rerank top-100 是否杀死了比赛
+
 
 # learned sparse representations \ late-interaction methods
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
