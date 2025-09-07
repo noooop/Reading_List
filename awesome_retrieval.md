@@ -721,6 +721,16 @@ size and the input text, respectively.
     - Effectiveness of Model Merging
     - 没有使用 LLM2Vec, 没有使用 Hard Negative Mining, 没有用 Knowledge distillation， 没有多各种任务使用不同的 instruct
     - Without bells and whistles 的感觉
+- Thu, 4 Sep 2025 [EmbeddingGemma3](https://huggingface.co/blog/embeddinggemma)
+  - https://huggingface.co/collections/google/embeddinggemma-68b9ae3a72a82f0562a80dc4
+  - Architecture
+    - Gemma3 308M
+    - use bi-directional attention instead of causal (one-way) attention
+    - 2k‑token context window
+    - mean pooling 
+    - two dense layers transform the text embeddings into their final form, a 768-dimensional vector.
+    - MRL  512, 256, or 128
+    - approximately 320 billion tokens
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
