@@ -420,6 +420,43 @@ clean and consistent data show more stable RL convergence and achieve higher ove
       - ConsistencyTraining
       - Router Training (InternVL3.5-Flash)
 
+# Video Understanding
+- Mon, 1 Sep 2025 [Kwai Keye-VL 1.5 Technical Report](https://arxiv.org/abs/2509.01563)
+  - Architecture
+    - txt: Qwen3-8B
+    - img: SigLIP-400M-384-14 +  2D RoPE -> native-resolution ViT
+    - projector: MLP 2×2 Patch Merge
+    - video: Slow-Fast Video Encoding
+  - Pre-Training
+    - Stage 1: cross-modal alignment
+    - Stage 2: multi-task pre-training
+    - Stage 3: annealing
+    - Sequence Length Extension to 128K
+  - Post-Training
+    - Non-Reasoning Stage: SFT + MPO
+    - Keye-Reward Model (SFT+RL training process)
+      - LongCoT Cold-Start
+      - Iterative General RL
+        - General RLVR Training (GSPO)
+        - Progressive Hint Sampling
+        - Iterative General RL & Cold-Start Enhancement
+      - Alignment RL
+        - Reward System Design
+  - Evaluation
+    - Keye-VL-1.5 8B-Thinking
+    - Keye-VL-Preview  8B-Thinking
+    - Qwen2.5-VL 7B
+    - InternVL3 8B
+    - MiMo-VL 7B-RL 2508
+    - GPT-4o 
+    - Claude 3.7 Sonnet
+  - Ablation Studies
+    - Effects of SFT, MPO, and Long CoT Cold Start
+    - Effectiveness of Expert Models and Model Merging
+    - Effectiveness of Alignment Reinforcement Learning
+    - Effect of Partial Solutions During RL Phase
+    - Impact of Rejection Sampling on SFT and RL Performance
+
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
   - CLIP, DINOv2, and SAM
