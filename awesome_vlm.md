@@ -419,6 +419,17 @@ clean and consistent data show more stable RL convergence and achieve higher ove
     - Visual Consistency Learning (ViCO) ~30Btokens
       - ConsistencyTraining
       - Router Training (InternVL3.5-Flash)
+- Thu, 28 Aug 2025 [R-4B: Incentivizing General-Purpose Auto-Thinking Capability in MLLMs via Bi-Mode Annealing and Reinforce Learning](https://arxiv.org/abs/2508.21113)
+  - Architecture
+    - txt: Qwen3-4B
+    - img: SigLIP2-So400m enhanced with the AnyRes strategy 
+    - projector: Multi-Layer Perceptron (MLP)
+  - Training
+    - Stage 1 MLP Warmup
+    - Stage 2 Vision-Language Alignment
+    - Stage 3 Joint Multimodal Pre-training
+  - Post-Training
+    - Stage 1 Bi-Mode Annealing
 
 # Video Understanding
 - Mon, 1 Sep 2025 [Kwai Keye-VL 1.5 Technical Report](https://arxiv.org/abs/2509.01563)
@@ -456,6 +467,52 @@ clean and consistent data show more stable RL convergence and achieve higher ove
     - Effectiveness of Alignment Reinforcement Learning
     - Effect of Partial Solutions During RL Phase
     - Impact of Rejection Sampling on SFT and RL Performance
+
+# Multimodal+Thinking
+- Mon, 14 Apr 2025 [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](https://arxiv.org/abs/2504.10479)
+  - Post-Training
+    - Supervised Fine-Tuning
+    - Mixed Preference Optimization (DPO)
+  - Test-Time Scaling
+    - Visual Process Reward Model
+- Wed, 4 Jun 2025 [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569)
+  - Post-Training
+    - Reinforcement Learning with Verifiable Rewards (On-Policy GRPO)
+      - Visual Reasoning\Text Reasoning\Image Grounding\Visual Counting\Temporal Video Grounding
+    - Mixed On-Policy Reinforcement Learning
+- Tue, 1 Jul 2025 [GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](https://arxiv.org/abs/2507.01006)
+  - Reinforcement Learning: What’s Challenging and What Works (GRPO)
+    - Data preparation
+    - Reward system
+      - The extraction of the final answer in RLVR.
+      - Avoid reward hacking
+      - Domain-specific reward system
+    - Reinforcement Learning with Curriculum Sampling (RLCS)
+    - Infrastructure
+- Mon, 11 Aug 2025 [GLM-4.5V](https://huggingface.co/zai-org/GLM-4.5V)
+  - technical_report: https://github.com/zai-org/GLM-V/blob/main/resources/GLM-4.5V_technical_report.pdf
+  - txt: GLM-4.5-Air (106B parameters, 12B active)
+  - SFT+RL 相对 SFT 都所有项目都有比较大的提高
+- Mon, 25 Aug 2025 [InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency](https://arxiv.org/abs/2508.18265)
+  - Post-Training
+    - Supervised Fine-Tuning(SFT) ~130B tokens
+    - Cascade Reinforcement Learning (Cascade RL) 270K samples
+      - mixed preference optimization (MPO)
+      - GSPO
+- Thu, 28 Aug 2025 [R-4B: Incentivizing General-Purpose Auto-Thinking Capability in MLLMs via Bi-Mode Annealing and Reinforce Learning](https://arxiv.org/abs/2508.21113)
+  - we first propose bi-mode annealing, which is designed to train a model that is inherently capable of both thinking and non-thinking modes in general domains.
+  - Then, we perform bimode annealing by mixing these datasets and obtain R-4B-Base. This lays a solid foundation for the model’s subsequent auto-thinking training in general-purpose domains.
+- Mon, 1 Sep 2025 [Kwai Keye-VL 1.5 Technical Report](https://arxiv.org/abs/2509.01563)
+  - Post-Training
+    - Non-Reasoning Stage: SFT + MPO
+    - Keye-Reward Model (SFT+RL training process)
+      - LongCoT Cold-Start
+      - Iterative General RL
+        - General RLVR Training (GSPO)
+        - Progressive Hint Sampling
+        - Iterative General RL & Cold-Start Enhancement
+      - Alignment RL
+        - Reward System Design
 
 # Knowledge Distillation
 - Sun, 10 Dec 2023 [AM-RADIO: Agglomerative Vision Foundation Model -- Reduce All Domains Into One](https://arxiv.org/abs/2312.06709)
