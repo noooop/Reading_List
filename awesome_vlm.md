@@ -349,6 +349,41 @@ constructed high-resolution semantic pyramid.
   - Test-Time Scaling
     - Visual Process Reward Model
   - Infrastructure
+- Sun, 11 May 2025 [Seed1.5-VL Technical Report](https://arxiv.org/abs/2505.07062)
+  - Architecture
+    - txt: Mixture-of-Experts (MoE) LLM of 20B active parameters
+    - img: a 532M-parameter vision encoder + 2D RoPE + NaViT
+    - projector: 2 × 2 average pooling + Multi-Layer Perceptron (MLP)
+  - ViT Pre-training Stage
+    - MIM with 2D RoPE
+      - We leverage the EVA02-CLIP-E [29] as the teacher model, and the student model is randomly initialized following the architecture defined in table 1
+    - Native-Resolution Contrastive Learning
+      - text encoder is initialized using the text encoder from EVA-02-CLIP-E
+      - Alignment between the image and text embeddings is then achieved by jointly optimizing the SigLIP loss [171] and the SuperClass loss [52].
+    - Omni-modal Pre-training
+      - This stage adopts the MiCo framework
+  - Video Encoding
+    - Dynamic Frame-Resolution Sampling
+  - Pre-training
+    - Stage 0 Projector Warmup
+    - Stage 1 Vision-Language Alignment
+    - Stage 2 Multimodal Pre-training
+  - Post-training
+    - Supervised Fine-tuning
+    - Reinforcement Learning from Human Feedback
+      - VLM as a Reward Model
+    - Reinforcement Learning with Verifiable Rewards
+      - Visual STEM
+      - Visual Perception and Reasoning
+    - Hybrid Reinforcement Learning
+      - our training is a combination of RLHF and RLVR.
+      - Format reward
+      - Hybrid reward
+      - Shared critic
+      - KL coefficients
+    - Iterative Update by Rejection Sampling Fine-tuning
+    - Post-Training Framework
+      - We conduct hybrid reinforcement learning with both human feedback (RLHF) and verifier feedback (RLVF) of Seed1.5-VL on a verl-based [122] framework.
 - Wed, 4 Jun 2025 [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569)
   - Architecture
     - txt: MiMo-7B
@@ -489,6 +524,9 @@ clean and consistent data show more stable RL convergence and achieve higher ove
       - Domain-specific reward system
     - Reinforcement Learning with Curriculum Sampling (RLCS)
     - Infrastructure
+- Sun, 11 May 2025 [Seed1.5-VL Technical Report](https://arxiv.org/abs/2505.07062)
+  - Hybrid Reinforcement Learning
+    - our training is a combination of RLHF and RLVR.
 - Mon, 11 Aug 2025 [GLM-4.5V](https://huggingface.co/zai-org/GLM-4.5V)
   - technical_report: https://github.com/zai-org/GLM-V/blob/main/resources/GLM-4.5V_technical_report.pdf
   - txt: GLM-4.5-Air (106B parameters, 12B active)
