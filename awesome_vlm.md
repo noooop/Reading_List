@@ -335,6 +335,21 @@ constructed high-resolution semantic pyramid.
     - Post-training
       - Supervised Fine-Tuning (SFT)
       - Direct Preference Optimization (DPO) 
+- Thu, 10 Apr 2025 [Kimi-VL Technical Report](https://arxiv.org/abs/2504.07491)
+  - Architecture
+    - txt: Moonlight MoE language model 16B 2.8B activated (8K) context length
+    - img: SigLIP-SO-400M + 2D RoPE + 
+    - projector: pixel unshuffle operation + 2×2 downsampling + Multi-Layer Perceptron (MLP) 
+  - Muon Optimizer
+  - Pre-Training
+    - ViT Training Stages Following CoCa’s approach
+    - Joint Pre-training Stage
+    - Joint Cooldown Stage
+    - Joint Long-context Activation Stage
+  - Post-Training
+    - Joint Supervised Fine-tuning (SFT)
+    - Long-CoT Supervised Fine-Tuning
+    - Reinforcement Learning (similar as Kimi k1.5)
 - Mon, 14 Apr 2025 [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](https://arxiv.org/abs/2504.10479)
   - Architecture
     - txt: Qwen2.5 series and InternLM3-8B
