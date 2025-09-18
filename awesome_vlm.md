@@ -50,8 +50,7 @@ coherence and effectiveness of the combined features.
 - Thu, 29 Apr 2021 [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294)
 - Fri, 14 Apr 2023 [DINOv2: Learning Robust Visual Features without Supervision](https://arxiv.org/abs/2304.07193)
 - Thu, 14 Aug 2025 [DINOv3](https://ai.meta.com/research/publications/dinov3/)
-
-## Others
+## Generative Pretrained Visual Encoders
 - Thu, 21 Nov 2024 [Multimodal Autoregressive Pre-training of Large Vision Encoders](https://arxiv.org/abs/2411.14402)
   - 使用自回归方法训练 Large Vision Encoders
   - Causal Multimodal Decoder + Pixel MSE Loss + Cross-entropy Loss
@@ -74,6 +73,10 @@ coherence and effectiveness of the combined features.
       - We observe that the performance of all methods improves with higher resolutions, 
       - with a significant improvement for TextVQA. 
       - Notably, AIMV2 maintains its advantage over the baselines in high-resolution tiling settings, demonstrating its versatility.
+- Mon, 1 Sep 2025 [OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning](https://arxiv.org/abs/2509.01644)
+  - 直接使用ntp（autoregressive decoder） + synthetically generated 的 image captions 效果就好？
+  - 也就是说从0直接训练vlm，比用 预训练的Vision Encoder 效果好
+  - 对于 vlm 来说，合成数据训练是有效的
 
 # Multimodal Projector(abstractors)
 - Mon, 30 Jan 2023 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/pdf/2301.12597)
