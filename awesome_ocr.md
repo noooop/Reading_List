@@ -27,6 +27,9 @@
   - Built on Qwen/Qwen2.5-VL-3B-Instruct
 - Fri, 1 Aug 2025 [DocTron-Formula: Generalized Formula Recognition in Complex and Structured Scenarios](https://arxiv.org/abs/2508.00311)
   - Built on Qwen/Qwen2.5-VL-8B-Instruct
+- Mon, 18 Aug 2025 [DianJin-OCR-R1: Enhancing OCR Capabilities via a Reasoning-and-Tool Interleaved Vision-Language Model](https://arxiv.org/abs/2508.13238)
+  - Built on Qwen/Qwen2.5-VL-7B-Instruct
+  - on a single node with 8 NVIDIA A100 GPUs
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
