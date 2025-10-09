@@ -867,6 +867,22 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - llm + pairwise & listwise approaches 有没有搞头 
   - colbert ranker 确实比 embedding强一些，比正经的ranker弱一些
 
+# listwise reranker
+- Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
+  - llm + pairwise & listwise approaches 有没有搞头
+- Mon, 29 Sep 2025 [jina-reranker-v3: Last but Not Late Interaction for Listwise Document Reranking](https://arxiv.org/abs/2509.25085)
+  - Built upon Qwen3-0.6B
+  - listwise reranker that introduces a novel last but not late interaction
+    - Prompt Template: Query Document 1 <|doc_emb|> Document 2 <|doc_emb|> Document 3 <|doc_emb|> Query <|query_emb|> 
+    - <|doc_emb|> & <|query_emb|> -> projector -> cosine score
+  - Training
+    - Loss Functions: InfoNCE + dispersive loss + similarity loss
+    - Multi-Stage Training
+      - Stage 1: Foundation Specialization 
+      - Stage 2: Context and Hard Negative Mining
+        - Training systematically mines hard negatives across multiple retrieval systems including BGE, Jina, GTE, and E5-Large with up to 25 negatives per query
+      - Stage 3: Model Ensemble and Optimization
+
 # ColBERT
 ColBERT + Late Chunking 有没有搞头？
 - Mon, 27 Apr 2020 [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT](https://arxiv.org/abs/2004.12832)
