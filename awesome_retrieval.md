@@ -896,6 +896,11 @@ ColBERT + Late Chunking 有没有搞头？
 - Thu, 10 Jul 2025 [maxsim-cpu](https://github.com/mixedbread-ai/maxsim-cpu)
   - maxsim 加速
 
+# Sparse Retrieval
+- Mon, 12 Jul 2021 [SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking](https://arxiv.org/abs/2107.05720)
+- Tue, 21 Sep 2021 [SPLADE v2: Sparse Lexical and Expansion Model for Information Retrieval](https://arxiv.org/abs/2109.10086)
+- Mon, 11 Mar 2024 [SPLADE-v3: New baselines for SPLADE](https://arxiv.org/abs/2403.06789)
+
 # reasoning-intensive retrieval
 - Tue, 16 Jul 2024 [BRIGHT: A Realistic and Challenging Benchmark for Reasoning-Intensive Retrieval](https://arxiv.org/abs/2407.12883)
   - we introduce BRIGHT, the first text retrieval benchmark that requires intensive reasoning to retrieve relevant documents. 
