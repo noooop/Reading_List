@@ -871,6 +871,7 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
   - llm + pairwise & listwise approaches 有没有搞头
 - Mon, 29 Sep 2025 [jina-reranker-v3: Last but Not Late Interaction for Listwise Document Reranking](https://arxiv.org/abs/2509.25085)
+  - 恭喜 Elastic (NYSE: ESTC) 完成对Jina AI的收购
   - Built upon Qwen3-0.6B
   - listwise reranker that introduces a novel last but not late interaction
     - Prompt Template: Query Document 1 <|doc_emb|> Document 2 <|doc_emb|> Document 3 <|doc_emb|> Query <|query_emb|> 
@@ -882,6 +883,13 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
       - Stage 2: Context and Hard Negative Mining
         - Training systematically mines hard negatives across multiple retrieval systems including BGE, Jina, GTE, and E5-Large with up to 25 negatives per query
       - Stage 3: Model Ensemble and Optimization
+  - 重排器的技术演进
+  - 在深入 Jina Reranker v3 的设计之前，我们有必要快速回顾一下重排器技术的主流范式。传统的学习排序（Learning-to-Rank）方法，大致可以分为三类：
+    - Pointwise：这是最早期的方法。模型每次仅考虑一个文档，逐个判断每个文档与查询的相关性，输出一个绝对分数。它的问题在于完全忽略了文档之间的相互关系，缺乏全局视野。
+    - Pairwise：该方法更进一步。模型不再是看单个文档，而是通过比较文档对（例如，判断“文档 A 是否比文档 B 更相关”）来学习排序。它开始具备相对的判断能力，但其视野依然局限在“二选一”的比较中，无法理解整个候选列表的全局信息。
+    - 然而，这两种方法都缺乏对候选文档的整体洞察。 一个理想的重排器，应该能够审阅 全部的 候选文档，综合考量它们之间的互补、冗余甚至矛盾关系，最终给出一个最优的整体排序。这正是 Listwise 的核心思想，也是 Jina Reranker v3 所选择的技术路线。
+    - 为了实现这一点，Jina Reranker v3 将用户查询和所有候选文档拼接 (concatenate) 成一个长序列，作为一个整体输入到模型中。在单一的上下文窗口内，模型通过因果注意力机制，同时处理所有文本。
+  - 这个设计使得任何一个文档在被编码时，都能关注到其他文档的内容，从而实现跨文档的信息交互。当整个序列处理完毕后，模型再从每个文档末尾预设的特殊位置，提取出包含了上下文信息的表征向量。
 
 # ColBERT
 ColBERT + Late Chunking 有没有搞头？
