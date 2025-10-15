@@ -721,6 +721,8 @@ size and the input text, respectively.
     - Effectiveness of Model Merging
     - 没有使用 LLM2Vec, 没有使用 Hard Negative Mining, 没有用 Knowledge distillation， 没有多各种任务使用不同的 instruct
     - Without bells and whistles 的感觉
+- Fri, 15 Aug 2025 [CoDiEmb: A Collaborative yet Distinct Framework for Unified Representation Learning in Information Retrieval and Semantic Textual Similarity](https://arxiv.org/abs/2508.11442)
+  - CMTEB
 - Thu, 4 Sep 2025 [EmbeddingGemma3](https://huggingface.co/blog/embeddinggemma)
   - https://huggingface.co/collections/google/embeddinggemma-68b9ae3a72a82f0562a80dc4
   - Architecture
