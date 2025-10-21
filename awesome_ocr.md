@@ -35,6 +35,28 @@
     - tool : then consults specialized external tools for a second opinion
     - rethink : re-examines the image with that extra context
     - answer : finally delivers its response
+- Thu, 16 Oct 2025 [PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model](https://arxiv.org/abs/2510.14528)
+  - 两阶段 Layout Analysis + PaddleOCR-VL-0.9B 
+    - PP-DocLayoutV2 RT-DETR-based
+    - PaddleOCR-VL-0.9B 
+        - Architecture
+          - txt: ERNIE-4.5-0.3B
+          - img: we employed a NaViT-style [15] encoder initialized from Keye-VL’s
+          - projector: 2-layer MLP projector
+  - Training Recipe
+    - Layout Analysis
+    - Element-level Recognition
+      - Stage 1 pre-training
+      - Stage 2 instruction fine-tuning 
+        - OCR
+        - Table Recognition
+        - Formula Recognition
+        - Chart Recognition
+  - Dataset
+  - Evaluation
+    - OmniDocBench v1.5
+    - OmniDocBench v1.0 
+    - olmOCR-Bench
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
