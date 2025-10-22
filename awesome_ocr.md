@@ -57,6 +57,13 @@
     - OmniDocBench v1.5
     - OmniDocBench v1.0 
     - olmOCR-Bench
+- Tue, 21 Oct 2025 [DeepSeek-OCR: Contexts Optical Compression](https://www.arxiv.org/abs/2510.18234)
+  - Architecture
+    - txt: DeepSeek3B-MoE-A570M
+    - img: 80M SAM-base + 300M CLIP-large 
+    - projector: 
+      - we borrow from Vary [36] and use a 2-layer convolutional module to perform 16× downsampling of vision tokens
+      - the DeepEncoder will segment it into 1024/16×1024/16=4096 patch tokens.
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
