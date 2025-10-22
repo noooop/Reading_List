@@ -483,6 +483,26 @@ clean and consistent data show more stable RL convergence and achieve higher ove
     - Stage 3 Joint Multimodal Pre-training
   - Post-Training
     - Stage 1 Bi-Mode Annealing
+- Tue, 21 Oct 2025 [DeepSeek-OCR: Contexts Optical Compression](https://www.arxiv.org/abs/2510.18234)
+  - Architecture
+    - txt: DeepSeek3B-MoE-A570M
+    - img: 80M SAM-base + 300M CLIP-large 
+    - projector: 
+      - we borrow from Vary [36] and use a 2-layer convolutional module to perform 16× downsampling of vision tokens
+      - the DeepEncoder will segment it into 1024/16×1024/16=4096 patch tokens.
+    - Vision Tokens
+      - Native Resolution
+        - Tiny, 512, 64, resize
+        - Small, 640, 100, resize
+        - Base, 1024, 256, padding
+        - Large, 1280, 400, padding
+      - Dynamic Resolution
+        - Gundam 640+1024, n×100+256, resize + padding
+        - Gundam-M, 1024+1280, n×256+400, resize + padding
+    - Conclusion
+      - In this technical report, we propose DeepSeek-OCR and preliminarily validate the feasibility of
+contexts optical compression through this model, demonstrating that the model can effectively
+decode text tokens exceeding 10 times the quantity from a small number of vision tokens.
 
 # Video Understanding
 - Mon, 1 Sep 2025 [Kwai Keye-VL 1.5 Technical Report](https://arxiv.org/abs/2509.01563)
