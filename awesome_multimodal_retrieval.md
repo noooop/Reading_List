@@ -159,6 +159,7 @@ on long image captions.
     - (3) Distillation: we perform knowledge distillation on the reranker model using the sampled dataset sequentially.
 
 # Multilingual Multimodal Reranker
+- Fri, 21 Feb 2025 [ELIP: Enhanced Visual-Language Foundation Models for Image Retrieval](https://arxiv.org/abs/2502.15682)
 - Thu, 27 Mar 2025 [jinaai/jina-reranker-m0](https://huggingface.co/jinaai/jina-reranker-m0)
   - Base model: Qwen2-VL-2B-Instruct, utilizing its vision encoder, projection layer, and language model
   - Adaptation: Fine-tuned the language model with LoRA (Low-Rank Adaptation) techniques
