@@ -67,3 +67,4 @@
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
+- Tue, 21 Oct 2025 [Supercharge your OCR Pipelines with Open Models](https://huggingface.co/blog/ocr-open-models)
