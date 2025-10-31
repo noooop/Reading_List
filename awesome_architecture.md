@@ -113,3 +113,10 @@ position-to-content, and position-to-position)
     - When using ALiBi, we do not add position embeddings at any point in the network. The only modification we apply is after the query-key dot product, where we add a static, non-learned bias
     - softmax(qiK> + m · [−(i − 1), ..., −2, −1, 0])
 
+# DeepSeek
+- Fri, 27 Dec 2024 [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437)
+  - DeepSeek-V3, a strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token
+- Wed, 22 Jan 2025 [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)
+  - GRPO
+- Mon, 29 Sep 2025 [DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention](https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/commits/main/DeepSeek_V3_2.pdf)
+  - DeepSeek Sparse Attention (DSA)
