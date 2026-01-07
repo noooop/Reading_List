@@ -868,6 +868,11 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
 - Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
   - llm + pairwise & listwise approaches 有没有搞头 
   - colbert ranker 确实比 embedding强一些，比正经的ranker弱一些
+- Sun, 27 Aug 2025 [contextual rerank-v2](https://contextual.ai/blog/rerank-v2)
+  - MistralForCausalLM 6b
+  - Qwen3ForCausalLM 2b
+  - Qwen3ForCausalLM 1b
+
 
 # listwise reranker
 - Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
