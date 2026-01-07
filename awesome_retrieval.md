@@ -872,7 +872,9 @@ Rerank model 真的要无聊很多，Rerank model 本质上就是个二分类任
   - MistralForCausalLM 6b
   - Qwen3ForCausalLM 2b
   - Qwen3ForCausalLM 1b
-
+- 18 Oct 2025 [llama-nemotron-rerank-1b-v2](https://huggingface.co/nvidia/llama-nemotron-rerank-1b-v2/)
+  - LlamaBidirectionalForSequenceClassification
+  - Mean pooling
 
 # listwise reranker
 - Fri, 22 Aug 2025 [How Good are LLM-based Rerankers? An Empirical Analysis of State-of-the-Art Reranking Models](https://arxiv.org/abs/2508.16757)
