@@ -157,6 +157,9 @@ on long image captions.
     - (1) Progressive transition: the model is progressively fine-tuned on the increasing complexity levels of the retrieval data, which enables the model to gradually adapt to retrieval tasks. 
     - (2) Hard Negative Mining: building on Progressive transition, the model’s retrieval performance is further enhanced through hard negative mining, accompanied by the filtering of false negatives. 
     - (3) Distillation: we perform knowledge distillation on the reranker model using the sampled dataset sequentially.
+- Thu, 8 Jan 2026 [Qwen3-VL-Embedding and Qwen3-VL-Reranker: A Unified Framework for State-of-the-Art Multimodal Retrieval and Ranking](https://arxiv.org/abs/2601.04720)
+  - 2B and 8B
+  - base on Qwen3-VL
 
 # Multilingual Multimodal Reranker
 - Fri, 21 Feb 2025 [ELIP: Enhanced Visual-Language Foundation Models for Image Retrieval](https://arxiv.org/abs/2502.15682)
@@ -165,3 +168,6 @@ on long image captions.
   - Adaptation: Fine-tuned the language model with LoRA (Low-Rank Adaptation) techniques
   - Output layer: Post-trained MLP head to generate ranking scores measuring query-document relevance
   - Training objective: Optimized with pairwise and listwise ranking losses to produce discriminative relevance scores
+- Thu, 8 Jan 2026 [Qwen3-VL-Embedding and Qwen3-VL-Reranker: A Unified Framework for State-of-the-Art Multimodal Retrieval and Ranking](https://arxiv.org/abs/2601.04720)
+  - 2B and 8B
+  - base on Qwen3-VL
