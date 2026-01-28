@@ -35,6 +35,33 @@
     - tool : then consults specialized external tools for a second opinion
     - rethink : re-examines the image with that extra context
     - answer : finally delivers its response
+- Fri, 26 Sep 2025 [MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing](https://arxiv.org/abs/2509.22186):
+  - Language Model. For the decoder, we employ a 0.5B-parameter Qwen2-Instruct model [42], as
+document parsing tasks typically exhibit relatively low dependency on large-scale language models.
+To better accommodate diverse resolutions and aspect ratios in cropped image parsing, we replace
+the original 1D-RoPE [39] with M-RoPE [48], thus enhancing the model’s generalization ability across
+varying resolutions.
+  - Vision Encoder. Inspired by Qwen2-VL, MinerU2.5 incorporates a native-resolution encoding mechanism. Although the Qwen2.5-VL series [3] adopts window attention to improve efficiency, this design
+causes performance degradation in document parsing tasks. Therefore, we employ a 675M-parameter
+NaViT [10] initialized from Qwen2-VL. This vision encoder supports dynamic image resolutions and
+employs 2D-RoPE for positional encoding, enabling it to flexibly handle inputs of various resolutions
+and aspect ratios.
+  - Patch Merger. To balance efficiency and performance, the architecture uses pixel-unshuffle [38] on
+adjacent 2 × 2 vision tokens, preprocessing the aggregated vision tokens before passing them into the
+large language model. This design effectively achieves a trade-off between computational efficiency
+and task performance.
+  - Two-Stage Parsing Strategy
+    - Stage I: Layout Analysis. 1036 × 1036 pixels
+    - Stage II: Content Recognition.  Cropped regions are fed at native resolution with an upper bound of 2048 × 28 × 28 pixels
+  - Training Recipe
+    - Stage 0-Modality Alignment
+      - Language-Image Alignment. Image Caption 2048 × 28 × 28
+      - Visual Instruction Tuning. VQA 4096 × 28 × 28
+    - Stage 1-Document Parsing Pre-training 
+      - Layout&OCR 2048 × 28 × 28
+    - Stage 2-Document Parsing Fine-tuning
+      - Layout&OCR 2048 × 28 × 28
+
 - Thu, 16 Oct 2025 [PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model](https://arxiv.org/abs/2510.14528)
   - 两阶段 Layout Analysis + PaddleOCR-VL-0.9B 
     - PP-DocLayoutV2 RT-DETR-based
