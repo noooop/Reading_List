@@ -64,6 +64,11 @@
     - projector: 
       - we borrow from Vary [36] and use a 2-layer convolutional module to perform 16× downsampling of vision tokens
       - the DeepEncoder will segment it into 1024/16×1024/16=4096 patch tokens.
+- 27 Jan 2026 [DeepSeek OCR2](https://huggingface.co/deepseek-ai/DeepSeek-OCR-2)
+  - MinerU2.5 90.67
+  - PaddleOCR-VL 92.86
+  - DeepSeek-OCR 87.36
+  - DeepSeek-OCR2 91.09
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)

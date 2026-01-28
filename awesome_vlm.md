@@ -503,6 +503,11 @@ clean and consistent data show more stable RL convergence and achieve higher ove
       - In this technical report, we propose DeepSeek-OCR and preliminarily validate the feasibility of
 contexts optical compression through this model, demonstrating that the model can effectively
 decode text tokens exceeding 10 times the quantity from a small number of vision tokens.
+- 27 Jan 2026 [DeepSeek OCR2](https://huggingface.co/deepseek-ai/DeepSeek-OCR-2)
+  - MinerU2.5 90.67
+  - PaddleOCR-VL 92.86
+  - DeepSeek-OCR 87.36
+  - DeepSeek-OCR2 91.09
 - 27 Jan 2026 [Kimi K2.5](https://huggingface.co/moonshotai/Kimi-K2.5)
   - Kimi-K2-Base(1T) + visual(MoonViT 400M)
   - Key Features
