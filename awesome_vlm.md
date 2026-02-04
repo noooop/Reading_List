@@ -3,6 +3,9 @@
 - 03 Nov 2024 [Understanding Multimodal LLMs](https://magazine.sebastianraschka.com/p/understanding-multimodal-llms)
 
 # Pre-training of Large Vision Encoders
+## Survey
+- February 3, 2026 [Vision Encoders in Vision-Language Models: A Survey](https://jina.ai/vision-encoder-survey.pdf)
+  - Jina AI by Elastic
 ## Visual Backbone Networks
 使用 ImageNet-1K classification 和 ImageNet-22K 训练
 - Thu, 22 Oct 2020 [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
