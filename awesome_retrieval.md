@@ -733,6 +733,10 @@ size and the input text, respectively.
     - two dense layers transform the text embeddings into their final form, a 768-dimensional vector.
     - MRL  512, 256, or 128
     - approximately 320 billion tokens
+- Jan 15, 2026 [The Voyage 4 model family: shared embedding space with MoE architecture](https://blog.voyageai.com/2026/01/15/voyage-4/)
+  - base on qwen3
+  - A single shared embedding space & Asymmetric retrieval
+  - Matryoshka learning and quantization
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
