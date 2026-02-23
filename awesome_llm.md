@@ -1,5 +1,5 @@
 
-# Reasoning
+# LLMs
 - Mon, 16 Jun 2025 [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)
   - architecture
     - 456B-A45.9B
