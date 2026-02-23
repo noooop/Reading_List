@@ -737,6 +737,18 @@ size and the input text, respectively.
   - base on qwen3
   - A single shared embedding space & Asymmetric retrieval
   - Matryoshka learning and quantization
+- Tue, 17 Feb 2026 [jina-embeddings-v5-text: Task-Targeted Embedding Distillation](https://arxiv.org/abs/2602.15547)
+  - jina-embeddings-v5-text-small base on Qwen3-0.6B
+  - jina-embeddings-v5-text-nano base on EuroBERT-210M
+  - Matryoshka learning and quantization
+  - Training
+    - Embedding Distillation
+      - We use distillation to transfer knowledge from Qwen3-Embedding-4B model
+    - Task-Specific Adapter Training
+      - Asymmetric Retrieval Adapter
+      - Text Matching (STS) Adapter
+      - Clustering Adapter
+      - Classification Adapter
 
 # Retrieval(Embeddings) benchmark
 - Sat, 17 Apr 2021 [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
