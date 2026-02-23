@@ -506,6 +506,12 @@ clean and consistent data show more stable RL convergence and achieve higher ove
       - In this technical report, we propose DeepSeek-OCR and preliminarily validate the feasibility of
 contexts optical compression through this model, demonstrating that the model can effectively
 decode text tokens exceeding 10 times the quantity from a small number of vision tokens.
+- Wed, 3 Dec 2025 [Jina-VLM: Small Multilingual Vision Language Model](https://arxiv.org/abs/2512.04032)
+  - Architecture
+    - txt: Qwen3-1.7B-Base
+    - img: SigLIP2-So400M/14-384 (global thumbnail+overlapping tiles)
+    - projector: 
+      - attention pooling over 2×2 patch neighborhoods, using meanpooled features as queries
 - 27 Jan 2026 [DeepSeek OCR2](https://huggingface.co/deepseek-ai/DeepSeek-OCR-2)
   - MinerU2.5 90.67
   - PaddleOCR-VL 92.86
