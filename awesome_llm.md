@@ -14,11 +14,13 @@
     - as we found that deeper models exhibited better reasoning capacity.
   - Agentic, Reasoning, and Coding
 - Tue, 17 Feb 2026 [GLM-5: from Vibe Coding to Agentic Engineering](https://arxiv.org/abs/2602.15763)
-  - architecture
+  - [architecture](https://substack.com/@rasbt/note/c-213540396?utm_source=notes-share-action&utm_medium=web) 
     - 744B + 28.5T tokens
       - GLM-5 scales to 256 experts and reduces its layer count to 80 to minimize
 expert parallelism communication overhead. This results in a 744B parameter model (40B active
 parameters), doubling the total size of GLM-4.5, which utilized 355B total and 32B active parameters
+      - The increase in total size mainly comes from expanding the number of experts, from 160 to 256, and slightly increasing layer dimensions (while keeping the number of experts the same at 8 regular + 1 shared expert per token). For example, the embedding dimension and expert size increase from 5,120 to 6,144, and the intermediate projection size rises from 1,536 to 2,048.
+Interestingly, the number of transformer layers is reduced from 92 to 78. I assume this change is also intended to reduce inference costs and improve latency, since layer depth cannot be parallelized in the same way as width.
     - MLA-256
       - we increase the head dimension from 192 to 256 and decrease the number of
 attention heads by 1/3. This keeps the training computation and the number of parameters constant
