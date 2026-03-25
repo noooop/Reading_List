@@ -120,3 +120,7 @@ position-to-content, and position-to-position)
   - GRPO
 - Mon, 29 Sep 2025 [DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention](https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/commits/main/DeepSeek_V3_2.pdf)
   - DeepSeek Sparse Attention (DSA)
+
+# KIMI
+- Mon, 16 Mar 2026 [Attention Residuals](https://arxiv.org/abs/2603.15031)
+  - Attention Residuals (AttnRes)
