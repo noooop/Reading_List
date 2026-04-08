@@ -523,6 +523,19 @@ decode text tokens exceeding 10 times the quantity from a small number of vision
     - Native Multimodality
     - Coding with Vision
     - Agent Swarm
+- 2 Apr 2026 [Gemma 4](https://huggingface.co/blog/gemma4)
+  - Architecture
+    - Gemma 4 E2B
+    - Gemma 4 E4B
+    - Gemma 4 31B
+    - Gemma 4 26B A4B
+  - These are the main architecture characteristics in Gemma 4:
+    - Alternating local sliding-window and global full-context attention layers. Smaller dense models use sliding windows of 512 tokens while larger models use 1024 tokens. 
+    - Dual RoPE configurations: standard RoPE for sliding layers, proportional RoPE for global layers, to enable longer context. 
+    - Per-Layer Embeddings (PLE): a second embedding table that feeds a small residual signal into every decoder layer. 
+    - Shared KV Cache: the last N layers of the model reuse key-value states from earlier layers, eliminating redundant KV projections. 
+    - Vision encoder: uses learned 2D positions and multidimensional RoPE. Preserves the original aspect ratios and can encode images to a few different token budgets (70, 140, 280, 560, 1120). 
+    - Audio encoder: USM-style conformer with the same base architecture as the one in Gemma-3n.
 
 # Video Understanding
 - Mon, 1 Sep 2025 [Kwai Keye-VL 1.5 Technical Report](https://arxiv.org/abs/2509.01563)
