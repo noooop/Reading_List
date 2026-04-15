@@ -96,6 +96,25 @@ and task performance.
   - PaddleOCR-VL 92.86
   - DeepSeek-OCR 87.36
   - DeepSeek-OCR2 91.09
+- 2 Mar 2026 [FireRed_OCR](https://github.com/FireRedTeam/FireRed-OCR/blob/main/assets/FireRed_OCR_Technical_Report.pdf)
+  - Architecture Qwen3-VL
+  - Our approach is founded on two pillars: a high precision data engine and a progressive training strategy.
+    - “Geometry + Semantics” Data Factory
+    - Three-Stage Progressive Training pipeline
+      - Multi-task Pre-alignment
+      - Specialized SFT
+      - Format-Constrained GRPO
+  - Results
+    - Pipeline OCR Systems 依然很能打
+    - Pipeline OCR Systems
+      - MinerU2.5 90.67
+      - PaddleOCR-VL 92.86
+      - PaddleOCR-VL-1.5 94.50
+    - General VLMs
+      - Qwen3.5-397B-A17B  90.80
+    - End-to-End OCR Models
+      - DeepSeek-OCR2 91.09
+      - FireRed-OCR-2B 92.94
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
