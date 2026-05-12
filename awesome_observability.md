@@ -106,18 +106,26 @@ One way to think of Traces is that they’re a collection of structured logs wit
 
 Provides read-only access to span attributes.
 
-name: The name of the operation this span represents
-context: The immutable span context
-parent: This span's parent's `opentelemetry.trace.SpanContext`, or
-    None if this is a root span
-resource: Entity producing telemetry
-attributes: The span's attributes to be exported
-events: Timestamped events to be exported
-links: Links to other spans to be exported
-
-kind: trace_api.SpanKind = trace_api.SpanKind.INTERNAL
-instrumentation_info: Optional[InstrumentationInfo] = None
-status: Status = Status(StatusCode.UNSET)
-start_time: Optional[int] = None
-end_time: Optional[int] = None
-instrumentation_scope: Optional[InstrumentationScope] = None
+- Name
+  - name: The name of the operation this span represents
+- Parent span ID (empty for root spans)
+  - parent: This span's parent's `opentelemetry.trace.SpanContext`, or
+      None if this is a root span
+- Start and End Timestamps
+  - start_time: Optional[int] = None
+  - end_time: Optional[int] = None
+- Span Context
+  - context: The immutable span context
+- Attributes
+  - attributes: The span's attributes to be exported
+- Span Events
+  - events: Timestamped events to be exported
+- Span Links
+  - links: Links to other spans to be exported
+- Span Status
+  - status: Status = Status(StatusCode.UNSET)
+- Others
+  - resource: Entity producing telemetry
+  - kind: trace_api.SpanKind = trace_api.SpanKind.INTERNAL
+  - instrumentation_info: Optional[InstrumentationInfo] = None
+  - instrumentation_scope: Optional[InstrumentationScope] = None
