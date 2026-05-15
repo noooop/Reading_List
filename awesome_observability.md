@@ -68,16 +68,6 @@ A Tracer creates spans containing more information about what is happening for a
 
 ### Context Propagation
 
-#### Span Context
-
-The state of a Span to propagate between processes.
-
-- trace_id: The ID of the trace that this span belongs to.
-- span_id: This span's ID.
-- is_remote: True if propagated from a remote parent.
-- trace_flags: Trace options to propagate.
-- trace_state: Tracing-system-specific info to propagate.
-
 #### Propagation
 
 (opentelemetry-api)
@@ -109,8 +99,7 @@ Provides read-only access to span attributes.
 - Name
   - name: The name of the operation this span represents
 - Parent span ID (empty for root spans)
-  - parent: This span's parent's `opentelemetry.trace.SpanContext`, or
-      None if this is a root span
+  - parent: This span's parent's `opentelemetry.trace.SpanContext`, or None if this is a root span
 - Start and End Timestamps
   - start_time: Optional[int] = None
   - end_time: Optional[int] = None
@@ -129,3 +118,80 @@ Provides read-only access to span attributes.
   - kind: trace_api.SpanKind = trace_api.SpanKind.INTERNAL
   - instrumentation_info: Optional[InstrumentationInfo] = None
   - instrumentation_scope: Optional[InstrumentationScope] = None
+
+
+#### Span Context
+
+The state of a Span to propagate between processes.
+
+- trace_id: The ID of the trace that this span belongs to.
+- span_id: This span's ID.
+- is_remote: True if propagated from a remote parent.
+- trace_flags: Trace options to propagate.
+- trace_state: Tracing-system-specific info to propagate.
+
+Span context is the part of a span that is serialized and propagated alongside Distributed Context and Baggage.
+
+Because Span Context contains the Trace ID, it is used when creating Span Links.
+
+typing.Tuple[int, int, bool, "TraceFlags", "TraceState", bool]
+
+#### Attributes
+
+Attributes are key-value pairs that contain metadata that you can use to annotate a Span to carry information about the operation it is tracking.
+
+Attributes have the following rules that each language SDK implements:
+
+- Keys must be non-null string values
+- Values must be a non-null string, boolean, floating point value, integer, or an array of these values
+
+attributes: typing.Mapping[str, types.AttributeValue]
+AttributeValue = Union[
+    str,
+    bool,
+    int,
+    float,
+    Sequence[str],
+    Sequence[bool],
+    Sequence[int],
+    Sequence[float],
+]
+
+#### Semantic Attributes
+
+there are Semantic Attributes, which are known naming conventions for metadata that is typically present in common operations. 
+It’s helpful to use semantic attribute naming wherever possible so that common kinds of metadata are standardized across systems.
+
+
+#### Span Events
+
+A Span Event can be thought of as a structured log message (or annotation) on a Span, typically used to denote a meaningful, singular point in time during the Span’s duration.
+
+- A Span is best used to track the first scenario because it’s an operation with a start and an end.
+
+- A Span Event is best used to track the second scenario because it represents a meaningful, singular point in time.
+
+add_event
+- name: str,
+- attributes: types.Attributes = None,
+- timestamp: typing.Optional[int] = None,
+
+When to use span events versus span attributes
+
+- If the timestamp in which the operation completes is meaningful or relevant, attach the data to a span event.
+- If the timestamp isn’t meaningful, attach the data as span attributes.
+
+
+#### Span Links
+
+Links exist so that you can associate one span with one or more spans, implying a causal relationship.
+
+#### Span Status
+
+- Unset
+- Error
+- Ok
+
+#### Span Kind
+
+Client, Server, Internal, Producer, or Consumer
