@@ -186,6 +186,12 @@ When to use span events versus span attributes
 
 Links exist so that you can associate one span with one or more spans, implying a causal relationship.
 
+`def add_link(
+    self,
+    context: "SpanContext",
+    attributes: types.Attributes = None,
+)`
+
 #### Span Status
 
 - Unset
