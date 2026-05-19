@@ -201,3 +201,27 @@ Links exist so that you can associate one span with one or more spans, implying 
 #### Span Kind
 
 Client, Server, Internal, Producer, or Consumer
+
+### Instrumentation scope
+
+The Instrumentation scope represents a logical unit within the application code with which the emitted telemetry can be associated.
+
+In your observability backend, scoping allows you to slice and dice your telemetry data by scope, for example to see which of your users are using which version of a library and what the performance of that library version is or to pin point a problem to a specific module of your application.
+
+The following diagram illustrates a trace with multiple instrumentation scopes. The different scopes are represented by different colors:
+
+## Docs
+- https://opentelemetry.io/docs/
+- https://opentelemetry.io/docs/concepts/
+- https://opentelemetry.io/docs/languages/python/
+- https://opentelemetry-python.readthedocs.io/en/latest/
+
+## code
+- https://github.com/open-telemetry/opentelemetry-python
+- https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api
+- https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk
+- https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
+
+## books
+- Observability Engineering: Achieving Production Excellence
+- Learning OpenTelemetry: Setting Up and Operating a Modern Observability System
