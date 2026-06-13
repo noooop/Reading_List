@@ -1,12 +1,6 @@
+# Awesome LLMs
 
-# LLMs
-- Mon, 16 Jun 2025 [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)
-  - architecture
-    - 456B-A45.9B
-    - MiniMax-M1 is powered by a hybrid Mixture-of-Experts (MoE) architecture combined with a lightning attention mechanism.
-  - Computational Precision Mismatch in Generation and Training
-    - Through layer-by-layer analysis, we identified high-magnitude activations in the LM head at the output layer as the primary source of error. 
-    - To address this, we increased the precision of the LM output head to FP32
+## GLM
 - Fri, 8 Aug 2025 [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](https://arxiv.org/abs/2508.06471)
   - architecture
     - 355B-A32B & 106B-A12B
@@ -54,4 +48,26 @@ dependencies, enabling application to all layers with no quality degradation.
   - Agentic Engineering
   - Evaluation
 
-
+## MiniMax
+- Mon, 16 Jun 2025 [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)
+  - architecture
+    - 456B-A45.9B
+    - MiniMax-M1 is powered by a hybrid Mixture-of-Experts (MoE) architecture combined with a lightning attention mechanism.
+  - Computational Precision Mismatch in Generation and Training
+    - Through layer-by-layer analysis, we identified high-magnitude activations in the LM head at the output layer as the primary source of error. 
+    - To address this, we increased the precision of the LM output head to FP32
+- Tue, 26 May 2026 [MiniMax-M2 Series](https://arxiv.org/abs/2605.26494)
+- Thu, 11 Jun 2026 [MiniMax M3](https://arxiv.org/abs/2606.13392)
+  - links 
+    - https://vllm.ai/blog/2026-06-12-minimax-m3-vllm
+    - https://huggingface.co/MiniMaxAI/MiniMax-M3
+  - architecture 
+    - It has ~428B parameters and ~23B activated parameters. 
+      - 论文里展示的是 109B + 3T token 的消融实验验证 MSA 有效性
+    - 1M-token context
+    - MiniMax Sparse Attention (MSA) Block-sparse GQA over selected 128-token KV blocks
+      - MiniMax M3 is a hybrid model: some layers route to dense attention, while sparse layers route to the MiniMax MSA backend.
+    - MXFP8 model weights
+      - DeepGEMM MXFP8 MoE backend for Blackwell-class systems, and Marlin MXFP8 for Hopper-class systems.
+    - Native multimodality
+      - MiniMax M3 is a multimodal model, not a text-only checkpoint with a separate sidecar.
