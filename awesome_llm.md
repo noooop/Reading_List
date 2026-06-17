@@ -47,6 +47,17 @@ dependencies, enabling application to all layers with no quality degradation.
     - RL Training Infrastructure: The slime Framework
   - Agentic Engineering
   - Evaluation
+- Wed, 17 Jun 2026 [GLM-5.2](https://huggingface.co/zai-org/GLM-5.2)
+  - links 
+    - https://huggingface.co/zai-org/GLM-5.2
+    - https://z.ai/blog/glm-5.2
+  - architecture
+    - GLM-5 744B parameter model (40B active parameters)
+  - highlight
+    - Solid 1M Context
+    - Improved Architecture: We propose IndexShare, which reuses the same indexer across every four sparse attention layers, reducing per-token FLOPs by 2.9× at a 1M context length.
+      - 约等于每四层的（Sliding Window Attention, SWA）
+    - Advanced Coding with Flexible Effort: Stronger coding capabilities with multiple thinking effort levels to balance performance and latency
 
 ## MiniMax
 - Mon, 16 Jun 2025 [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)
