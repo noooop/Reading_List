@@ -1,5 +1,40 @@
 # Awesome LLMs
 
+## Qwen
+- Thu, 28 Sep 2023 [Qwen Technical Report](https://arxiv.org/abs/2309.16609)
+- Sun, 4 Feb 2024 [Introducing Qwen1.5](https://qwen.ai/blog?id=qwen1.5)
+  - 8 model sizes, including 0.5B, 1.8B, 4B, 7B, 14B, 32B and 72B dense models, and an MoE model of 14B with 2.7B activated;
+- Mon, 15 Jul 2024 [Qwen2 Technical Report](https://arxiv.org/abs/2407.10671)
+  - Architecture
+  - 
+| Configuration | 0.5B | 1.5B | 7B | 72B | 57B-A14B |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Hidden Size | 896 | 1,536 | 3,584 | 8,192 | 3,584 |
+| # Layers | 24 | 28 | 28 | 80 | 28 |
+| # Query Heads | 14 | 12 | 28 | 64 | 28 |
+| # KV Heads | 2 | 2 | 4 | 8 | 4 |
+| Head Size | 64 | 128 | 128 | 128 | 128 |
+| Intermediate Size | 4,864 | 8,960 | 18,944 | 29,568 | 2,560 |
+| # Routed Experts | - | - | - | - | 64 |
+| # Activated Experts | - | - | - | - | 8 |
+| # Shared Experts | - | - | - | - | 8 |
+| Embedding Tying | True | True | False | False | False |
+| Vocabulary Size | 151,646 | 151,646 | 151,646 | 151,646 | 151,646 |
+| # Trained Tokens | 12T | 7T | 7T | 7T | 4.5T |
+  - QWEN2 DENSE MODEL
+    - Grouped Query Attention
+    - Dual Chunk Attention with YARN
+    - Moreover, we follow Qwen with the usage of SwiGLU (Dauphin et al., 2017) for activation, Rotary
+  Positional Embeddings (RoPE, Su et al., 2024) for positional embedding, QKV bias (Su, 2023) for
+  attention, RMSNorm (Jiang et al., 2023b) and pre-normalization for training stability
+  - QWEN2 MIXTURE-OF-EXPERTS MODEL
+    - Expert Granularity
+      - Routed Experts 64
+      - Activated Experts 8
+      - Shared Experts 8
+    - Expert Routing
+- Thu, 19 Sep 2024 [Qwen2.5: A Party of Foundation Models!](https://qwen.ai/blog?id=qwen2.5)
+
 ## GLM
 - Fri, 8 Aug 2025 [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](https://arxiv.org/abs/2508.06471)
   - architecture
