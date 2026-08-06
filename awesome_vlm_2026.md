@@ -16,6 +16,40 @@ VLM design has gone through **four distinct architectural eras** in just six yea
 
 ## Era 2: LLM backbone
 
+### Qwen
+- Thu, 28 Sep 2023 [Qwen Technical Report](https://arxiv.org/abs/2309.16609)
+  - https://huggingface.co/collections/Qwen/qwen
+- Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
+- Sun, 4 Feb 2024 [Introducing Qwen1.5](https://qwen.ai/blog?id=qwen1.5)
+  - https://huggingface.co/collections/Qwen/qwen15
+- Mon, 15 Jul 2024 [Qwen2 Technical Report](https://arxiv.org/abs/2407.10671)
+  - https://huggingface.co/collections/Qwen/qwen2
+- Mon, 15 Jul 2024 [Qwen2-Audio Technical Report](https://arxiv.org/abs/2407.10759)
+  - https://huggingface.co/collections/Qwen/qwen2-audio
+- Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
+  - https://huggingface.co/collections/Qwen/qwen2-vl
+- Thu, 19 Dec 2024 [Qwen2.5 Technical Report](https://arxiv.org/abs/2412.15115)
+  - https://huggingface.co/collections/Qwen/qwen25
+- Sun, 26 Jan 2025 [Qwen2.5-1M Technical Report](https://arxiv.org/abs/2501.15383)
+  - https://huggingface.co/collections/Qwen/qwen25-1m
+- Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+  - https://huggingface.co/collections/Qwen/qwen25-vl
+- Wed, 26 Mar 2025 [Qwen2.5-Omni Technical Report](https://arxiv.org/abs/2503.20215)
+  - https://huggingface.co/collections/Qwen/qwen25-omni
+- Wed, 14 May 2025 [Qwen3 Technical Report](https://arxiv.org/abs/2505.09388)
+  - https://huggingface.co/collections/Qwen/qwen3
+- Wed, 9 Sep 2025 [Qwen3-Next](https://huggingface.co/collections/Qwen/qwen3-next)
+- Mon, 22 Sep 2025 [Qwen3-Omni Technical Report](https://arxiv.org/abs/2509.17765)
+  - https://huggingface.co/collections/Qwen/qwen3-omni
+- Wed, 26 Nov 2025 [Qwen3-VL Technical Report](https://arxiv.org/abs/2511.21631)
+  - https://huggingface.co/collections/Qwen/qwen3-vl
+- Thu, 29 Jan 2026 [Qwen3-ASR Technical Report](https://arxiv.org/abs/2601.21337)
+  - https://huggingface.co/collections/Qwen/qwen3-asr
+- Sun, 15 Feb 2026 [Qwen3.5: Towards Native Multimodal Agents](https://qwen.ai/blog?id=qwen3.5)
+  - https://huggingface.co/collections/Qwen/qwen35
+- Tue, 14 Apr 2026 [Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All](https://qwen.ai/blog?id=qwen3.6-35b-a3b)
+  - https://huggingface.co/collections/Qwen/qwen36
+
 ## Era 3a — Native Multimodal Input
 
 ## Era 3b — Omni-Modal Unified I/O
