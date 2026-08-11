@@ -35,12 +35,37 @@ VLM design has gone through **four distinct architectural eras** in just six yea
   - https://huggingface.co/collections/Qwen/qwen2-audio
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
   - https://huggingface.co/collections/Qwen/qwen2-vl
+  - 2B 7B 72B
+  - Architecture
+    - txt: Qwen2 series 1.5B, 7.6B, 72B
+    - img:  
+      - 675M Vision Encoder(DFN’s ViT) + RoPE-2D
+      - Naive Dynamic Resolution & Multimodal Rotary Position Embedding (M-RoPE)
+      - Qwen2VisionPatchEmbed -> Conv3dLayer
+        - 相邻两帧为一组
+    - projector:
+      - Qwen2VisionPatchMerger -> two-layer multi-layer perceptron (MLP) 
+        - hidden_size = context_dim * (spatial_merge_size**2) 
 - Thu, 19 Dec 2024 [Qwen2.5 Technical Report](https://arxiv.org/abs/2412.15115)
   - https://huggingface.co/collections/Qwen/qwen25
 - Sun, 26 Jan 2025 [Qwen2.5-1M Technical Report](https://arxiv.org/abs/2501.15383)
   - https://huggingface.co/collections/Qwen/qwen25-1m
 - Wed, 19 Feb 2025 [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
   - https://huggingface.co/collections/Qwen/qwen25-vl
+  - 3B 7B 72B
+  - Architecture
+    - txt: Qwen2.5 series 
+    - img:
+      - 从头训练 Vision Transformer (ViT) architecture
+      - 2D-RoPE 
+      - 4层 full attention，其余 window attention size 112 * 112 
+      - dynamic fps sampling
+      - 改成 3D mrope 使用实际实际间隔加权
+      - Qwen2VisionPatchEmbed -> Conv3dLayer
+        - 相邻两帧为一组
+    - projector:
+      - Qwen2VisionPatchMerger -> two-layer multi-layer perceptron (MLP) 
+        - hidden_size = context_dim * (spatial_merge_size**2) 
 - Wed, 26 Mar 2025 [Qwen2.5-Omni Technical Report](https://arxiv.org/abs/2503.20215)
   - https://huggingface.co/collections/Qwen/qwen25-omni
 - Wed, 14 May 2025 [Qwen3 Technical Report](https://arxiv.org/abs/2505.09388)
