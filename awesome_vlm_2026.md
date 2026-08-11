@@ -20,6 +20,13 @@ VLM design has gone through **four distinct architectural eras** in just six yea
 - Thu, 28 Sep 2023 [Qwen Technical Report](https://arxiv.org/abs/2309.16609)
   - https://huggingface.co/collections/Qwen/qwen
 - Thu, 24 Aug 2023 [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](https://arxiv.org/abs/2308.12966)
+  - Architecture
+    - txt: Qwen-7B                                                                        7.7B
+    - img:                                                                                1.9B
+      - Openclip’s ViT-bigG, input images are resized to a specific resolution         
+    - projector:                                                                          0.08B
+      - Learnable Query Embs + CrossAttn + 2D absolute positional encodings
+      - This mechanism compresses the visual feature sequence to a fixed length of 256
 - Sun, 4 Feb 2024 [Introducing Qwen1.5](https://qwen.ai/blog?id=qwen1.5)
   - https://huggingface.co/collections/Qwen/qwen15
 - Mon, 15 Jul 2024 [Qwen2 Technical Report](https://arxiv.org/abs/2407.10671)
