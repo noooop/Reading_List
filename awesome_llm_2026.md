@@ -1,7 +1,7 @@
 # Awesome LLMs 2026
 
 ### Qwen
-- [Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next)
+- 2026-08-26 [Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next)
   - https://huggingface.co/collections/Qwen/qwen38-flash-next
   - https://qwen.ai/blog?id=qwen3.8-flash-next
   - Highlights
@@ -20,3 +20,24 @@
         - Expert Intermediate Dimension: 640
     - Vision
       - 与 Qwen3-vl 相同
+
+### GLM
+- 2026-08-26 [GLM-5.3-Flash](https://z.ai/blog/glm-5.3-flash)
+  - https://huggingface.co/zai-org/GLM-5.3-Flash
+  - Highlights
+    - Hybrid Attention with linear(KDA like) and sparse attention(DSA like)
+    - Manifold-Constrained Hyper-Connections (mHC)
+    - IndexPool, which compresses four indexer key vectors into one through weighted pooling.
+    - served on Chinese AI chips
+  - Architecture
+    - Language Model
+      - Number of Parameters: 320B total with 6B activated
+      - Number of Layers: 45
+      - Hidden Dimension: 4096
+      - Hidden Layout: 11 × (3 × linear → 1 × dsa) + linear
+      - Mixture Of Experts
+        - Number of Experts: 288
+        - Number of Activated Experts: 8 Routed + 1 Shared
+        - Expert Intermediate Dimension: 2048
+    - Vision
+      - 与 GLM-OCR/GLM-4V 相同？
