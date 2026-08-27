@@ -82,6 +82,33 @@ VLM design has gone through **four distinct architectural eras** in just six yea
 - Tue, 14 Apr 2026 [Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All](https://qwen.ai/blog?id=qwen3.6-35b-a3b)
   - https://huggingface.co/collections/Qwen/qwen36
 
+### GLM
+- 2024-06-04 [zai-org/glm-4v-9b](https://huggingface.co/zai-org/glm-4v-9b)
+- Tue, 1 Jul 2025 [GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](https://arxiv.org/abs/2507.01006)
+  - Architecture
+    - txt: GLM-4-9B as the LLM
+    - img: AIMv2-Huge-0.6B (2d-RoPE & 3d-RoPE similar to qwen2-vl)
+    - projector: MLP adapter
+- Mon, 11 Aug 2025 [GLM-4.5V](https://huggingface.co/zai-org/GLM-4.5V)
+  - technical_report: https://github.com/zai-org/GLM-V/blob/main/resources/GLM-4.5V_technical_report.pdf
+  - Architecture
+    - txt:
+      - GLM-4-9B-0414 for the GLM-4.1V-Thinking and GLM-4.6V-Flash model
+      - GLM-4.5-Air for the GLM-4.5V and GLM-4.6V model
+        - 106B12A
+    - img: AIMv2-Huge-0.6B (2d-RoPE & 3d-RoPE similar to qwen2-vl)
+- 2025-12-07 [zai-org/GLM-4.6V](https://huggingface.co/zai-org/GLM-4.6V)
+  - https://z.ai/blog/glm-4.6v
+  - https://huggingface.co/zai-org/GLM-4.6V
+  - https://huggingface.co/zai-org/GLM-4.6V-Flash
+  - GLM-4.6V (106B) & GLM-4.6V-Flash (9B)
+- Wed, 11 Mar 2026 [GLM-OCR Technical Report](https://arxiv.org/abs/2603.10910)
+  - txt: GLM 500M
+  - img: CogVit 400M 
+- 2026-08-26 [GLM-5.3-Flash](https://z.ai/blog/glm-5.3-flash)
+  - https://huggingface.co/zai-org/GLM-5.3-Flash
+  - 320B total with 6B activated
+
 ## Era 3a — Native Multimodal Input
 
 ## Era 3b — Omni-Modal Unified I/O
