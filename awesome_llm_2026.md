@@ -1,6 +1,20 @@
 # Awesome LLMs 2026
 
 ### Qwen
+- 2026-08-13 [Qwen3.8](https://huggingface.co/collections/Qwen/qwen38)
+  - Architecture
+    - Qwen3.8-2.4T-A95B
+      - Number of Parameters: 2.4T in total and 95B activated
+      - Number of Layers: 92
+      - Hidden Layout: 23 × (3 × (Gated DeltaNet → MoE) → 1 × (Gated Attention → MoE))
+      - Mixture of Experts:
+        - Number of Experts: 512
+        - Number of Activated Experts: 10 Routed + 1 Shared
+        - Expert Intermediate Dimension: 2048
+    - Qwen3.8-27B
+      - Number of Parameters: 27B
+      - Number of Layers: 64
+      - Hidden Layout: 16 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))
 - 2026-08-26 [Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next)
   - https://huggingface.co/collections/Qwen/qwen38-flash-next
   - https://qwen.ai/blog?id=qwen3.8-flash-next
