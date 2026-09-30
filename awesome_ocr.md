@@ -1,5 +1,6 @@
 
 # VLMs
+## end-to-end VLM approaches
 - Wed, 18 Sep 2024 [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
 - Fri, 27 Sep 2024 [MinerU: An Open-Source Solution for Precise Document Content Extraction](https://arxiv.org/abs/2409.18839)
   - opendatalab/MinerU2.0-2505-0.9B
@@ -62,6 +63,7 @@ and task performance.
     - Stage 2-Document Parsing Fine-tuning
       - Layout&OCR 2048 × 28 × 28
 
+## decoupled VLM approaches
 - Thu, 16 Oct 2025 [PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model](https://arxiv.org/abs/2510.14528)
   - 两阶段 Layout Analysis + PaddleOCR-VL-0.9B 
     - PP-DocLayoutV2 RT-DETR-based
@@ -115,7 +117,23 @@ and task performance.
     - End-to-End OCR Models
       - DeepSeek-OCR2 91.09
       - FireRed-OCR-2B 92.94
+- Thu, 13 Aug 2026 [TeleOCR: Navigating Document Parsing Across Digital and Camera-Captured Documents](https://arxiv.org/abs/2608.12898)
+  - Architecture 1.2B
+    - txt: Qwen3-0.6B as the LLM
+    - img:  inherited from Qwen2.5-VL
+    - projector: MLP adapter
+  - Progressive Training
+    - Stage 1: Document Parsing Pre-training
+    - Stage 2: Deformation-aware Training
+    - Stage 3: Content-Structure Decoupled Learning
+    - Stage 4: Reinforcement Learning
+  - achieve first place in the ICDAR 2026 Sci-ImageMiner Challenge Ahmed et al. (2026)
 
 # Benchmark
 - Tue, 10 Dec 2024 [OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)
 - Tue, 21 Oct 2025 [Supercharge your OCR Pipelines with Open Models](https://huggingface.co/blog/ocr-open-models)
+- OmniDocBench V1.6
+- Wild-OmniDocBench
+
+# Challenge
+- [ICDAR 2026](https://icdar2026.org/index.php/competitions/)
