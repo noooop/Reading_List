@@ -109,6 +109,38 @@ VLM design has gone through **four distinct architectural eras** in just six yea
   - https://huggingface.co/zai-org/GLM-5.3-Flash
   - 320B total with 6B activated
 
+### Gemma
+- Wed, 13 Mar 2024 [Gemma: Open Models Based on Gemini Research and Technology](https://arxiv.org/abs/2403.08295)
+  - Text only
+  - Apr 3, 2024 [Gemma 1](https://huggingface.co/collections/google/gemma-release)
+    - 2B	gemma-2b	gemma-1.1-2b-it
+    - 7B	gemma-7b	gemma-1.1-7b-it
+- Wed, 10 Jul 2024 [PaliGemma: A versatile 3B VLM for transfer](https://arxiv.org/abs/2407.07726)
+  - May 12, 2024 [PaliGemma 1](https://huggingface.co/collections/google/paligemma-release)
+  - google/paligemma-3b-pt-224
+- Wed, 31 Jul 2024 [Gemma 2: Improving Open Language Models at a Practical Size](https://arxiv.org/abs/2408.00118)
+  - Text only
+  - Jun 25, 2024 [Gemma 2](https://huggingface.co/collections/google/gemma-2-release)
+  - google/gemma-2-9b
+  - google/gemma-2-27b
+- Wed, 4 Dec 2024 [PaliGemma 2: A Family of Versatile VLMs for Transfer](https://arxiv.org/abs/2412.03555)
+  - Nov 21, 2024 [PaliGemma 2](https://huggingface.co/collections/google/paligemma-2-release)
+- Tue, 25 Mar 2025 [Gemma 3 Technical Report](https://arxiv.org/abs/2503.19786)
+  - VLM
+  - Mar 12, 2025 [Gemma 3](https://huggingface.co/collections/google/gemma-3-release)
+  - google/gemma-3-270m-it
+  - google/gemma-3-4b-it
+- JUN 26, 2025 [Introducing Gemma 3n: The developer guide](https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/)
+  - 音频和图片 （首个原生支持音频）
+  - Jun 25, 2025 [Gemma 3n](https://huggingface.co/collections/google/gemma-3n)
+  - google/gemma-3n-E4B-it
+  - google/gemma-3n-E2B-it
+  - google/gemma-3n-E2B
+  - google/gemma-3n-E4B
+- Thu, 2 Jul 2026 [Gemma 4 Technical Report](https://arxiv.org/abs/2607.02770)
+  - 音频和图片
+  - Apr 2 2026 [Gemma 4](https://huggingface.co/collections/google/gemma-4)
+
 ## Era 3a — Native Multimodal Input
 
 ## Era 3b — Omni-Modal Unified I/O
