@@ -110,6 +110,22 @@ VLM design has gone through **four distinct architectural eras** in just six yea
   - 320B total with 6B activated
 
 ### Gemma
+- Mon, 27 Mar 2023 [Sigmoid Loss for Language Image Pre-Training](https://arxiv.org/abs/2303.15343)
+  - Contrastive (sigmoid) image-text models
+  - sigmoid loss vs softmax loss(infoNCE)
+    - 3.3. Efficient “chunked” implementation
+    - The loss is then calculated with respect to this chunk (sum C). This is done independently in each device, such that each device computes the loss with respect to its local batch b
+  - [Siglip 1](https://huggingface.co/collections/google/siglip)
+    - google/siglip-so400m-patch14-384
+    - google/siglip-so400m-patch14-224
+    - google/siglip-so400m-patch16-256-i18n
+    - google/siglip-base-patch16-256-multilingual
+    - google/siglip-base-patch16-512
+    - google/siglip-base-patch16-384
+    - google/siglip-base-patch16-256
+    - google/siglip-base-patch16-224
+    - google/siglip-large-patch16-256
+    - google/siglip-large-patch16-384
 - Wed, 13 Mar 2024 [Gemma: Open Models Based on Gemini Research and Technology](https://arxiv.org/abs/2403.08295)
   - Text only
   - Apr 3, 2024 [Gemma 1](https://huggingface.co/collections/google/gemma-release)
@@ -127,6 +143,17 @@ VLM design has gone through **four distinct architectural eras** in just six yea
   - Nov 21, 2024 [PaliGemma 2](https://huggingface.co/collections/google/paligemma-2-release)
 - Tue, 25 Mar 2025 [Gemma 3 Technical Report](https://arxiv.org/abs/2503.19786)
   - VLM
+    - text
+      - 滑动窗口 attn 1024, 比例1:5
+      - post-norm and pre-norm with RMSNorm
+      - we replace the soft-capping of Gemma 2 with QK-norm
+    - vision
+      - siglip 400m
+      - vision encoder takes as input square images resized to 896 x 896 (64 * 14)
+      - Pan & Scan (P&S)
+        - We address this issue with an adaptive windowing algorithm during inference. 
+        - This algorithm segments images into non-overlapping crops of equal size, covering the whole image, 
+        - and resize them to 896×896 pixels to pass them to the encoder.
   - Mar 12, 2025 [Gemma 3](https://huggingface.co/collections/google/gemma-3-release)
   - google/gemma-3-270m-it
   - google/gemma-3-4b-it
