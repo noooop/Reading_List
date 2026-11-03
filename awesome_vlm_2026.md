@@ -157,6 +157,8 @@ VLM design has gone through **four distinct architectural eras** in just six yea
   - Mar 12, 2025 [Gemma 3](https://huggingface.co/collections/google/gemma-3-release)
   - google/gemma-3-270m-it
   - google/gemma-3-4b-it
+- Thu, 20 Feb 2025 [SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features](https://arxiv.org/abs/2502.14786)
+  - For the architecture, we follow SigLIP
 - JUN 26, 2025 [Introducing Gemma 3n: The developer guide](https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/)
   - 音频和图片 （首个原生支持音频）
   - Jun 25, 2025 [Gemma 3n](https://huggingface.co/collections/google/gemma-3n)
