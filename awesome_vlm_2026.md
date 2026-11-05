@@ -134,6 +134,26 @@ VLM design has gone through **four distinct architectural eras** in just six yea
 - Wed, 10 Jul 2024 [PaliGemma: A versatile 3B VLM for transfer](https://arxiv.org/abs/2407.07726)
   - May 12, 2024 [PaliGemma 1](https://huggingface.co/collections/google/paligemma-release)
   - google/paligemma-3b-pt-224
+  - Architecture
+    - txt: gemma-2
+    - img: siglip-so400m. We always resize the image to a fixed square size (224, 448, or 896 pixels).
+    - projector: linear layer projecting
+    - PrefixLM: 
+      - In order to maximize model capacity for such a small model, we have full (unmasked) attention on the whole input, i.e. the image and prefix tokens. 
+      - In this way, image tokens can also "lookahead" at the task at hand (prefix) in order to update their representation. 
+  - Training
+    - Stage0: Unimodal pretraining - we use existing off-the-shelf components.
+    - Stage1: Multimodal pretraining - long pretraining on a carefully chosen mixture of multimodal tasks. Notably, nothing is frozen.
+    - Stage2: Resolution increase - short continued pretraining at higher resolution.
+    - Stage3: Transfer - turn the base model into a task-specific specialist.
+  - Ablations
+    - 5.1. Multimodal pretraining duration
+    - 5.2. Causal masking and learning objective
+    - 5.3. New token initialization
+    - 5.4. To freeze or not to freeze?
+    - 5.5. Connector design
+    - 5.6. Image encoder: with or without?
+    - 5.7. Image resolution
 - Wed, 31 Jul 2024 [Gemma 2: Improving Open Language Models at a Practical Size](https://arxiv.org/abs/2408.00118)
   - Text only
   - Jun 25, 2024 [Gemma 2](https://huggingface.co/collections/google/gemma-2-release)
